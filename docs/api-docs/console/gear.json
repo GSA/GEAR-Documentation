@@ -1,28 +1,28 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Prototype City Pairs API",
-        "description": "Prototype project to demonstrate GSA API Standards and API Documentation Template.",
+        "title": "Prototype GEAR API",
+        "description": "Project to share GEAR's API usage.",
         "version": "0.0.0"
     },
-    "host": "cityPairsPrototypeAPI.app.cloud.gov",
+    "host": "ea.gsa.gov",
     "schemes": [
         "https"
     ],
-    "basePath": "/travel/citypairs/v0",
+    "basePath": "/api/v0",
     "produces": [
         "application/json"
     ],
     "paths": {
-        "/airfares": {
+        "/applications": {
             "get": {
-                "summary": "Negotiated airfares",
-                "description": "This endpoint returns negotiated airfaires.\n",
+                "summary": "Business Application List",
+                "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
                 "parameters": [
                     {
-                        "name": "award_year",
+                        "name": "Id",
                         "in": "query",
-                        "description": "Year of airfare award. Example: '2017'",
+                        "description": "The database key that identifies the Business Application. Example: '5576'",
                         "required": true,
                         "type": "string",
                         "format": "string"
