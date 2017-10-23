@@ -6,24 +6,26 @@ nav: basics
 
 ### Getting Started
 
-The current version of the API lives at ```https://api.gsa.gov/v3/path```.
+The current version of the API lives at ```https://ea.gsa.gov/api/v0/...```.
 
-- One example of a way to use it.
-- Another example of a way to use it.
+- These endpoints each return a list of objects, or can be limited to a particular {id}.
+- Some endpoints have further attributes that bring back other objects related to that {id}. 
 
 #### Versions
 
 | Version | Date | Changes
 | ------------- | -------------|
-| ```version 1``` | 1/1/2095 | Initial deployment
-| ```version 2``` | 3/1/2096 | Changed data structure to fit congressional mandate
-| ```version 3``` | 3/1/2099 | Request pattern changed for new requirements
+| ```version 0``` | 1/1/2095 | Initial deployment using node.js and Express
+
 
 #### Endpoints
 
 | Endpoint | What it does |
 | ------------- | -------------|
-| ```/citypairs/airfares``` | Returns an array of Airfares based on query parameters
-| ```/citypairs/airfares/{id}``` | Returns an array of Airfares based on unique identifier. Array will contain one airfare. (This is just for demonstration purpose. For City Pairs, the ID does not have meaning.)
+| ```/applications/``` | Returns the complete list of GSA Business Applications, to include retired applications 
+| ```/applications/{id}``` | Returns one Business Application by {id}
+| ```/itstandards/``` | Returns the entire list of GSA's Software IT Standards 
+| ```/itstandards/{id}``` | Returns one IT Standard by {id}
+
 
 <body id="basics"></body>
