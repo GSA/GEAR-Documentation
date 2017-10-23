@@ -4,6 +4,7 @@ GEAR Documentation
 Eventually, this repo will be a documentation source for GEAR (repo currently at GEAR2-NodeJS). Right now, it's a clone of the GSA API documentation template, until we can migrate the details. 
 
 ====================
+
 This a documentation template for GSA APIs provided by GSA Digital Services to provide a consistent look and feel for GSA APIs.  
 
 Thanks to CFPB team for creating this model and for furthering open source in government.  Additional thanks to the 18F and SAM (IAE) teams as well as several in the private sector.
