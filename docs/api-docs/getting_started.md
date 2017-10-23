@@ -6,7 +6,7 @@ nav: basics
 
 ### Getting Started
 
-The current version of the API lives at ```https://ea.gsa.gov/api/v0/...```.
+The current version of the API lives at ```https://ea.gsa.gov/api/v0/...```
 
 - These endpoints each return a list of objects, or can be limited to a particular {id}.
 - Some endpoints have further attributes that bring back other objects related to that {id}. 
