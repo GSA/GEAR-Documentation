@@ -14,9 +14,9 @@ The current version of the API lives at ```https://ea.gsa.gov/api/v0/...```
 
 #### Versions
 
-| Version | Date | Changes |
-| ------------- | -------------|
-| ```version 0``` | *Look this up* | Initial deployment using node.js and Express
+| Version | Date | Changes | 
+| ------------- | ------------- | ------------- |
+| ```version 0``` | **Look this up** | Initial deployment using node.js and Express
 
 
 #### Endpoints
