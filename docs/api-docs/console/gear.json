@@ -18,6 +18,9 @@
             "get": {
                 "summary": "Business Application List",
                 "description": "This endpoint returns returns the complete list of GSA Business Applications, to include retired applications.",
+                "parameters": [
+                  ""
+                ],
                 "tags": [
                     ""
                 ],
@@ -40,7 +43,7 @@
                 }
             }
         },
-        "_/applications/{id}": {
+        "/applications/{id}": {
             "get": {
                 "summary": "Individual airfare by ID",
                 "description": "This endpoint returns one airfare by ID. (This is just for demonstration purpose. For City Pairs, the ID does not have meaning.)\n",
