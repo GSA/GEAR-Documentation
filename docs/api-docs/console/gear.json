@@ -111,15 +111,15 @@
                 },
                 "System": {
                     "type": "string",
-                    "description": "The Parent System name that includes this application. If not part of a System, then the value will be NULL.."
+                    "description": "The Parent System name that includes this application. If not part of a System, then the value will be NULL."
                 },
                 "BusinessPOC": {
                     "type": "string",
-                    "description": "List of technical POCs, separated by commas"
+                    "description": "List of business POCs, separated by commas"
                 },
                 "TechnicalPOC": {
                     "type": "string",
-                    "description": "Destination State."
+                    "description": "List of technical POCs, separated by commas"
                 },
                 "Cloud": {
                     "type": "string",
@@ -135,7 +135,7 @@
                 },
                 "Alias": {
                     "type": "string",
-                    "description": "Other names by which this application in known."
+                    "description": "Other names by which this application is known."
                 },
                 "RegionClassification": {
                     "type": "string",
@@ -155,11 +155,11 @@
                 },
                 "IsRevenueGenerator": {
                     "type": "string",
-                    "description": "Does this Business Application generate revenue? Values limited to "Yes" "No" and "TBD""
+                    "description": "Does this Business Application generate revenue? Values limited to Yes, No and TBD"
                 },
                 "DesktopComponent": {
                     "type": "string",
-                    "description": "Does this Business Application have a component that can be installed on a laptop or desktop? Values limited to "Yes" "No" and "TBD""
+                    "description": "Does this Business Application have a component that can be installed on a laptop or desktop? Values limited to Yes, No and TBD."
                 },
                 "RetiredYear": {
                     "type": "string",

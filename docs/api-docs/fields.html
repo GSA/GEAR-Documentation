@@ -31,173 +31,188 @@ nav: fields
 
 <tr>
 	<td>
-		<code>ID</code>
+		<code>Id</code>
 		</td>
-	<td>Unique identifier.</td>
+	<td>The database key that identifies the Business Application.</td>
 	<td>string</td>
 	</tr>
 
 <tr>
 	<td>
-		<code>ITEM_NUM</code>
+		<code>Name</code>
 		</td>
-	<td>Item number.</td>
+	<td>Name of the Business Application.</td>
 	<td>string</td>
 	</tr>
 
 <tr>
 	<td>
-		<code>AWARD_YEAR</code>
+		<code>Description</code>
 		</td>
-	<td>Award Year.</td>
+	<td>Description of Business Application.</td>
 	<td>string</td>
 	</tr>
 
 <tr>
 	<td>
-		<code>ORIGIN_AIRPORT_ABBREV</code>
+		<code>SSO</code>
 		</td>
-	<td>Origin Airport Abbreviation.</td>
+	<td>Verbose name of the SSO that manages the application. USUALLY the parent SSO to “Owner,” but not always.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>DESTINATION_AIRPORT_ABBREV</code>
+		<code>SSOShort</code>
 		</td>
-	<td>Destination Airport Abbreviation.</td>
+	<td>Short name of the SSO that manages the application. USUALLY the parent SSO to “Owner,” but not always.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>ORIGIN_CITY_NAME</code>
+		<code>Owner</code>
 		</td>
-	<td>Origin City Name.</td>
+	<td>Verbose name of the 2-letter office(s) that manages (co-manage) this application.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>ORIGIN_STATE</code>
+		<code>OwnerShort</code>
 		</td>
-	<td>Origin State.</td>
+	<td>Short name of the 2-letter office(s) that manages (co-manage) this application.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>ORIGIN_COUNTRY</code>
+		<code>System</code>
 		</td>
-	<td>Origin Country.</td>
+	<td>The Parent System name that includes this application. If not part of a System, then the value will be NULL.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>DESTINATION_CITY_NAME</code>
+		<code>BusinessPOC</code>
 		</td>
-	<td>Destination City Name.</td>
+	<td>List of business POCs, separated by commas</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>DESTINATION_STATE</code>
+		<code>TechnicalPOC</code>
 		</td>
-	<td>Destination State.</td>
+	<td>List of technical POCs, separated by commas</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>DESTINATION_COUNTRY</code>
+		<code>Cloud</code>
 		</td>
-	<td>Destination Country.</td>
+	<td>Is this Business Appliation hosted in the Cloud (as opposed to in a GSA Data Center)? Yes or No only.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>AIRLINE_ABBREV</code>
+		<code>TechnologyPlatform</code>
 		</td>
-	<td>Airline Abbreviation.</td>
+	<td>Technology platform for the application. One of the following values: .Net, Appian, ArcGIS, Business Objects, ColdFusion, Django, Documentum, Drupal, Foxpro, Google App Engine (GAE), J2EE, Microsoft Office, Oracle, PowerBuilder, Provided as Package, Red Hat, Ruby on Rails, Salesforce, Unisys Mainframe, WordPress, Other.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
-		<code>AWARDED_SERV</code>
+		<code>Status</code>
 		</td>
-	<td>Awarded Serv.</td>
-	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>PAX_COUNT</code>
-		</td>
-	<td>PAX Count.</td>
+	<td>Status of the application. One of the following values: Pre-Production, Production, or Retired.</td>
 	<td>string</td>
 	</tr>
 
 <tr>
 	<td>
-		<code>YCA_FARE</code>
+		<code>Alias</code>
 		</td>
-	<td>YCA Fare.</td>
-	<td>string</td>
-	</tr>
-
-
-<tr>
-	<td>
-		<code>XCA_FARE</code>
-		</td>
-	<td>XCA Fare.</td>
+	<td>Other names by which this application in known.</td>
 	<td>string</td>
 	</tr>
 
 <tr>
 	<td>
-		<code>BUSINESS_FARE</code>
+		<code>RegionClassification</code>
 		</td>
-	<td>Business Fare.</td>
-	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>ORIGIN_AIRPORT_LOCATION</code>
-		</td>
-	<td>Origin Airport Location.</td>
-	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>DESTINATION_AIRPORT_LOCATION</code>
-		</td>
-	<td>Destination Airport Location.</td>
+	<td>PBS-centric classification. Values will be “National” or “Regional”.</td>
 	<td>string</td>
 	</tr>
 
 
 <tr>
 	<td>
-		<code>ORIGIN_CITY_STATE_AIRPORT</code>
+		<code>HostingProvider</code>
 		</td>
-	<td>Origin City State Airport.</td>
+	<td>Service Provider for the application. One of the following values: Amazon, Appian, BSP, CGI, CTAC, ESRI, GSA, Google, HP Enterprise Services, IBM, Marathon Digital Services, Monster Govt Services, Noblis, OPM, Salesforce, SAP, ServiceNow, USDA Phase 1, USDA Phase 2, and Vanderweil (VFA).</td>
 	<td>string</td>
 	</tr>
 
 <tr>
 	<td>
-		<code>DESTINATION_CITY_STATE_AIRPORT</code>
+		<code>FismaSystem</code>
 		</td>
-	<td>Destination City State Airport.</td>
+	<td>The FISMA System that provides an ATO for this application.</td>
 	<td>string</td>
 	</tr>
 
 <tr>
 	<td>
-		<code>EXPIRATION_DATE</code>
+		<code>Investment</code>
 		</td>
-	<td>Expiration Date.</td>
+	<td>The eCPIC Investment that provides funding for this application.</td>
 	<td>string</td>
 	</tr>
 
+<tr>
+	<td>
+		<code>IsRevenueGenerator</code>
+		</td>
+	<td>Does this Business Application generate revenue? Values limited to Yes, No and TBD</td>
+	<td>string</td>
+	</tr>
+
+
+<tr>
+	<td>
+		<code>DesktopComponent</code>
+		</td>
+	<td>Does this Business Application have a component that can be installed on a laptop or desktop? Values limited to Yes, No and TBD.</td>
+	<td>string</td>
+	</tr>
+
+<tr>
+	<td>
+		<code>RetiredYear</code>
+		</td>
+	<td>Year the application was retired. Will be NULL if “Status” is not “Retired”</td>
+	<td>string</td>
+	</tr>
+
+<tr>
+	<td>
+		<code>Capabilites</code>
+		</td>
+	<td>A comma separated list of the FEAF BRM capabilities that are supported by this application.</td>
+	<td>string</td>
+	</tr>
+
+  <tr>
+	<td>
+		<code>Technologies</code>
+		</td>
+	<td>A comma separated list of IT Standards that compose this application.</td>
+	<td>string</td>
+	</tr>
+  
+  <tr>
+	<td>
+		<code>Link</code>
+		</td>
+	<td>The URL that points to the applications web interface. If there are more than one, they will be separated by commas.</td>
+	<td>string</td>
+	</tr>
 
 </tbody>
 </table>
