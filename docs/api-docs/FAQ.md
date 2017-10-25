@@ -6,9 +6,9 @@ layout: default
 ### Frequently Asked Questions 
 
 
-**Q: Here is a question?**
+**Q: Do you have any questions?**
 
-A: Here is an answer.
+A: Ask Chris.
 
 **Q: Here is a question?**
 
