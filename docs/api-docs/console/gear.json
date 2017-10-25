@@ -17,7 +17,7 @@
         "/applications": {
             "get": {
                 "summary": "Business Application List",
-                "description": "This endpoint returns returns the complete list of GSA Business Applications, to include retired applications.\n",
+                "description": "This endpoint returns returns the complete list of GSA Business Applications, to include retired applications.",
                 "tags": [
                     ""
                 ],
@@ -95,11 +95,11 @@
                 },
                 "SSO": {
                     "type": "string",
-                    "description": "Verbose name of the SSO that manages the application. USUALLY the parent SSO to “Owner,” but not always."
+                    "description": "Verbose name of the SSO that manages the application. USUALLY the parent SSO to Owner, but not always."
                 },
                 "SSOShort": {
                     "type": "string",
-                    "description": "Short name of the SSO that manages the application. USUALLY the parent SSO to “Owner,” but not always."
+                    "description": "Short name of the SSO that manages the application. USUALLY the parent SSO to Owner, but not always."
                 },
                 "Owner": {
                     "type": "string",
@@ -139,7 +139,7 @@
                 },
                 "RegionClassification": {
                     "type": "string",
-                    "description": "PBS-centric classification. Values will be “National” or “Regional”"
+                    "description": "PBS-centric classification. Values will be National or Regional"
                 },
                 "HostingProvider": {
                     "type": "string",
@@ -163,7 +163,7 @@
                 },
                 "RetiredYear": {
                     "type": "string",
-                    "description": "Year the application was retired. Will be NULL if “Status” is not “Retired”"
+                    "description": "Year the application was retired. Will be NULL if “Status” is not Retired"
                 },
                 "Capabilities": {
                     "type": "string",
