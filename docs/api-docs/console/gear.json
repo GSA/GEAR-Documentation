@@ -137,7 +137,7 @@
                 },
                 "RetiredYear": {
                     "type": "string",
-                    "description": "Year the application was retired. Will be NULL if “Status” is not Retired"
+                    "description": "Year the application was retired. Will be NULL if Status is not Retired"
                 },
                 "Capabilities": {
                     "type": "string",
