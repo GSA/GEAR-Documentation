@@ -147,10 +147,7 @@
                     "type": "string",
                     "description": " A comma separated list of IT Standards that compose this application"
                 }
-                 "Link": {
-                    "type": "string",
-                    "description": " The URL that points to the applications web interface. If there are more than one, they will be separated by commas."
-                }        
+       
             }
         },
         "Error": {
