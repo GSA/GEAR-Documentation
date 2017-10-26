@@ -14,9 +14,9 @@
         "application/json"
     ],
     "paths": {
-        "/applications": {
+        "/applications/{id}": {
             "get": {
-                "summary": "Business Application List - Amy TEST123",
+                "summary": "Business Application List - Amy TEST ABC",
                 "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
                 "parameters": [
                     {
@@ -37,7 +37,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Airfare"
+                                "$ref": "#/definitions/Application"
                             }
                         }
                     },
@@ -52,7 +52,7 @@
         }
     },
     "definitions": {
-        "Airfare": {
+        "Application": {
             "type": "object",
             "properties": {
                 "Id": {
