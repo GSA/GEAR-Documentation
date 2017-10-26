@@ -55,100 +55,97 @@
         "Airfare": {
             "type": "object",
             "properties": {
-                "ID": {
+                "Id": {
                     "type": "integer",
-                    "description": "Generated unique identifier."
+                    "description": "The database key that identifies the Business Application."
                 },
-                "ITEM_NUM": {
+                "Name": {
                     "type": "string",
-                    "description": "Item number."
+                    "description": "Name of the Business Application."
                 },
-                "AWARD_YEAR": {
+                "Description": {
                     "type": "string",
-                    "description": "Award Year."
+                    "description": "Description of Business Application."
                 },
-                "ORIGIN_AIRPORT_ABBREV": {
+                "SSO": {
                     "type": "string",
-                    "description": "Origin Airport Abbreviation."
+                    "description": "Verbose name of the SSO that manages the application. USUALLY the parent SSO to Owner, but not always."
                 },
-                "DESTINATION_AIRPORT_ABBREV": {
+                "SSOShort": {
                     "type": "string",
-                    "description": "Destinatoin Airport Abbreviation."
+                    "description": "Short name of the SSO that manages the application. USUALLY the parent SSO to Owner, but not always."
                 },
-                "ORIGIN_CITY_NAME": {
+                "Owner": {
                     "type": "string",
-                    "description": "Original City Name."
+                    "description": "Verbose name of the 2-letter office(s) that manages (co-manage) this application."
                 },
-                "ORIGIN_STATE": {
+                "OwnerShort": {
                     "type": "string",
-                    "description": "Origin State."
+                    "description": "Short name of the 2-letter office(s) that manages (co-manage) this application."
                 },
-                "ORIGIN_COUNTRY": {
+                "System": {
                     "type": "string",
-                    "description": "Origin Country."
+                    "description": "The Parent System name that includes this application. If not part of a System, then the value will be NULL."
                 },
-                "DESTINATION_CITY_NAME": {
+                "BusinessPOC": {
                     "type": "string",
-                    "description": "Destination City Name."
+                    "description": "List of business POCs, separated by commas"
                 },
-                "DESTINATION_STATE": {
+                "TechnicalPOC": {
                     "type": "string",
-                    "description": "Destination State."
+                    "description": "List of technical POCs, separated by commas"
                 },
-                "DESTINATION_COUNTRY": {
+                "Cloud": {
                     "type": "string",
-                    "description": "Destination Country."
+                    "description": " Is this Business Appliation hosted in the Cloud (as opposed to in a GSA Data Center)? Yes or No only."
                 },
-                "AIRLINE_ABBREV": {
+                "TechnologyPlatform": {
                     "type": "string",
-                    "description": "Airline Abbreviation."
+                    "description": "Technology platform for the application. One of the following values: .Net, Appian, ArcGIS, Business Objects, ColdFusion, Django, Documentum, Drupal, Foxpro, Google App Engine (GAE), J2EE, Microsoft Office, Oracle, PowerBuilder, Provided as Package, Red Hat, Ruby on Rails, Salesforce, Unisys Mainframe, WordPress, Other."
                 },
-                "AWARDED_SERV": {
+                "Status": {
                     "type": "string",
-                    "description": "Awarded Serv."
+                    "description": "Status of the application. One of the following values: Pre-Production, Production, or Retired."
                 },
-                "PAX_COUNT": {
+                "Alias": {
                     "type": "string",
-                    "description": "PAX Count."
+                    "description": "Other names by which this application is known."
                 },
-                "YCA_FARE": {
-                    "type": "integer",
-                    "description": "YCA Fare."
-                },
-                "XCA_FARE": {
-                    "type": "integer",
-                    "description": "XCA Fare."
-                },
-                "BUSINESS_FARE": {
-                    "type": "integer",
-                    "description": "Business Fare."
-                },
-                "ORIGIN_AIRPORT_LOCATION": {
+                "RegionClassification": {
                     "type": "string",
-                    "description": "Origin Airport Location."
+                    "description": "PBS-centric classification. Values will be National or Regional"
                 },
-                "DESTINATION_AIRPORT_LOCATION": {
+                "HostingProvider": {
                     "type": "string",
-                    "description": "Destination Airport Location."
+                    "description": "Service Provider for the application. One of the following values: Amazon, Appian, BSP, CGI, CTAC, ESRI, GSA, Google, HP Enterprise Services, IBM, Marathon Digital Services, Monster Govt Services, Noblis, OPM, Salesforce, SAP, ServiceNow, USDA Phase 1, USDA Phase 2, and Vanderweil (VFA)."
                 },
-                "ORIGIN_CITY_STATE_AIRPORT": {
+                "FismaSystem": {
                     "type": "string",
-                    "description": "Origin City State Airport."
+                    "description": "The FISMA System that provides an ATO for this application"
                 },
-                "DESTINATION_CITY_STATE_AIRPORT": {
+                "Investment": {
                     "type": "string",
-                    "format": "date-time",
-                    "description": "Destination City State Airport."
+                    "description": "The eCPIC Investment that provides funding for this application."
                 },
-                "EFFECTIVE_DATE": {
+                "IsRevenueGenerator": {
                     "type": "string",
-                    "format": "date-time",
-                    "description": "Expiration Date."
+                    "description": "Does this Business Application generate revenue? Values limited to Yes, No and TBD"
                 },
-                "EXPIRATION_DATE": {
+                "DesktopComponent": {
                     "type": "string",
-                    "format": "date-time",
-                    "description": "Expiration Date."
+                    "description": "Does this Business Application have a component that can be installed on a laptop or desktop? Values limited to Yes, No and TBD."
+                },
+                "RetiredYear": {
+                    "type": "string",
+                    "description": "Year the application was retired. Will be NULL if “Status” is not Retired"
+                },
+                "Capabilities": {
+                    "type": "string",
+                    "description": "A comma separated list of the FEAF BRM capabilities that are supported by this application."
+                },
+                "Technologies": {
+                    "type": "string",
+                    "description": " A comma separated list of IT Standards that compose this application"
                 }
             }
         },
