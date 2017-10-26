@@ -16,7 +16,7 @@
     "paths": {
         "/applications": {
             "get": {
-                "summary": "Business Application List",
+                "summary": "Business Application List - Amy TEST ABC ABC ABC",
                 "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
                 "parameters": [
                     {
