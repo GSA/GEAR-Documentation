@@ -55,7 +55,7 @@
         "Airfare": {
             "type": "object",
             "properties": {
-                 "Id": {
+                "Id": {
                     "type": "integer",
                     "description": "The database key that identifies the Business Application."
                 },
@@ -137,7 +137,7 @@
                 },
                 "RetiredYear": {
                     "type": "string",
-                    "description": "Year the application was retired. Will be NULL if Status is not Retired"
+                    "description": "Year the application was retired. Will be NULL if “Status” is not Retired"
                 },
                 "Capabilities": {
                     "type": "string",
