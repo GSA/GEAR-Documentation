@@ -16,12 +16,12 @@
     "paths": {
         "/applications": {
             "get": {
-                "summary": "Business Application List - Amy TEST ABC ABC ABC",
+                "summary": "Business Application List - Amy TEST123",
                 "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
                 "parameters": [
                     {
                         "name": "Id",
-                        "in": "query",
+                        "in": "path",
                         "description": "The database key that identifies the Business Application. Example: '5576'",
                         "required": true,
                         "type": "string",
@@ -145,7 +145,11 @@
                 },
                 "Technologies": {
                     "type": "string",
-                    "description": " A comma separated list of IT Standards that compose this application"
+                    "description": "A comma separated list of IT Standards that compose this application"
+                },
+                 "Link": {
+                    "type": "string",
+                    "description": "The URL that points to the applications web interface. If there are more than one, they will be separated by commas."
                 }
        
             }
