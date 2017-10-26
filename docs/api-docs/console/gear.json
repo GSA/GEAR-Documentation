@@ -37,7 +37,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Airfare"
+                                "$ref": "#/definitions/Application"
                             }
                         }
                     },
@@ -52,7 +52,7 @@
         }
     },
     "definitions": {
-        "Airfare": {
+        "Application": {
             "type": "object",
             "properties": {
                 "Id": {
