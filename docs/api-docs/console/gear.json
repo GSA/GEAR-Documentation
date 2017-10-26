@@ -16,8 +16,8 @@
     "paths": {
         "/applications/{id}": {
             "get": {
-                "summary": "Business Application List - Amy TEST ABC",
-                "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
+                "summary": "Business Application List",
+                "description": "This endpoint returns the complete list of GSA Business Applications, to include retired applications.\n",
                 "parameters": [
                     {
                         "name": "Id",
@@ -52,8 +52,8 @@
         },
         "/applications/{id}/capabilities": {
             "get": {
-                "summary": "Capabilities related to given Business Application List - Amy TEST ABC",
-                "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
+                "summary": "Capabilities related to given Business Application List",
+                "description": "This endpoint returns the Business Capabilites and Business Capability metadata associated to the indicated Business Application {id}.\n",
                 "parameters": [
                     {
                         "name": "Id",
@@ -88,8 +88,8 @@
         },
         "/applications/{id}/technologies": {
             "get": {
-                "summary": "Technologies related to given Business Application List - Amy TEST ABC",
-                "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
+                "summary": "Technologies related to given Business Application List",
+                "description": "This endpoint returns the IT Technologies and IT Technologies metadata associated to the indicated Business Application {id}.\n",
                 "parameters": [
                     {
                         "name": "Id",
@@ -233,7 +233,7 @@
             "properties": {
                 "Id": {
                     "type": "integer",
-                    "description": "The database key that identifies the Business Application."
+                    "description": "The database key that identifies the Capabilities."
                 },
                 "Name": {
                     "type": "string",
@@ -258,7 +258,7 @@
             "properties": {
                 "Id": {
                     "type": "integer",
-                    "description": "The database key that identifies the Business Application."
+                    "description": "The database key that identifies the IT Standards."
                 },
                 "Name": {
                     "type": "string",
