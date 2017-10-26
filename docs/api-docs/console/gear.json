@@ -49,7 +49,80 @@
                     }
                 }
             }
+        },
+        "/applications/{id}/capabilities": {
+            "get": {
+                "summary": "Capabilities related to given Business Application List - Amy TEST ABC",
+                "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "The database key that identifies the Business Application. Example: '5576'",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "tags": [
+                    ""
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of airfares",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/AppCap"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/applications/{id}/technologies": {
+            "get": {
+                "summary": "Technologies related to given Business Application List - Amy TEST ABC",
+                "description": "This endpoint returns Returns the complete list of GSA Business Applications, to include retired applications.\n",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "The database key that identifies the Business Application. Example: '5576'",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "tags": [
+                    ""
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of airfares",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/AppCap"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
+        
     },
     "definitions": {
         "Application": {
@@ -152,6 +225,61 @@
                     "description": "The URL that points to the applications web interface. If there are more than one, they will be separated by commas."
                 }
        
+            }
+        },
+        
+        "AppCap": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "description": "The database key that identifies the Business Application."
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "Name of the Business Capability."
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "Description of Business Capability."
+                },
+                "Ref": {
+                    "type": "string",
+                    "description": "Position in the GSA hierarchy of FEAF Business Capability."
+                },
+                "ParentCap": {
+                    "type": "string",
+                    "description": "Name of the Parent Business Capability to this Business Capability."
+                }     
+            }
+        },
+        "AppTech": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "description": "The database key that identifies the Business Application."
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "Name of the IT Standards."
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "Description of IT Standards"
+                },
+                "Status": {
+                    "type": "string",
+                    "description": "Position in the GSA hierarchy of FEAF Business Capability."
+                },
+                "Expiration": {
+                    "type": "string",
+                    "description": "Year and month that the approval for this standard expires. Standards that are not in an approved or pilot state will have NULL for this field."
+                },
+                "Category": {
+                    "type": "string",
+                    "description": "Standards category that this IT Standard fits into."
+                }  
             }
         },
         "Error": {
