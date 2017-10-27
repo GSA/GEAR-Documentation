@@ -1,7 +1,4 @@
-GEAR Documentation
-====================
-
-Eventually, this repo will be a documentation source for GEAR (repo currently at GEAR2-NodeJS). Right now, it's a clone of the GSA API documentation template, until we can migrate the details. 
+## GEAR Documentation
 
 ====================
 
