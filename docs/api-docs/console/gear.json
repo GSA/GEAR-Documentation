@@ -105,11 +105,11 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "An array of related Capabilities of a given Business Application",
+                        "description": "An array of related Technologies of a given Business Application",
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/AppCap"
+                                "$ref": "#/definitions/AppTech"
                             }
                         }
                     },
@@ -124,6 +124,50 @@
         }
         
     },
+     "/{definition}/{id}/applications": {
+            "get": {
+                "summary": "Business Application List related to given definition",
+                "description": "This endpoint returns the list of GSA Business Applications related to given definition.\n",
+                "parameters": [
+                    {
+                        "name": "definition",
+                        "in": "path",
+                        "description": "The definition type that identifies the Business Application. Example: capabilities, itstandards, fisma, parentsystems, organizations, investments  ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "The database key that identifies the Business Application. Example: '16999' for capabilities,'20872' for investments, ",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "tags": [
+                    ""
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of airfares",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Application"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
     "definitions": {
         "Application": {
             "type": "object",
