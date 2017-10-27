@@ -124,13 +124,13 @@
         }
         
     },
-     "/{definition}/{id}/applications": {
+     "/{id}/{id}/applications": {
             "get": {
                 "summary": "Business Application List related to given definition",
                 "description": "This endpoint returns the list of GSA Business Applications related to given definition.\n",
                 "parameters": [
                     {
-                        "name": "definition",
+                        "name": "id",
                         "in": "path",
                         "description": "The definition type that identifies the Business Application. Example: capabilities, itstandards, fisma, parentsystems, organizations, investments  ",
                         "required": true,
