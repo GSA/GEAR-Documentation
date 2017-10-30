@@ -100,9 +100,9 @@
                         "format": "string"
                     },
                     {
-                        "name": "technologies",
+                        "name": "def",
                         "in": "path",
-                        "description": "The database key that identifies the Business Application. Example: '5576'",
+                        "description": "The technologies, or capabilities related to the given application. Example, technologies",
                         "required": true,
                         "type": "string",
                         "format": "string"
