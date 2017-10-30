@@ -20,6 +20,14 @@
                 "description": "This endpoint returns the complete list of GSA Business Applications.\n",
                 "parameters": [
                     {
+                        "name": "def",
+                        "in": "path",
+                        "description": "The technologies, or capabilities related to the given application. Example, technologies",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
                         "name": "Id",
                         "in": "path",
                         "description": "The database key that identifies the Business Application. Example: '5576'",
