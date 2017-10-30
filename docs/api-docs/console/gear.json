@@ -92,7 +92,15 @@
                 "description": "This endpoint returns the IT Technologies and IT Technologies metadata associated to the indicated Business Application {id}.\n",
                 "parameters": [
                     {
-                        "name": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "The database key that identifies the Business Application. Example: '5576'",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "technologies",
                         "in": "path",
                         "description": "The database key that identifies the Business Application. Example: '5576'",
                         "required": true,
