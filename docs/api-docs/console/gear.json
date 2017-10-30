@@ -86,7 +86,7 @@
                 }
             }
         },
-        "/applications/{id}/technologies": {
+        "/applications/{id}/{def}": {
             "get": {
                 "summary": "Technologies related to given Business Application List",
                 "description": "This endpoint returns the IT Technologies and IT Technologies metadata associated to the indicated Business Application {id}.\n",
@@ -109,7 +109,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/AppTech"
+                                "$ref": "#/definitions/{def}"
                             }
                         }
                     },
@@ -298,7 +298,7 @@
                 }     
             }
         },
-        "AppTech": {
+        "technologies": {
             "type": "object",
             "properties": {
                 "Id": {
