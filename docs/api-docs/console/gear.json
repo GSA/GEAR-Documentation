@@ -148,7 +148,7 @@
                 }
             }
         },
-     "/{def}/{id}/poc": {
+     "/{def}/{id}/pocs": {
             "get": {
                 "summary": "Point of Contact List related to given definition",
                 "description": "This endpoint returns the list of Point of Contact related to given definition.\n",
