@@ -14,10 +14,10 @@
         "application/json"
     ],
     "paths": {
-        "/applications/{id}": {
+        "/{def}/{id}": {
             "get": {
                 "summary": "Business Application List",
-                "description": "This endpoint returns the complete list of GSA Business Applications, to include retired applications.\n",
+                "description": "This endpoint returns the complete list of GSA Business Applications.\n",
                 "parameters": [
                     {
                         "name": "Id",
@@ -37,43 +37,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Application"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/applications/{id}/capabilities": {
-            "get": {
-                "summary": "Capabilities related to given Business Application List",
-                "description": "This endpoint returns the Business Capabilites and Business Capability metadata associated to the indicated Business Application {id}.\n",
-                "parameters": [
-                    {
-                        "name": "Id",
-                        "in": "path",
-                        "description": "The database key that identifies the Business Application. Example: '5576'",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    }
-                ],
-                "tags": [
-                    ""
-                ],
-                "responses": {
-                    "200": {
-                        "description": "An array of airfares",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/AppCap"
+                                "$ref": "#/definitions/{def}"
                             }
                         }
                     },
@@ -113,7 +77,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "An array of related Technologies of a given Business Application",
+                        "description": "An array of related definition of a given Business Application",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -140,7 +104,7 @@
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "the definitions. Example: capabilities, technologies, etc",
+                        "description": "the definitions. Example: capabilities, technologies, investments, fisma, organizations, etc",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -159,11 +123,56 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "An array of airfares",
+                        "description": "An array of Business Applications",
                         "schema": {
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/Application"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+     "/{def}/{id}/poc": {
+            "get": {
+                "summary": "Point of Contact List related to given definition",
+                "description": "This endpoint returns the list of Point of Contact related to given definition.\n",
+                "parameters": [
+                    
+                    {
+                        "name": "def",
+                        "in": "path",
+                        "description": "the definitions. Example: capabilities, technologies, investments, fisma, organizations, applications, etc",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The database key that identifies the Business Application. Example: '16999' for capabilities,'20872' for investments",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }                    
+                ],
+                "tags": [
+                    ""
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of Point of Contact",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/poc"
                             }
                         }
                     },
@@ -281,7 +290,7 @@
             }
         },
         
-        "AppCap": {
+        "capabilities": {
             "type": "object",
             "properties": {
                 "Id": {
@@ -333,6 +342,159 @@
                     "type": "string",
                     "description": "Standards category that this IT Standard fits into."
                 }  
+            }
+        },
+        
+        "fisma": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "description": "The database key that identifies the FISMA System."
+                },
+                "Name": {
+                    "type": "string",
+                    "description": " Name of the FISMA System."
+                },
+                "RelOrgDisplayName": {
+                    "type": "string",
+                    "description": "The short name of the organization that is related to this FISMA System."
+                },
+                "FedContractorLoc": {
+                    "type": "string",
+                    "description": "Is this FISMA System related to a Federal or Contractor location."
+                },
+                "FIPS199": {
+                    "type": "string",
+                    "description": "The FIPS 199 impact level of the FISMA System. One of the following values: High, Moderate, or Low."
+                },
+                "ATODate": {
+                    "type": "string",
+                    "description": "Date was the ATO isssued"
+                },
+                "ATOType": {
+                    "type": "string",
+                    "description": "Type of ATO that certifies this FISMA System."
+                },
+                "RenewalDate": {
+                    "type": "string",
+                    "description": "Date when the ATO needs to be renewed."
+                },
+                "RelatedArtifacts": {
+                    "type": "string",
+                    "description": "Letters and other artifacts related to this FISMA System. This will be returned as an array containing zero, one, or many Artifacts, containing the NAME of the Artifact and ReferenceDocuments, which will be the URL of the Artifact."
+                },
+                "FISMASystemIdentifier": {
+                    "type": "string",
+                    "description": "A shortened identifier for FISMA Systems for uses with Security's Continuous Monitoring System."
+                },
+                "ISSO": {
+                    "type": "string",
+                    "description": "ISSO for this FISMA System."
+                },
+                "ISSM": {
+                    "type": "string",
+                    "description": " ISSM for this FISMA System."
+                },
+                "AO": {
+                    "type": "string",
+                    "description": "Authorizing Official for this FISMA System."
+                },
+                "PM": {
+                    "type": "string",
+                    "description": "Program Manager for this FISMA System."
+                }                
+            }
+        },
+        "organizations": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "description": "The database key that identifies the Organization."
+                },
+                "Name": {
+                    "type": "string",
+                    "description": " Name of the Organization."
+                },
+                "DisplayName": {
+                    "type": "string",
+                    "description": "Short name of the Organization."
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "Description of the Organization."
+                },
+                "Parent": {
+                    "type": "string",
+                    "description": "Verbose name of the Parent Organization."
+                }
+            }
+        },
+        "investments": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "description": "The database key that identifies the IT Investment."
+                },
+                "Name": {
+                    "type": "string",
+                    "description": "Name of the IT Investment."
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "Description of the IT Investment."
+                },
+                "Type": {
+                    "type": "string",
+                    "description": "How this IT Investment is characterized. Values are Major IT Investment, Non-Major Investment, or Funding Transfer Investment"
+                },
+                "PSA": {
+                    "type": "string",
+                    "description": "The Primary Service Area of this IT Investment. This is the main Business Capability that this investment supports."
+                },
+                "SSA": {
+                    "type": "string",
+                    "description": "The Secondary Service Area of this IT Investment. This is a secondary Business Capability that this investment may support."
+                },
+                "InvManager": {
+                    "type": "string",
+                    "description": "The Point of Contact for this IT Investment."
+                },
+                "UII": {
+                    "type": "string",
+                    "description": "The Unique Investment ID for this IT Investment that is tracked in eCPIC."
+                }
+            }
+        },
+        "poc": {
+            "type": "object",
+            "properties": {
+                "ParentId": {
+                    "type": "integer",
+                    "description": "The database key that identifies the definition to which this POC is related."
+                },
+                "Name": {
+                    "type": "string",
+                    "description": " Name of the Point of Contact."
+                },
+                "Phone": {
+                    "type": "string",
+                    "description": "Point of Contact's phone number."
+                },
+                "Email": {
+                    "type": "string",
+                    "description": "Point of Contact's email address."
+                },
+                "Owner": {
+                    "type": "string",
+                    "description": "Point of Contact's organization."
+                },
+                "Type": {
+                    "type": "string",
+                    "description": "Type of Point of Contact."
+                }
             }
         },
         "Error": {
