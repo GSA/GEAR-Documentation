@@ -121,14 +121,22 @@
                     }
                 }
             }
-        }
+        },
         
-    },
-     "/capabilites/{id}": {
+     "/{def}/{id}/applications": {
             "get": {
                 "summary": "Business Application List related to given definition",
                 "description": "This endpoint returns the list of GSA Business Applications related to given definition.\n",
                 "parameters": [
+                    
+                    {
+                        "name": "def",
+                        "in": "path",
+                        "description": "the definitions. Example: capabilities, technologies, etc",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -136,15 +144,7 @@
                         "required": true,
                         "type": "string",
                         "format": "string"
-                    },
-                    {
-                        "name": "applications",
-                        "in": "path",
-                        "description": "the applications related to the given capability",
-                        "required": false,
-                        "type": "string",
-                        "format": "string"
-                    }
+                    }                    
                 ],
                 "tags": [
                     ""
@@ -167,7 +167,8 @@
                     }
                 }
             }
-        },
+        }
+     },
     "definitions": {
         "Application": {
             "type": "object",
