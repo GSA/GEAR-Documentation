@@ -22,7 +22,7 @@
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "The technologies, or capabilities related to the given application. Example, technologies",
+                        "description": "The technologies, or capabilities related to the given application. Example, itstandards",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -60,8 +60,8 @@
         },
         "/applications/{id}/{def}": {
             "get": {
-                "summary": "Technologies related to given Business Application List",
-                "description": "This endpoint returns the IT Technologies and IT Technologies metadata associated to the indicated Business Application {id}.\n",
+                "summary": "Definitions related to given Business Application List",
+                "description": "This endpoint returns the IT standards and IT standards metadata associated to the indicated Business Application {id}.\n",
                 "parameters": [
                     {
                         "name": "id",
@@ -74,7 +74,7 @@
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "The technologies, or capabilities related to the given application. Example, technologies",
+                        "description": "The technologies, or capabilities related to the given application. Example, itstandards, technologies",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -112,7 +112,7 @@
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "the definitions. Example: capabilities, technologies, investments, fisma, organizations, etc",
+                        "description": "the definitions. Example: capabilities, itstandards, investments, fisma, organizations, etc",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -157,7 +157,7 @@
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "the definitions. Example: capabilities, technologies, investments, fisma, organizations, applications, etc",
+                        "description": "the definitions. Example: capabilities, itstandards, investments, fisma, organizations, applications, etc",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -323,7 +323,7 @@
                 }     
             }
         },
-        "technologies": {
+        "itstandards": {
             "type": "object",
             "properties": {
                 "Id": {
