@@ -57,14 +57,14 @@ nav: fields
 	<td>
 		<code>SSO</code>
 		</td>
-	<td>Verbose name of the SSO that manages the application. USUALLY the parent SSO to “Owner,” but not always.</td>
+	<td>Verbose name of the SSO that manages the application. USUALLY the parent SSO is the “Owner,” but not always.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
 		<code>SSOShort</code>
 		</td>
-	<td>Short name of the SSO that manages the application. USUALLY the parent SSO to “Owner,” but not always.</td>
+	<td>Short name of the SSO that manages the application. USUALLY the parent SSO is the “Owner,” but not always.</td>
 	<td>string</td>
 	</tr>
 <tr>
@@ -106,22 +106,52 @@ nav: fields
 	<td>
 		<code>Cloud</code>
 		</td>
-	<td>Is this Business Appliation hosted in the Cloud (as opposed to in a GSA Data Center)? Yes or No only.</td>
+	<td>Is this Business Application hosted in the Cloud (as opposed to in a GSA Data Center)? Yes or No only.</td>
 	<td>string</td>
 	</tr>
 <tr>
 	<td>
 		<code>TechnologyPlatform</code>
 		</td>
-	<td>Technology platform for the application. One of the following values: .Net, Appian, ArcGIS, Business Objects, ColdFusion, Django, Documentum, Drupal, Foxpro, Google App Engine (GAE), J2EE, Microsoft Office, Oracle, PowerBuilder, Provided as Package, Red Hat, Ruby on Rails, Salesforce, Unisys Mainframe, WordPress, Other.</td>
-	<td>string</td>
+	<td>Technology platform for the application. One of the following values: 
+      <ul>
+        <li>.Net</li>
+        <li>Appian</li>
+        <li>ArcGIS</li>
+        <li>Business Objects</li>
+        <li>ColdFusion</li>
+        <li>Django</li>
+        <li>Documentum</li>
+        <li>Drupal</li>
+        <li>Foxpro</li>
+        <li>Google App Engine (GAE)</li>
+        <li>J2EE</li>
+        <li>Microsoft Office</li>
+        <li>Oracle</li>
+        <li>PowerBuilder</li>
+        <li>Provided as Package</li>
+        <li>Red Hat</li>
+        <li>Ruby on Rails</li>
+        <li>Salesforce</li>
+        <li>Unisys Mainframe</li>
+        <li>WordPress</li>
+        <li>Other</li>
+      </ul>
+    </td>    
+  <td>string</td>
 	</tr>
 <tr>
 	<td>
 		<code>Status</code>
 		</td>
-	<td>Status of the application. One of the following values: Pre-Production, Production, or Retired.</td>
-	<td>string</td>
+	<td>Status of the application. One of the following values: 
+    <ul>
+      <li>Pre-Production</li>
+      <li>Production</li>
+      <li>Retired</li>
+    </ul> 
+  </td>
+  <td>string</td>
 	</tr>
 
 <tr>
@@ -145,7 +175,30 @@ nav: fields
 	<td>
 		<code>HostingProvider</code>
 		</td>
-	<td>Service Provider for the application. One of the following values: Amazon, Appian, BSP, CGI, CTAC, ESRI, GSA, Google, HP Enterprise Services, IBM, Marathon Digital Services, Monster Govt Services, Noblis, OPM, Salesforce, SAP, ServiceNow, USDA Phase 1, USDA Phase 2, and Vanderweil (VFA).</td>
+	<td>Service Provider for the application. One of the following values: 
+      <ul>
+      <li>Amazon</li>
+      <li>Appian</li>
+      <li>BSP</li>
+      <li>CGI</li>
+      <li>CTAC</li>
+      <li>ESRI</li>
+      <li>GSA</li>
+      <li>Google</li>
+      <li>HP Enterprise Services</li>
+      <li>IBM</li>
+      <li>Marathon Digital Services</li>
+      <li>Monster Govt Services</li>
+      <li>Noblis</li>
+      <li>OPM</li>
+      <li>Salesforce</li>
+      <li>SAP</li>
+      <li>ServiceNow</li>
+      <li>USDA Phase 1</li>
+      <li>USDA Phase 2</li>
+      <li>Vanderweil (VFA)</li>
+      </ul>
+    </td>
 	<td>string</td>
 	</tr>
 
@@ -278,14 +331,32 @@ nav: fields
 	<td>
 		<code>Status</code>
 		</td>
-	<td>The status of the IT Standard. One of the following values: Approved - Preferred, Approved - Maintain, Pilot, Proposed, Exception, Sunsetting, Denied, or Not Yet Submitted.</td>
-	<td>string</td>
+	<td>The status of the IT Standard. One of the following values: 
+    <ul>
+      <li>Approved - Preferred</li>
+      <li>Approved - Maintain</li>
+      <li>Pilot</li>
+      <li>Proposed</li>
+      <li>Exception</li>
+      <li>Sunsetting</li>
+      <li>Denied</li>
+      <li>Not Yet Submitted</li>
+    </ul>
+  </td>
+  <td>string</td>
 	</tr>
 <tr>
 	<td>
 		<code>DeploymentType</code>
 		</td>
-	<td>The typical deployment of an IT Standard. One of the following values: Desktop, Server, PaaS, or SaaS.</td>
+	<td>The typical deployment of an IT Standard. One of the following values: 
+    <ul>
+      <li>Desktop</li>
+      <li>Server</li>
+      <li>PaaS</li>
+      <li>SaaS</li>
+    </ul>
+  </td>
 	<td>string</td>
 	</tr>
 <tr>
