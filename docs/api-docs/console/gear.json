@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "Space holder for paramter descriptions",
-        "description": "Describe what is a definition here",
+        "description": "A definition is one of the following: GSA Business Applications, Systems, FISMA Systems, IT Standards, or capabilities",
         "version": "0.0.0"
     },
     "host": "ea.gsa.gov",
@@ -16,22 +16,22 @@
     "paths": {
         "/{def}/{id}": {
             "get": {
-                "summary": "Business Application List",
-                "description": "This endpoint returns the complete list of GSA Business Applications.\n",
+                "summary": "Details for Definitions",
+                "description": "This endpoint returns the complete list of a given definition.\n",
                 "parameters": [
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "The technologies, or capabilities related to the given application. Example, itstandards",
+                        "description": "The complete list of a given definition. One of the following values: organizations, applications, parentsystems, FISMA, itstandards, or capabilities.",
                         "required": true,
                         "type": "string",
                         "format": "string"
                     },
                     {
-                        "name": "Id",
+                        "name": "id",
                         "in": "path",
-                        "description": "The database key that identifies the Business Application. Example: '5576'",
-                        "required": true,
+                        "description": "The database key that identifies the given definition. Example: '5576' for Business Application",
+                        "required": false,
                         "type": "string",
                         "format": "string"
                     }
@@ -41,7 +41,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "An array of airfares",
+                        "description": "An array of definitions",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -74,7 +74,7 @@
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "The technologies, or capabilities related to the given application. Example, itstandards, technologies",
+                        "description": "The IT standards, or capabilities related to the given application. Example, capabilities, technologies",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -85,7 +85,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "An array of related definition of a given Business Application",
+                        "description": "An array of related IT standards or capabilities of a given Business Application",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -105,14 +105,14 @@
         
      "/{def}/{id}/applications": {
             "get": {
-                "summary": "Business Application List related to given definition",
+                "summary": "Business Application List related to a given definition",
                 "description": "This endpoint returns the list of GSA Business Applications related to given definition.\n",
                 "parameters": [
                     
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "the definitions. Example: capabilities, itstandards, investments, fisma, organizations, etc",
+                        "description": "The definitions. One of the following values: organizations, applications, parentsystems, FISMA, itstandards, or capabilities.",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -120,7 +120,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "The database key that identifies the Business Application. Example: '16999' for capabilities,'20872' for investments",
+                        "description": "The database key that identifies the definition. Example: '12087' for System 'Bulkload'; '16999' for capability 'Vendor Relationship Management'; '20872' for investment 'Analytic Service Platform'. ",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -150,14 +150,14 @@
         },
      "/{def}/{id}/pocs": {
             "get": {
-                "summary": "Point of Contact List related to given definition",
-                "description": "This endpoint returns the list of Point of Contact related to given definition.\n",
+                "summary": "Point of Contact List related to a given definition",
+                "description": "This endpoint returns the list of Point of Contact related to a given definition.\n",
                 "parameters": [
                     
                     {
                         "name": "def",
                         "in": "path",
-                        "description": "the definitions. Example: capabilities, itstandards, investments, fisma, organizations, applications, etc",
+                        "description": "One of the following values: applications, FISMA, investments ",
                         "required": true,
                         "type": "string",
                         "format": "string"
@@ -165,7 +165,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "The database key that identifies the Business Application. Example: '16999' for capabilities,'20872' for investments",
+                        "description": "The database key that identifies the definition. Example: '5576' for application,'20872' for investments, '2746' for FISMA. ",
                         "required": true,
                         "type": "string",
                         "format": "string"
