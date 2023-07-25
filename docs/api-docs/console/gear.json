@@ -71,10 +71,10 @@
             "Capabilities"
           ],
           "summary": "List of Capabilities",
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the complete list of GSA's Business Capabilities",
           "responses": {
             "200": {
-              "description": "Returns an array of Capabilities",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -91,7 +91,7 @@
             "Capabilities"
           ],
           "summary": "Find record by Capability ID",
-          "description": "get Record BY Id",
+          "description": "Returns one Business Capability indecated by {id}",
           "parameters": [
             {
               "name": "id",
@@ -106,7 +106,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "items": {
@@ -123,7 +123,7 @@
             "Capabilities"
           ],
           "summary": "Find record by Capability ID",
-          "description": "get Record BY Id and list org",
+          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -138,7 +138,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "items": {
@@ -155,7 +155,7 @@
             "Capabilities"
           ],
           "summary": "Find record by Capability ID and systems",
-          "description": "get Record BY Id and list systems",
+          "description": "Returns the Business Systems that are related to the Business Capability identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -170,7 +170,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "items": {
@@ -186,7 +186,7 @@
           "tags": [
             "Capabilities"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns one Business Capability indecated by {name}",
           "parameters": [
             {
               "name": "name",
@@ -201,7 +201,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "items": {
@@ -217,10 +217,10 @@
           "tags": [
             "Data Flow"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the complete lit of data flow entries for all GSA Business Systems",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "items": {
@@ -236,7 +236,7 @@
           "tags": [
             "Data Flow"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the Business Systems that interface with the Business System identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -251,7 +251,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "items": {
@@ -267,10 +267,10 @@
           "tags": [
             "FISMA"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the list of GSA's FISMA Systems, excluding inactive systems",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -286,10 +286,10 @@
           "tags": [
             "FISMA"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the list of inactive FISMA Systems",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -306,7 +306,7 @@
             "FISMA"
           ],
           "summary": "Find record by FISMA ID",
-          "description": "get record BY Id",
+          "description": "Returns one FISMA System identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -321,7 +321,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "string",
                     "$ref": "#/definitions/fisma"
@@ -335,10 +335,10 @@
           "tags": [
             "Investments"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the complete list of GSA's IT Investments, as tracked in GEAR",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -355,7 +355,7 @@
             "Investments"
           ],
           "summary": "Find record Investment ID",
-          "description": "get Investment BY Id",
+          "description": "Returns one IT Investment identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -370,7 +370,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref": "#/definitions/investments"
@@ -385,7 +385,7 @@
             "Investments"
           ],
           "summary": "Find record Investment ID",
-          "description": "get Investment BY Id",
+          "description": "Returns the Business Systems that are related to the IT Investment identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -400,7 +400,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/investments-systems"
@@ -414,10 +414,10 @@
           "tags": [
             "IT Standards"
           ],
-          "description": "Returns the entire list of GSA’s Software IT Standards",
+          "description": "Returns the entire list of GSA's Software IT Standards",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -434,7 +434,7 @@
             "IT Standards"
           ],
           "summary": "Find IT standard record by ID",
-          "description": "Find IT standard record by ID",
+          "description": "Returns one IT Standard identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -449,7 +449,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/it_standards"
@@ -464,7 +464,7 @@
             "IT Standards"
           ],
           "summary": "Find IT standard record by ID",
-          "description": "Find IT standard record by ID and list systems",
+          "description": "Returns the Business Systems and Business System metadata associated to the indicated IT Standard {id}",
           "parameters": [
             {
               "name": "id",
@@ -479,7 +479,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/it_standards"
@@ -497,7 +497,7 @@
           "description": "Returns the entire list of GSA’s Software IT Standards types",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -514,10 +514,10 @@
             "IT Standards"
           ],
           "summary": "it standards types",
-          "description": "Returns the entire list of GSA’s Software IT Standards status",
+          "description": "Returns the entire list of GSA’s Software IT Standards statuses",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -537,7 +537,7 @@
           "description": "Returns the entire list of GSA’s Software IT Standards categories",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -557,7 +557,7 @@
           "description": "Returns the entire list of GSA’s Software IT Standards 508 compliances",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -574,10 +574,10 @@
             "IT Standards"
           ],
           "summary": "latest it standards",
-          "description": "Returns the entire list of GSA’s latest Software IT Standards",
+          "description": "Returns the most recently created IT standard item",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -594,10 +594,10 @@
             "IT Standards"
           ],
           "summary": "latest it standards",
-          "description": "Returns the entire list of GSA’s latest Software IT Standards",
+          "description": "Returns the list of possible IT standards deployment types",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -613,10 +613,10 @@
           "tags": [
             "Organizations"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the complete list of GSA's Organizations, as they are tracked in GEAR",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -633,7 +633,7 @@
             "Organizations"
           ],
           "summary": "Find organization record by ID",
-          "description": "Find organization record by ID",
+          "description": "Returns one Organization identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -648,7 +648,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/organizations"
@@ -663,7 +663,7 @@
             "Organizations"
           ],
           "summary": "Find organization record by ID and list capabilities",
-          "description": "Find organization record by ID and list capabilities",
+          "description": "Returns the Capabilities that are related to the Organization identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -678,7 +678,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/organizations"
@@ -693,7 +693,7 @@
             "Organizations"
           ],
           "summary": "Find organization record by Name and list systems",
-          "description": "Find organization record by ID and list capabilities",
+          "description": "Returns the Business Systems that are related to the Organization identified by {name}",
           "parameters": [
             {
               "name": "id",
@@ -708,7 +708,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "string",
                     "$ref":"#/definitions/organizations"
@@ -722,10 +722,10 @@
           "tags": [
             "POCs"
           ],
-          "description": "This endpoint returns the list of Point of Contact related to a given definition",
+          "description": "Returns the list of all POCs tracked in GEAR",
           "responses": {
             "200": {
-              "description": "An array of Point of Contact",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -741,7 +741,7 @@
           "tags": [
             "POCs"
           ],
-          "description": "This endpoint returns the list of Point of Contact related to a given definition",
+          "description": "Returns one POC identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -756,7 +756,7 @@
           ],
           "responses": {
             "200": {
-              "description": "An array of Point of Contact",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -772,10 +772,10 @@
           "tags": [
             "Records"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the entire list of OAS Records",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/records"
@@ -790,7 +790,7 @@
             "Records"
           ],
           "summary": "Find IT standard record by ID",
-          "description": "Find IT standard record by ID",
+          "description": "Returns one OAS Record by {id}",
           "parameters": [
             {
               "name": "id",
@@ -805,7 +805,7 @@
           ],
           "responses": {
             "200": {
-              "description": "This will display the array of records.",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/records"
@@ -820,7 +820,7 @@
             "Records"
           ],
           "summary": "Find IT standard record by ID and list systems",
-          "description": "Find IT standard record by ID and list systems",
+          "description": "Returns the Systems that are related to the OAS Record identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -849,10 +849,10 @@
           "tags": [
             "Systems"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the complete list of GSA Business Systems, to include retired applications",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -868,7 +868,7 @@
           "tags": [
             "Systems"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns one Business System by {id}",
           "parameters": [
             {
               "name": "id",
@@ -883,7 +883,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/systems"
@@ -897,7 +897,7 @@
           "tags": [
             "Systems"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns all entries for TIME analysis related to the System identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -912,7 +912,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/systems"
@@ -926,7 +926,7 @@
           "tags": [
             "Systems"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the IT Standards and IT Standards metadata associated to the indicated Business System {id}",
           "parameters": [
             {
               "name": "id",
@@ -941,7 +941,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref": "#/definitions/systems-technologies"
@@ -955,7 +955,7 @@
           "tags": [
             "Systems"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the OAS Records that are related to the System identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -970,7 +970,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/systems"
@@ -984,7 +984,7 @@
           "tags": [
             "Systems"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the investments associated to the indicated Business System {id}",
           "parameters": [
             {
               "name": "id",
@@ -999,7 +999,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/systems-investments"
@@ -1013,7 +1013,7 @@
           "tags": [
             "Systems"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the Business Capabilites and Business Capability metadata associated to the indicated Business System {id}",
           "parameters": [
             {
               "name": "id",
@@ -1028,7 +1028,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "string",
                     "$ref":"#/definitions/systems-capabilities"
@@ -1042,10 +1042,10 @@
           "tags": [
             "System Time"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns all entries for TIME analysis of all Active GSA Business Systems",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -1061,10 +1061,10 @@
           "tags": [
             "Website Service Categories"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the complete list of Website Service Categories",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -1080,7 +1080,7 @@
           "tags": [
             "Website Service Categories"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns one Website Service Category by {id}",
           "parameters": [
             {
               "name": "id",
@@ -1095,7 +1095,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -1111,7 +1111,7 @@
           "tags": [
             "Website Service Categories"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the Websites that are related to the Website Service Category identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -1126,7 +1126,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -1142,10 +1142,10 @@
           "tags": [
             "Websites"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the complete list of GSA Websites",
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
               "schema": {
                 "type": "array",
                 "items": {
@@ -1161,7 +1161,7 @@
           "tags": [
             "Websites"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns one GSA Website by {id}",
           "parameters": [
             {
               "name": "id",
@@ -1176,7 +1176,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/websites"
@@ -1190,7 +1190,7 @@
           "tags": [
             "Websites"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the Scans that are related to the Website identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -1205,7 +1205,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/websites-scans"
@@ -1219,7 +1219,7 @@
           "tags": [
             "Websites"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the Scans indicated by {ScanId}",
           "parameters": [
             {
               "name": "id",
@@ -1244,7 +1244,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/websites-scans"
@@ -1258,7 +1258,7 @@
           "tags": [
             "Websites"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the Service Categories that are related to the Website identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -1273,7 +1273,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/websites-service_categories"
@@ -1287,7 +1287,7 @@
           "tags": [
             "Websites"
           ],
-          "description": "Auto generated using Swagger Inspector",
+          "description": "Returns the Systems that are related to the Website identified by {id}",
           "parameters": [
             {
               "name": "id",
@@ -1302,7 +1302,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "",
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/websites-systems"
@@ -2256,7 +2256,7 @@
               "type": "string",
               "description": "Position in the GSA hierarchy of FEAF Business Capability."
             }, 
-            "RebewalDate": {
+            "RenewalDate": {
               "type": "date",
               "description": "Position in the GSA hierarchy of FEAF Business Capability."
             },
@@ -2323,39 +2323,39 @@
          "AO": {
           "type": "string",
           "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "SO": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "ISSM": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "ISSO": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "CO": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "COR": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "BusPOC": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "TechPOC": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-        },
-        "RelatedArtifacts": {
-          "type": "string",
-          "description": "Position in the GSA hierarchy of FEAF Business Capability."
-          }
+          },
+          "SO": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ISSM": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ISSO": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "CO": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "COR": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "BusPOC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "TechPOC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "RelatedArtifacts": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }
         }
       },
       "systems-capabilities": {
@@ -2600,7 +2600,7 @@
                 "type": "integer",
                 "description": "The database key that identifies the definition to which this POC is related."
             },
-            " System Name": {
+            "System Name": {
                 "type": "string",
                 "description": " Name of the Point of Contact."
             },
