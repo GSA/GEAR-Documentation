@@ -17,201 +17,55 @@
     "tags": [
       {
         "name": "Capabilities",
-        "description": "Capabilities"
+        "description": ""
       },
       {
         "name": "Data Flow",
-        "description": "Data Flow"
+        "description": ""
       },
       {
         "name": "FISMA",
-        "description": "FISMA"
+        "description": ""
       },
       {
         "name": "Investments",
-        "description": "Investments"
+        "description": ""
       },
       {
         "name": "IT Standards",
-        "description": "IT Standards"
+        "description": ""
       },
       {
         "name": "Organizations",
-        "description": "Organizations"
+        "description": ""
       },
       {
         "name": "POCs",
-        "description": "Point of Contacts"
+        "description": ""
       },
       {
         "name": "Records",
-        "description": "Records"
+        "description": ""
       },
       {
         "name": "Systems",
-        "description": "Systems"
+        "description": ""
       },
       {
         "name": "System Time",
-        "description": "System Time"
+        "description": ""
       },
       {
         "name": "Website Service Categories",
-        "description": "Website Service Categories "
+        "description": ""
       },
       {
         "name": "Websites",
-        "description": "Websites"
+        "description": ""
       }
     ],
-    "paths": {
-      "/capabilities": {
-        "get": {
-          "tags": [
-            "Capabilities"
-          ],
-          "summary": "List of Capabilities",
-          "description": "Returns the complete list of GSA's Business Capabilities",
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/definitions/capabilities"
-                }
-              }
-            }
-          }
-        }
-      },
-      "/capabilities/get/{id}": {
-        "get": {
-          "tags": [
-            "Capabilities"
-          ],
-          "summary": "Find record by Capability ID",
-          "description": "Returns one Business Capability indecated by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Capability ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/definitions/capabilities"
-                  }
-                }
-            }
-          }
-        }
-      },
-      "/capabilities/get/{id}/orgs": {
-        "get": {
-          "tags": [
-            "Capabilities"
-          ],
-          "summary": "Find record by Capability ID",
-          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Capability ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/definitions/capabilities"
-                    }
-                  }
-            }
-          }
-        }
-      },
-      "/capabilities/get/{id}/systems": {
-        "get": {
-          "tags": [
-            "Capabilities"
-          ],
-          "summary": "Find record by Capability ID and systems",
-          "description": "Returns the Business Systems that are related to the Business Capability identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Capability ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/definitions/capabilities-systems"
-                  }
-                  }
-              }
-          }
-        }
-      },
-      "/capabilities/getbyname/{name}": {
-        "get": {
-          "tags": [
-            "Capabilities"
-          ],
-          "description": "Returns one Business Capability indecated by {name}",
-          "parameters": [
-            {
-              "name": "name",
-              "in": "path",
-              "description": "Capability Name",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/definitions/capabilities"
-                    }
-                  }
-              }
-          }
-        }
-      },
+
+    "paths_error": {
       "/data_flow": {
         "get": {
           "tags": [
@@ -261,12 +115,164 @@
             }
           }
         }
+      }
+    },
+
+    "paths": {
+      "/capabilities": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "List of all Capabilities",
+          "description": "Returns the complete list of GSA's Business Capabilities",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/capabilities"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/capabilities/get/{id}": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by ID",
+          "description": "Returns one Business Capability indecated by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities"
+                  }
+                }
+            }
+          }
+        }
+      },
+      "/capabilities/get/{id}/orgs": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by ID and list related Organizations",
+          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities"
+                    }
+                  }
+            }
+          }
+        }
+      },
+      "/capabilities/get/{id}/systems": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability ID and list related Systems",
+          "description": "Returns the Business Systems that are related to the Business Capability identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities-systems"
+                  }
+                  }
+              }
+          }
+        }
+      },
+      "/capabilities/getbyname/{name}": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by name",
+          "description": "Returns one Business Capability indecated by {name}",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Capability Name",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities"
+                    }
+                  }
+              }
+          }
+        }
       },
       "/fisma": {
         "get": {
           "tags": [
             "FISMA"
           ],
+          "summary": "List of all FISMA systems",
           "description": "Returns the list of GSA's FISMA Systems, excluding inactive systems",
           "responses": {
             "200": {
@@ -286,6 +292,7 @@
           "tags": [
             "FISMA"
           ],
+          "summary": "List of all retired FISMA Systems",
           "description": "Returns the list of inactive FISMA Systems",
           "responses": {
             "200": {
@@ -305,7 +312,7 @@
           "tags": [
             "FISMA"
           ],
-          "summary": "Find record by FISMA ID",
+          "summary": "Find FISMA System by ID",
           "description": "Returns one FISMA System identified by {id}",
           "parameters": [
             {
@@ -335,6 +342,7 @@
           "tags": [
             "Investments"
           ],
+          "summary": "List of all Investments",
           "description": "Returns the complete list of GSA's IT Investments, as tracked in GEAR",
           "responses": {
             "200": {
@@ -384,7 +392,7 @@
           "tags": [
             "Investments"
           ],
-          "summary": "Find record Investment ID",
+          "summary": "Find Investment by ID and list related Systems",
           "description": "Returns the Business Systems that are related to the IT Investment identified by {id}",
           "parameters": [
             {
@@ -414,6 +422,7 @@
           "tags": [
             "IT Standards"
           ],
+          "summary": "List of all IT Standards",
           "description": "Returns the entire list of GSA's Software IT Standards",
           "responses": {
             "200": {
@@ -433,7 +442,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "Find IT standard record by ID",
+          "summary": "Find IT standard by ID",
           "description": "Returns one IT Standard identified by {id}",
           "parameters": [
             {
@@ -463,7 +472,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "Find IT standard record by ID",
+          "summary": "Find IT standard by ID and list related Systems",
           "description": "Returns the Business Systems and Business System metadata associated to the indicated IT Standard {id}",
           "parameters": [
             {
@@ -493,7 +502,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "it standards types",
+          "summary": "List of all IT Standards types",
           "description": "Returns the entire list of GSA’s Software IT Standards types",
           "responses": {
             "200": {
@@ -513,7 +522,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "it standards types",
+          "summary": "List of all IT Standards statuses",
           "description": "Returns the entire list of GSA’s Software IT Standards statuses",
           "responses": {
             "200": {
@@ -533,7 +542,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "it standards types",
+          "summary": "List of all IT Standards Categories",
           "description": "Returns the entire list of GSA’s Software IT Standards categories",
           "responses": {
             "200": {
@@ -553,7 +562,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "it standards 508 compliances",
+          "summary": "List of all IT Standards 508 compliances",
           "description": "Returns the entire list of GSA’s Software IT Standards 508 compliances",
           "responses": {
             "200": {
@@ -573,7 +582,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "latest it standards",
+          "summary": "Most recently added IT Standards",
           "description": "Returns the most recently created IT standard item",
           "responses": {
             "200": {
@@ -593,7 +602,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "latest it standards",
+          "summary": "List of all IT Standards deployment types",
           "description": "Returns the list of possible IT standards deployment types",
           "responses": {
             "200": {
@@ -601,7 +610,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/definitions/deployment_types"
+                    "$ref": "#/definitions/it_standards-deployment_types"
                 }
               }
            }
@@ -613,6 +622,7 @@
           "tags": [
             "Organizations"
           ],
+          "summary": "List of all Organizations",
           "description": "Returns the complete list of GSA's Organizations, as they are tracked in GEAR",
           "responses": {
             "200": {
@@ -662,7 +672,7 @@
           "tags": [
             "Organizations"
           ],
-          "summary": "Find organization record by ID and list capabilities",
+          "summary": "Find organization record by ID and list related Capabilities",
           "description": "Returns the Capabilities that are related to the Organization identified by {id}",
           "parameters": [
             {
@@ -692,7 +702,7 @@
           "tags": [
             "Organizations"
           ],
-          "summary": "Find organization record by Name and list systems",
+          "summary": "Find organization record by Name and list related Systems",
           "description": "Returns the Business Systems that are related to the Organization identified by {name}",
           "parameters": [
             {
@@ -722,6 +732,7 @@
           "tags": [
             "POCs"
           ],
+          "summary": "List of all POCs",
           "description": "Returns the list of all POCs tracked in GEAR",
           "responses": {
             "200": {
@@ -741,6 +752,7 @@
           "tags": [
             "POCs"
           ],
+          "summary": "Find POC by ID",
           "description": "Returns one POC identified by {id}",
           "parameters": [
             {
@@ -772,6 +784,7 @@
           "tags": [
             "Records"
           ],
+          "summary": "List of all OAS Records",
           "description": "Returns the entire list of OAS Records",
           "responses": {
             "200": {
@@ -789,7 +802,7 @@
           "tags": [
             "Records"
           ],
-          "summary": "Find IT standard record by ID",
+          "summary": "Find OAS Record by ID",
           "description": "Returns one OAS Record by {id}",
           "parameters": [
             {
@@ -819,7 +832,7 @@
           "tags": [
             "Records"
           ],
-          "summary": "Find IT standard record by ID and list systems",
+          "summary": "Find OAS Record by ID and list related Systems",
           "description": "Returns the Systems that are related to the OAS Record identified by {id}",
           "parameters": [
             {
@@ -849,6 +862,7 @@
           "tags": [
             "Systems"
           ],
+          "summary": "List of all Systems",
           "description": "Returns the complete list of GSA Business Systems, to include retired applications",
           "responses": {
             "200": {
@@ -868,6 +882,7 @@
           "tags": [
             "Systems"
           ],
+          "summary": "Find System by ID",
           "description": "Returns one Business System by {id}",
           "parameters": [
             {
@@ -897,6 +912,7 @@
           "tags": [
             "Systems"
           ],
+          "summary": "Find System by ID and list related TIME Analysis",
           "description": "Returns all entries for TIME analysis related to the System identified by {id}",
           "parameters": [
             {
@@ -926,6 +942,7 @@
           "tags": [
             "Systems"
           ],
+          "summary": "Find System by ID and list related Technologies",
           "description": "Returns the IT Standards and IT Standards metadata associated to the indicated Business System {id}",
           "parameters": [
             {
@@ -955,6 +972,7 @@
           "tags": [
             "Systems"
           ],
+          "summary": "Find System by ID and list related OAS Records",
           "description": "Returns the OAS Records that are related to the System identified by {id}",
           "parameters": [
             {
@@ -984,6 +1002,7 @@
           "tags": [
             "Systems"
           ],
+          "summary": "Find System by ID and list related Investments",
           "description": "Returns the investments associated to the indicated Business System {id}",
           "parameters": [
             {
@@ -1013,6 +1032,7 @@
           "tags": [
             "Systems"
           ],
+          "summary": "Find System by ID and list related Capabilities",
           "description": "Returns the Business Capabilites and Business Capability metadata associated to the indicated Business System {id}",
           "parameters": [
             {
@@ -1042,6 +1062,7 @@
           "tags": [
             "System Time"
           ],
+          "summary": "List of all entries for TIME Analysis",
           "description": "Returns all entries for TIME analysis of all Active GSA Business Systems",
           "responses": {
             "200": {
@@ -1061,6 +1082,7 @@
           "tags": [
             "Website Service Categories"
           ],
+          "summary": "List of all Website Service Categories",
           "description": "Returns the complete list of Website Service Categories",
           "responses": {
             "200": {
@@ -1080,6 +1102,7 @@
           "tags": [
             "Website Service Categories"
           ],
+          "summary": "Find Website Service Category by ID",
           "description": "Returns one Website Service Category by {id}",
           "parameters": [
             {
@@ -1111,6 +1134,7 @@
           "tags": [
             "Website Service Categories"
           ],
+          "summary": "Find Category by ID and list related Websites",
           "description": "Returns the Websites that are related to the Website Service Category identified by {id}",
           "parameters": [
             {
@@ -1142,6 +1166,7 @@
           "tags": [
             "Websites"
           ],
+          "summary": "List of all Websites",
           "description": "Returns the complete list of GSA Websites",
           "responses": {
             "200": {
@@ -1161,6 +1186,7 @@
           "tags": [
             "Websites"
           ],
+          "summary": "Find Website by ID",
           "description": "Returns one GSA Website by {id}",
           "parameters": [
             {
@@ -1190,6 +1216,7 @@
           "tags": [
             "Websites"
           ],
+          "summary": "Find Website by ID and list related Scans",
           "description": "Returns the Scans that are related to the Website identified by {id}",
           "parameters": [
             {
@@ -1219,6 +1246,7 @@
           "tags": [
             "Websites"
           ],
+          "summary": "Find a Scan related to Website using IDs",
           "description": "Returns the Scans indicated by {ScanId}",
           "parameters": [
             {
@@ -1258,6 +1286,7 @@
           "tags": [
             "Websites"
           ],
+          "summary": "Find Website by ID and list related Service Categories",
           "description": "Returns the Service Categories that are related to the Website identified by {id}",
           "parameters": [
             {
@@ -1287,6 +1316,7 @@
           "tags": [
             "Websites"
           ],
+          "summary": "Find Website by ID and list related Systems",
           "description": "Returns the Systems that are related to the Website identified by {id}",
           "parameters": [
             {
