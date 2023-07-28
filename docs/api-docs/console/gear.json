@@ -115,6 +115,100 @@
             }
           }
         }
+      },
+      "/capabilities/get/{id}/orgs": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by ID and list related Organizations",
+          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities"
+                    }
+                  }
+            }
+          }
+        }
+      },
+      "/organizations/get/{id}/capabilities": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "Find organization record by ID and list related Capabilities",
+          "description": "Returns the Capabilities that are related to the Organization identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Organizations ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/organizations"
+                  }
+            }
+          }
+        }
+      },
+      "/pocs/get/{id}": {
+        "get": {
+          "tags": [
+            "POCs"
+          ],
+          "summary": "Find POC by ID",
+          "description": "Returns one POC identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "POCs ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/pocs"
+                }
+              }
+            }
+          }
+        }
       }
     },
 
@@ -167,38 +261,6 @@
                       "$ref": "#/definitions/capabilities"
                   }
                 }
-            }
-          }
-        }
-      },
-      "/capabilities/get/{id}/orgs": {
-        "get": {
-          "tags": [
-            "Capabilities"
-          ],
-          "summary": "Find Capability by ID and list related Organizations",
-          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Capability ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/definitions/capabilities"
-                    }
-                  }
             }
           }
         }
@@ -667,36 +729,6 @@
           }
         }
       },
-      "/organizations/get/{id}/capabilities": {
-        "get": {
-          "tags": [
-            "Organizations"
-          ],
-          "summary": "Find organization record by ID and list related Capabilities",
-          "description": "Returns the Capabilities that are related to the Organization identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Organizations ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "$ref":"#/definitions/organizations"
-                  }
-            }
-          }
-        }
-      },
       "/organizations/get/{name}/systems": {
         "get": {
           "tags": [
@@ -734,38 +766,6 @@
           ],
           "summary": "List of all POCs",
           "description": "Returns the list of all POCs tracked in GEAR",
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/definitions/pocs"
-                }
-              }
-            }
-          }
-        }
-      },
-      "/pocs/get/{id}": {
-        "get": {
-          "tags": [
-            "POCs"
-          ],
-          "summary": "Find POC by ID",
-          "description": "Returns one POC identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "POCs ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
           "responses": {
             "200": {
               "description": "",
