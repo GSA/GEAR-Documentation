@@ -57,7 +57,7 @@ nav: fields
 	<td>
 		<code>BusOrg</code>
 		</td>
-	<td>Business Organization.</td>
+	<td>Full name and 1 or 2-letter symbol of the organization that uses/owns the business capabilities application provides.</td>
 	<td>string</td>
 </tr>
 
@@ -65,7 +65,7 @@ nav: fields
 	<td>
 		<code>BusOrgSymbolAndName</code>
 		</td>
-	<td>Business Organization Symbol and Name.</td>
+	<td>The high-level GSA organization (1-letter symbol) that uses/owns the business capabilities the application provides.</td>
 	<td>string</td>
 </tr>
 
@@ -97,7 +97,7 @@ nav: fields
 	<td>
 		<code>BusApp</code>
 		</td>
-	<td>Business Application.</td>
+	<td>This yes/no field denotes whether a system is a business system or not.</td>
 	<td>string</td>
 </tr>
 
@@ -265,7 +265,7 @@ nav: fields
 	<td>
 		<code>ISSM</code>
 		</td>
-	<td>.</td>
+	<td>Information System Security Manager (ISSM).</td>
 	<td>string</td>
 </tr>
 
@@ -273,7 +273,7 @@ nav: fields
 	<td>
 		<code>ISSO</code>
 		</td>
-	<td>.</td>
+	<td>Information System Security Officer (ISSO).</td>
 	<td>string</td>
 </tr>
 
@@ -375,7 +375,7 @@ nav: fields
 	<td>
 		<code>Vendor_Standard_Organization</code>
 		</td>
-	<td>Technology Vendor/Manufacturer.</td>
+	<td>Technology Vendor/Manufacturer Name.</td>
 	<td>string</td>
 </tr>
 
@@ -431,7 +431,7 @@ nav: fields
 	<td>
 		<code>CreateDTG</code>
 		</td>
-	<td>.</td>
+	<td>The date/time that this object was initially created.</td>
 	<td>string</td>
 </tr>
 
@@ -439,7 +439,7 @@ nav: fields
 	<td>
 		<code>ChangeDTG</code>
 		</td>
-	<td>.</td>
+	<td>The date/time that this object was last updated/changed.</td>
 	<td>string</td>
 </tr>
 
@@ -551,7 +551,7 @@ nav: fields
 	<td>
 		<code>BusOrg</code>
 		</td>
-	<td>Business Organization.</td>
+	<td>Full name and 1 or 2-letter symbol of the organization that uses/owns the business capabilities application provides.</td>
 	<td>string</td>
 </tr>
 
@@ -1545,7 +1545,7 @@ nav: fields
 	<td>
 		<code>FY</code>
 		</td>
-	<td>Fiscal Year.</td>
+	<td>The fiscal year that the TIME designation represents.</td>
 	<td>integer</td>
 </tr>
 
@@ -1553,7 +1553,7 @@ nav: fields
 	<td>
 		<code>TIME Designation</code>
 		</td>
-	<td>.</td>
+	<td>TIME (Tolerate, Invest, Migrate, or Eliminate) is a tool that is used to determine where a business system is in its lifecycle.</td>
 	<td>string</td>
 </tr>
 
@@ -1561,7 +1561,7 @@ nav: fields
 	<td>
 		<code>Business Score</code>
 		</td>
-	<td>Rating of business.</td>
+	<td>The score that a system receives after a business POC for a system answers a TIME questionnaire about the business impact of the system.</td>
 	<td>integer</td>
 </tr>
 
@@ -1569,7 +1569,7 @@ nav: fields
 	<td>
 		<code>Technical Score</code>
 		</td>
-	<td>Rating of technology.</td>
+	<td>The score that a system receives after a technical POC for a system answers a TIME questionnaire about the technical impact of the system.</td>
 	<td>integer</td>
 </tr>
 
@@ -1601,7 +1601,7 @@ nav: fields
 	<td>
 		<code>Data Script Run</code>
 		</td>
-	<td>Date and time script was ran.</td>
+	<td>The date/time that a Google script was executed to consolidate all of the completed TIME questionnaires in order to be imported into GEAR’s database.</td>
 	<td>string</td>
 </tr>
 
@@ -1625,7 +1625,7 @@ nav: fields
 	<td>
 		<code>File Link</code>
 		</td>
-	<td>Link to file.</td>
+	<td>A link to the completed TIME questionnaire.</td>
 	<td>string</td>
 </tr>
   
@@ -1671,7 +1671,7 @@ nav: fields
 	<td>
 		<code>office</code>
 		</td>
-	<td>Office abbreviation.</td>
+	<td>Primary office that manages the site, typically the service or staff office (SSO) (one-letter office).</td>
 	<td>string</td>
 </tr>
 
@@ -1679,7 +1679,7 @@ nav: fields
 	<td>
 		<code>sub_office</code>
 		</td>
-	<td>Sub office abbreviation.</td>
+	<td>Sub-office that owns the site, typically a two-letter office or deeper.</td>
 	<td>string</td>
 </tr>
 
@@ -1727,7 +1727,7 @@ nav: fields
 	<td>
 		<code>cms_platform</code>
 		</td>
-	<td>.</td>
+	<td>The content management system (CMS) or platform the site uses to manage its content.</td>
 	<td>string</td>
 </tr>
 
@@ -1735,7 +1735,7 @@ nav: fields
 	<td>
 		<code>required_by_law_or_policy</code>
 		</td>
-	<td>Required by law or policy or not.</td>
+	<td>Explanation of statutory requirements supporting creation of the site.</td>
 	<td>string</td>
 </tr>
 
@@ -1775,7 +1775,7 @@ nav: fields
 	<td>
 		<code>hosting_platform</code>
 		</td>
-	<td>Platform hosting website.</td>
+	<td>The platform or service provider the site uses for its web hosting.</td>
 	<td>string</td>
 </tr>
 
@@ -1783,7 +1783,7 @@ nav: fields
 	<td>
 		<code>https</code>
 		</td>
-	<td>Whether https is being used or not.</td>
+	<td>https: States whether the site uses https encryption.</td>
 	<td>boolean</td>
 </tr>
 
@@ -1791,7 +1791,7 @@ nav: fields
 	<td>
 		<code>customer_centricity</code>
 		</td>
-	<td>How customer centric website is.</td>
+	<td>A score between 0 and 1 that denotes how well the site adheres to human centered design principles.</td>
 	<td>integer</td>
 </tr>
 
@@ -1799,7 +1799,7 @@ nav: fields
 	<td>
 		<code>mobile_performance</code>
 		</td>
-	<td>Rating for mobile performance of website.</td>
+	<td>A score between 0 and 1 from Lighthouse which determines how well the website is displayed and interacted with on a mobile device.</td>
 	<td>integer</td>
 </tr>
 
@@ -1807,7 +1807,7 @@ nav: fields
 	<td>
 		<code>google_analytics</code>
 		</td>
-	<td>.</td>
+	<td>A score between 0 and 1 that denotes whether the website uses web analytics.</td>
 	<td>integer</td>
 </tr>
 
@@ -1815,7 +1815,7 @@ nav: fields
 	<td>
 		<code>accessibility</code>
 		</td>
-	<td>rating for accessability of website.</td>
+	<td>A score between 0 and 1 that determines how well the website adheres to accessibility principles and regulations.</td>
 	<td>integer</td>
 </tr>
 
@@ -1823,7 +1823,7 @@ nav: fields
 	<td>
 		<code>uswds</code>
 		</td>
-	<td>.</td>
+	<td>A  score between 0 and 1 that determines whether the website uses components from the US Web Design System.</td>
 	<td>integer</td>
 </tr>
 
@@ -1831,7 +1831,7 @@ nav: fields
 	<td>
 		<code>required_links</code>
 		</td>
-	<td>Required links for website.</td>
+	<td>a score between 0 and 1 that determines whether a site has the required links (e.g. policy links related to FOIA, privacy, accessibility, etc.).</td>
 	<td>integer</td>
 </tr>
   
