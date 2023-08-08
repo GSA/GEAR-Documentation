@@ -1388,7 +1388,7 @@
       "capabilities-systems": {
         "type": "object",
         "properties": {
-            "Id": {
+            "ID": {
                 "type": "integer",
                 "description": "The database key that identifies the Capabilities."
             },
@@ -1537,7 +1537,7 @@
       "it_standards": {
           "type": "object",
           "properties": {
-              "Id": {
+              "ID": {
                   "type": "integer",
                   "description": "The database key that identifies the IT Standards."
               },
@@ -1861,7 +1861,7 @@
       "organizations-systems": {
         "type": "object",
         "properties": {
-          "Id": {
+          "ID": {
             "type": "integer",
             "description": "The database key that identifies the Capabilities."
         },
@@ -2143,7 +2143,7 @@
       "investments-systems": {
         "type": "object",
         "properties": {
-            "Id": {
+            "ID": {
                 "type": "integer",
                 "description": "The database key that identifies the Capabilities."
             },
@@ -2382,7 +2382,7 @@
       "records-systems": {
         "type": "object",
         "properties": {
-            "Id": {
+            "ID": {
                 "type": "integer",
                 "description": "The database key that identifies the Capabilities."
             },
@@ -2556,7 +2556,7 @@
       "systems": {
         "type": "object",
         "properties": {
-            "Id": {
+            "ID": {
                 "type": "integer",
                 "description": "The database key that identifies the Capabilities."
             },
