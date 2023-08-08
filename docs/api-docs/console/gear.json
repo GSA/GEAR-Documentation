@@ -1747,6 +1747,10 @@
                 "type": "string",
                 "description": "Position in the GSA hierarchy of FEAF Business Capability."
               },
+              "Status": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+              },
               "InactiveDate": {
                 "type": "string",
                 "description": "Program Manager for this FISMA System."
