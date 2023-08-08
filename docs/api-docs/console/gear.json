@@ -2086,6 +2086,14 @@
                 "type": "integer",
                 "description": "The Point of Contact for this IT Investment."
               },
+              "DME_Contributions_PY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Agency_Fund_CY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
               "DME_Contributions_CY": {
                 "type": "integer",
                 "description": "The Point of Contact for this IT Investment."
