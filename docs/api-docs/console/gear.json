@@ -2187,7 +2187,7 @@
               "type": "string",
               "description": "Position in the GSA hierarchy of FEAF Business Capability."
             }, 
-            "RebewalDate": {
+            "RenewalDate": {
               "type": "string",
               "description": "Position in the GSA hierarchy of FEAF Business Capability."
             },
