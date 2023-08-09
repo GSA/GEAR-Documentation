@@ -2734,7 +2734,7 @@
       "systems-investments": {
         "type": "object",
         "properties": {
-            "Id": {
+            "ID": {
                 "type": "integer",
                 "description": "The database key that identifies the IT Investment."
             },
@@ -3188,7 +3188,7 @@
       "websites-systems": {
         "type": "object",
         "properties": {
-            "Id": {
+            "ID": {
                 "type": "integer",
                 "description": "The database key that identifies the Capabilities."
             },
@@ -3232,7 +3232,7 @@
               "type": "string",
               "description": "Position in the GSA hierarchy of FEAF Business Capability."
             }, 
-            "RebewalDate": {
+            "RenewalDate": {
               "type": "string",
               "description": "Position in the GSA hierarchy of FEAF Business Capability."
             },
