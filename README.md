@@ -8,3 +8,6 @@ The GEAR Wiki is intended to house general information about GEAR and it's gener
 
 ## A Note about GEAR Access
 GEAR is housed on the GSA internal network. In order to access any of the operational components, you must be on that network (2FA is not currently sufficient). This includes the "Try It Now" functionality on the API documentation Github page. 
+
+## Running this documentation locally
+In order to run this documentation on your local machine, there are several libraries that must be installed, including jekyl. To run locally, use this command: ``bundle exec jekyll serve`` 
