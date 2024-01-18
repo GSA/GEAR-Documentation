@@ -387,7 +387,115 @@ nav: fields
 	<td>Year and month that the approval for this standard expires. Standards that are not in an "approved" or "pilot" state will have NULL for this field.</td>
 	<td>string</td>
 	</tr>
+	<tr>
+		<td>
+			<code>Manufacturer</code>
+			</td>
+		<td>The unique identifier for manufacturer</td>
+		<td>string</td>
+		</tr>
+<tr>
+	<td>
+		<code>SoftwareVersion</code>
+		</td>
+	<td>The unique identifier for software version</td>
+	<td>string</td>
+	</tr>
 
+<tr>
+	<td>
+		<code>SoftwareProductName</code>
+		</td>
+	<td>The complete name of the product as presented by the vendor in the software license as well as other official documentations and/or website</td>
+	<td>string</td>
+	</tr>
+	
+<tr>
+	<td>
+		<code>ManufacturerName</code>
+		</td>
+	<td>The name of entity which builds, manufactures and/or supports or provides maintenance of the hardware; or develops, publishes and/or supports the software. Captured as the well-known name of the entity in the market (which may or may not the same as the legal name)</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareVersionName</code>
+		</td>
+	<td>The software version name or number</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareRelease</code>
+		</td>
+	<td>The unique identifier for software releases</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareReleaseName</code>
+		</td>
+	<td>Concatenation of manufacturerName + softwareProductName + softwareVersionName</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareReleaseIsToBeDeleted</code>
+		</td>
+	<td>This indicates whether or not a Software Release record is marked for deletion (i.e. Y or N)</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareReleaseToBeDeletedOn</code>
+		</td>
+	<td>The date when the Software Release record will be deleted</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>EndOfLifeDate</code>
+		</td>
+	<td>The last date when full support for a product is provided by the vendor, and standardized to follow BDNA’s date format. Partial support may still be still available
+</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code></code>
+		</td>
+	<td></td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>attestation_required</code>
+		</td>
+	<td>This field denotes whether an attestation letter is required by the software producer. Federal agencies must only use software provided by software producers who can attest to complying with the Government-specified secure. Software development practices, as described in the NIST Special Publication 800-218. A software producer’s self-attestation serves as a conformance statement described by the NIST Guidance. The agency must obtain a self-attestation for all third-party software subject to the requirements of this memorandum used by the agency, including software renewals and major version changes.</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>attestation_link</code>
+		</td>
+	<td>This field provides a URL link to the attestation letter of the software producer. Federal agencies must only use software provided by software producers who can attest to complying with the Government-specified secure software development practices, as described in the NIST Special Publication 800-218. A software producer’s self-attestation serves as a conformance statement described by the NIST Guidance. The agency must obtain a self-attestation for all third-party software subject to the requirements of this memorandum used by the agency, including software renewals and major version changes.</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>fedramp</code>
+		</td>
+	<td>Denotes whether or not a cloud software has been FedRAMP certified. The FedRAMP Authorization Act codifies the FedRAMP program as the authoritative standardized approach to security assessment and authorization for cloud computing products and services that process unclassified federal information.</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>open_source</code>
+		</td>
+	<td>Denotes whether or not the software is an open source software. Open source refers to software that can be accessed, used, modified, and shared by anyone. OSS is often distributed under licenses that comply with the definition of 'Open Source' provided by the Open Source Initiative (https://opensource.org/osd) and/or that meet the definition of 'Free Software' provided by the Free Software Foundation.</td>
+	<td>string</td>
+	</tr>	
+			
 </tbody>
 </table>
 
