@@ -660,7 +660,48 @@ nav: fields
 	<td>Program Manager for this FISMA System.</td>
 	<td>string</td>
 	</tr>
-  
+	<tr>
+		<td>
+			<code>SystemLevel</code>
+			</td>
+		<td>This field denotes whether an entry is considered a system or a subsystem. A 'System' within GSA's Agency System Inventory, is tracked as 'FISMA Information System'. A 'Subsystem' is a system/application that may be coalesced together as subsystems of a single larger, more comprehensive system (FISMA System) for the purposes of security authorization. Minor applications/subsystems must be under the same management authority, have the same function or mission objective, the same operating characteristics, and information security needs, and reside in the same general operating environment(s).</td>
+		<td>string</td>
+		</tr>	
+	<tr>
+		<td>
+			<code>FIPS_Impact_Level</code>
+			</td>
+		<td>The FIPS Impact Level is a security category of an information system established in FIPS 199 which classifies the intensity of a potential impact that may occur if the information system is jeopardized.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>Reportable</code>
+			</td>
+		<td>Definition: This field denotes whether the FISMA system is reported to the Office of Management and Budget on a quarterly basis. Only those at the system level (i.e. not subsystems) are reported. Title III of the E-Government Act requiring each federal agency to develop, document, and implement an agency-wide program to provide information security for the information and information systems that support the operations and assets of the agency, including those provided or managed by another agency, contractor, or other source.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>PII</code>
+			</td>
+		<td>This field denotes whether the system/subsystem contains any Personally Identifiable Information. PII is any representation of information that permits the identity of an individual to whom the information applies to be reasonably inferred by either direct or indirect means.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>CUI</code>
+			</td>
+		<td>A yes/no designation for whether the system contains controlled unclassified information (CUI). CUI is information that does not meet the standards for National Security Classification under Executive Order 12958, as amended, but is (i) pertinent to the national interests of the United States or to the important interests of entities outside the federal government, and (ii) under law or policy requires protection from unauthorized disclosure, special handling safeguards, or prescribed limits on exchange or dissemination.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>RespOrg</code>
+			</td>
+		<td>Identifies the GSA IT organization that is responsible for supporting the IT assets supporting the FISMA system or subsystem.</td>
+		<td>string</td>
+		</tr>
 </tbody>
 </table>
 
