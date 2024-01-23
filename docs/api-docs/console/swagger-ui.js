@@ -21899,7 +21899,7 @@ window.SwaggerUi = Backbone.Router.extend({
     }
     this.showMessage();
     switch (this.options.docExpansion) {
-      case 'full':
+      case 'none':
         this.expandAll(); break;
       case 'list':
         this.listAll(); break;
