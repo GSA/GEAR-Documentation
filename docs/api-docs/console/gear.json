@@ -1,525 +1,3451 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Space holder for paramter descriptions",
-        "description": "A definition is one of the following: GSA Business Applications, Systems, FISMA Systems, IT Standards, or capabilities",
-        "version": "0.0.0"
+      "title": "<b>GEAR API Documentation</b>",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Flow\n    FISMA\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
+      "version": "2.0",
+      "termsOfService": "http://swagger.io/terms/"
     },
-    "host": "ea.gsa.gov",
+    "host": "dev.ea.gsa.gov",
     "schemes": [
-        "https"
+          "https"
     ],
-    "basePath": "/api/v0",
+    "basePath": "/api",
     "produces": [
         "application/json"
     ],
+    "tags": [
+      {
+        "name": "Capabilities",
+        "description": ""
+      },
+      {
+        "name": "Data Flow",
+        "description": ""
+      },
+      {
+        "name": "FISMA",
+        "description": ""
+      },
+      {
+        "name": "Investments",
+        "description": ""
+      },
+      {
+        "name": "IT Standards",
+        "description": ""
+      },
+      {
+        "name": "Organizations",
+        "description": ""
+      },
+      {
+        "name": "POCs",
+        "description": ""
+      },
+      {
+        "name": "Records",
+        "description": ""
+      },
+      {
+        "name": "Systems",
+        "description": ""
+      },
+      {
+        "name": "System Time",
+        "description": ""
+      },
+      {
+        "name": "Website Service Categories",
+        "description": ""
+      },
+      {
+        "name": "Websites",
+        "description": ""
+      }
+    ],
+
+    "paths_error": {
+      "/data_flow": {
+        "get": {
+          "tags": [
+            "Data Flow"
+          ],
+          "description": "Returns the complete lit of data flow entries for all GSA Business Systems",
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/"
+                    }
+                  }
+            }
+          }
+        }
+      },
+      "/data_flow/get/{id}": {
+        "get": {
+          "tags": [
+            "Data Flow"
+          ],
+          "description": "Returns the Business Systems that interface with the Business System identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Data Flow ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/"
+                    }
+                  }
+            }
+          }
+        }
+      },
+      "/capabilities/get/{id}/orgs": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by ID and list related Organizations",
+          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities"
+                    }
+                  }
+            }
+          }
+        }
+      },
+      "/organizations/get/{id}/capabilities": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "Find organization record by ID and list related Capabilities",
+          "description": "Returns the Capabilities that are related to the Organization identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Organizations ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/organizations"
+                  }
+            }
+          }
+        }
+      },
+      "/pocs/get/{id}": {
+        "get": {
+          "tags": [
+            "POCs"
+          ],
+          "summary": "Find POC by ID",
+          "description": "Returns one POC identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "POCs ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/pocs"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "paths": {
-        "/{def}/{id}": {
-            "get": {
-                "summary": "Details for Definitions",
-                "description": "This endpoint returns the complete list of a given definition.\n",
-                "parameters": [
-                    {
-                        "name": "def",
-                        "in": "path",
-                        "description": "The complete list of a given definition. One of the following values: organizations, applications, parentsystems, FISMA, itstandards, or capabilities.",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "The database key that identifies the given definition. Example: '5576' for Business Application",
-                        "required": false,
-                        "type": "string",
-                        "format": "string"
-                    }
-                ],
-                "tags": [
-                    ""
-                ],
-                "responses": {
-                    "200": {
-                        "description": "An array of definitions",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/{def}"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
+      "/capabilities": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "List of all Capabilities",
+          "description": "Returns the complete list of GSA's Business Capabilities",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/capabilities"
                 }
+              }
             }
-        },
-        "/applications/{id}/{def}": {
-            "get": {
-                "summary": "Definitions related to given Business Application List",
-                "description": "This endpoint returns the IT standards and IT standards metadata associated to the indicated Business Application {id}.\n",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "The database key that identifies the Business Application. Example: '5576'",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    },
-                    {
-                        "name": "def",
-                        "in": "path",
-                        "description": "The IT standards, or capabilities related to the given application. Example, capabilities, technologies",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    }
-                ],
-                "tags": [
-                    ""
-                ],
-                "responses": {
-                    "200": {
-                        "description": "An array of related IT standards or capabilities of a given Business Application",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/{def}"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        
-     "/{def}/{id}/applications": {
-            "get": {
-                "summary": "Business Application List related to a given definition",
-                "description": "This endpoint returns the list of GSA Business Applications related to given definition.\n",
-                "parameters": [
-                    
-                    {
-                        "name": "def",
-                        "in": "path",
-                        "description": "The definitions. One of the following values: organizations, applications, parentsystems, FISMA, itstandards, or capabilities.",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "The database key that identifies the definition. Example: '12087' for System 'Bulkload'; '16999' for capability 'Vendor Relationship Management'; '20872' for investment 'Analytic Service Platform'. ",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    }                    
-                ],
-                "tags": [
-                    ""
-                ],
-                "responses": {
-                    "200": {
-                        "description": "An array of Business Applications",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Application"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-     "/{def}/{id}/pocs": {
-            "get": {
-                "summary": "Point of Contact List related to a given definition",
-                "description": "This endpoint returns the list of Point of Contact related to a given definition.\n",
-                "parameters": [
-                    
-                    {
-                        "name": "def",
-                        "in": "path",
-                        "description": "One of the following values: applications, FISMA, investments ",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "The database key that identifies the definition. Example: '5576' for application,'20872' for investments, '2746' for FISMA. ",
-                        "required": true,
-                        "type": "string",
-                        "format": "string"
-                    }                    
-                ],
-                "tags": [
-                    ""
-                ],
-                "responses": {
-                    "200": {
-                        "description": "An array of Point of Contact",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/poc"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
+          }
         }
-     },
+      },
+      "/capabilities/get/{id}": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by ID",
+          "description": "Returns one Business Capability indecated by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities"
+                  }
+                }
+            }
+          }
+        }
+      },
+      "/capabilities/get/{id}/systems": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability ID and list related Systems",
+          "description": "Returns the Business Systems that are related to the Business Capability identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities-systems"
+                  }
+                  }
+              }
+          }
+        }
+      },
+      "/capabilities/getbyname/{name}": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by name",
+          "description": "Returns one Business Capability indecated by {name}",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Capability Name",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/capabilities"
+                    }
+                  }
+              }
+          }
+        }
+      },
+      "/fisma": {
+        "get": {
+          "tags": [
+            "FISMA"
+          ],
+          "summary": "List of all FISMA systems",
+          "description": "Returns the list of GSA's FISMA Systems, excluding inactive systems",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/fisma"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/fisma/retired": {
+        "get": {
+          "tags": [
+            "FISMA"
+          ],
+          "summary": "List of all retired FISMA Systems",
+          "description": "Returns the list of inactive FISMA Systems",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/fisma"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/fisma/get/{id}": {
+        "get": {
+          "tags": [
+            "FISMA"
+          ],
+          "summary": "Find FISMA System by ID",
+          "description": "Returns one FISMA System identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "FISMA ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "string",
+                    "$ref": "#/definitions/fisma"
+                  }
+            }
+          }
+        }
+      },
+      "/investments": {
+        "get": {
+          "tags": [
+            "Investments"
+          ],
+          "summary": "List of all Investments",
+          "description": "Returns the complete list of GSA's IT Investments, as tracked in GEAR",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/investments"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/investments/get/{id}": {
+        "get": {
+          "tags": [
+            "Investments"
+          ],
+          "summary": "Find record Investment ID",
+          "description": "Returns one IT Investment identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Investments ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref": "#/definitions/investments"
+                  }
+            }
+          }
+        }
+      },
+      "/investments/get/{id}/systems": {
+        "get": {
+          "tags": [
+            "Investments"
+          ],
+          "summary": "Find Investment by ID and list related Systems",
+          "description": "Returns the Business Systems that are related to the IT Investment identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Investments ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/investments-systems"
+                  }
+            }
+          }
+        }
+      },
+      "/it_standards": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards (that have been submitted to the Software Review Request process)",
+          "description": "Returns the entire list of GSA's Software IT Standards (except software that was not yet submitted to the Software Review Request process)",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/it_standards/all": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards (including software titles that have not yet been submitted for review)",
+          "description": "Returns the entire list of GSA's Software IT Standards (including software that was not yet submitted to the Software Review Request process)",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/it_standards/get/{id}": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "Find IT standard by ID",
+          "description": "Returns one IT Standard identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "IT Standards ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/it_standards"
+                  }
+            }
+          }
+        }
+      },
+      "/it_standards/get/{id}/systems": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "Find IT standard by ID and list related Systems",
+          "description": "Returns the Business Systems and Business System metadata associated to the indicated IT Standard {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "IT Standards ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/it_standards"
+                  }
+            }
+          }
+        }
+      },
+      "/it_standards/types": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards types",
+          "description": "Returns the entire list of GSA’s Software IT Standards types",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-types"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/it_standards/statuses": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards statuses",
+          "description": "Returns the entire list of GSA’s Software IT Standards statuses",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-statuses"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/it_standards/categories": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards Categories",
+          "description": "Returns the entire list of GSA’s Software IT Standards categories",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-categories"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/it_standards/508_compliances": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards 508 compliances",
+          "description": "Returns the entire list of GSA’s Software IT Standards 508 compliances",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-508_compliance"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/it_standards/latest": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "Most recently added IT Standards",
+          "description": "Returns the most recently created IT standard item",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/it_standards/deployment_types": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards deployment types",
+          "description": "Returns the list of possible IT standards deployment types",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-deployment_types"
+                }
+              }
+           }
+          }
+        }
+      },
+      "/organizations": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "List of all Organizations",
+          "description": "Returns the complete list of GSA's Organizations, as they are tracked in GEAR",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/organizations"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/organizations/get/{id}": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "Find organization record by ID",
+          "description": "Returns one Organization identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Organizations ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/organizations"
+                  }
+            }
+          }
+        }
+      },
+      "/organizations/get/{name}/systems": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "Find organization record by Name and list related Systems",
+          "description": "Returns the Business Systems that are related to the Organization identified by {name}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Organizations Name",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "string",
+                    "$ref":"#/definitions/organizations-systems"
+                  }
+            }
+          }
+        }
+      },
+      "/pocs": {
+        "get": {
+          "tags": [
+            "POCs"
+          ],
+          "summary": "List of all POCs",
+          "description": "Returns the list of all POCs tracked in GEAR",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/pocs"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/records": {
+        "get": {
+          "tags": [
+            "Records"
+          ],
+          "summary": "List of all OAS Records",
+          "description": "Returns the entire list of OAS Records",
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/records"
+                  }
+            }
+          }
+        }
+      },
+      "/records/get/{id}": {
+        "get": {
+          "tags": [
+            "Records"
+          ],
+          "summary": "Find OAS Record by ID",
+          "description": "Returns one OAS Record by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Records ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/records"
+                  }
+            }
+          }
+        }
+      },
+      "/records/get/{id}/systems": {
+        "get": {
+          "tags": [
+            "Records"
+          ],
+          "summary": "Find OAS Record by ID and list related Systems",
+          "description": "Returns the Systems that are related to the OAS Record identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Records ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "This will display the array of systems associated with a record",
+                  "schema": {
+                    "type": "string",
+                    "$ref":"#/definitions/records-systems"
+                  }
+            }
+          }
+        }
+      },
+      "/systems": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "List of all Systems",
+          "description": "Returns the complete list of GSA Business Systems, to include retired applications",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/systems"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID",
+          "description": "Returns one Business System by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/systems"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/time": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID and list related TIME Analysis",
+          "description": "Returns all entries for TIME analysis related to the System identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/systems-time"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/technologies": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID and list related Technologies",
+          "description": "Returns the IT Standards and IT Standards metadata associated to the indicated Business System {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref": "#/definitions/systems-technologies"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/records": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID and list related OAS Records",
+          "description": "Returns the OAS Records that are related to the System identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/systems"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/investments": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID and list related Investments",
+          "description": "Returns the investments associated to the indicated Business System {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/systems-investments"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/capabilities": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID and list related Capabilities",
+          "description": "Returns the Business Capabilites and Business Capability metadata associated to the indicated Business System {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "string",
+                    "$ref":"#/definitions/systems-capabilities"
+                  }
+            }
+          }
+        }
+      },
+      "/system_time": {
+        "get": {
+          "tags": [
+            "System Time"
+          ],
+          "summary": "List of all entries for TIME Analysis",
+          "description": "Returns all entries for TIME analysis of all Active GSA Business Systems",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/system_time"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/websites_service_category": {
+        "get": {
+          "tags": [
+            "Website Service Categories"
+          ],
+          "summary": "List of all Website Service Categories",
+          "description": "Returns the complete list of Website Service Categories",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/website_service_category"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/websites_service_category/get/{id}": {
+        "get": {
+          "tags": [
+            "Website Service Categories"
+          ],
+          "summary": "Find Website Service Category by ID",
+          "description": "Returns one Website Service Category by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Website Service Category ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/website_service_category"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/websites_service_categories/get/{id}/websites": {
+        "get": {
+          "tags": [
+            "Website Service Categories"
+          ],
+          "summary": "Find Category by ID and list related Websites",
+          "description": "Returns the Websites that are related to the Website Service Category identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Website Service Category ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/website_service_category-websites"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/websites": {
+        "get": {
+          "tags": [
+            "Websites"
+          ],
+          "summary": "List of all Websites",
+          "description": "Returns the complete list of GSA Websites",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/websites"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/websites/get/{id}": {
+        "get": {
+          "tags": [
+            "Websites"
+          ],
+          "summary": "Find Website by ID",
+          "description": "Returns one GSA Website by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Websites ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/websites"
+                  }
+            }
+          }
+        }
+      },
+      "/websites/get/{id}/scans": {
+        "get": {
+          "tags": [
+            "Websites"
+          ],
+          "summary": "Find Website by ID and list related Scans",
+          "description": "Returns the Scans that are related to the Website identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Websites ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/websites-scans"
+                  }
+            }
+          }
+        }
+      },
+      "/websites/get/{id}/scans/{scanId}": {
+        "get": {
+          "tags": [
+            "Websites"
+          ],
+          "summary": "Find a Scan related to Website using IDs",
+          "description": "Returns the Scans indicated by {ScanId}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Websites ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Websites ScanID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/websites-scans"
+                  }
+            }
+          }
+        }
+      },
+      "/websites/get/{id}/service_categories": {
+        "get": {
+          "tags": [
+            "Websites"
+          ],
+          "summary": "Find Website by ID and list related Service Categories",
+          "description": "Returns the Service Categories that are related to the Website identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Websites ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/websites-service_categories"
+                  }
+            }
+          }
+        }
+      },
+      "/websites/get/{id}/systems": {
+        "get": {
+          "tags": [
+            "Websites"
+          ],
+          "summary": "Find Website by ID and list related Systems",
+          "description": "Returns the Systems that are related to the Website identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Websites ID",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/websites-systems"
+                  }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Schema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      }
+    },
     "definitions": {
-        "Application": {
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "description": "The database key that identifies the Business Application."
-                },
-                "Name": {
-                    "type": "string",
-                    "description": "Name of the Business Application."
-                },
-                "Description": {
-                    "type": "string",
-                    "description": "Description of Business Application."
-                },
-                "SSO": {
-                    "type": "string",
-                    "description": "Verbose name of the SSO that manages the application. USUALLY the parent SSO to Owner, but not always."
-                },
-                "SSOShort": {
-                    "type": "string",
-                    "description": "Short name of the SSO that manages the application. USUALLY the parent SSO to Owner, but not always."
-                },
-                "Owner": {
-                    "type": "string",
-                    "description": "Verbose name of the 2-letter office(s) that manages (co-manage) this application."
-                },
-                "OwnerShort": {
-                    "type": "string",
-                    "description": "Short name of the 2-letter office(s) that manages (co-manage) this application."
-                },
-                "System": {
-                    "type": "string",
-                    "description": "The Parent System name that includes this application. If not part of a System, then the value will be NULL."
-                },
-                "BusinessPOC": {
-                    "type": "string",
-                    "description": "List of business POCs, separated by commas"
-                },
-                "TechnicalPOC": {
-                    "type": "string",
-                    "description": "List of technical POCs, separated by commas"
-                },
-                "Cloud": {
-                    "type": "string",
-                    "description": " Is this Business Appliation hosted in the Cloud (as opposed to in a GSA Data Center)? Yes or No only."
-                },
-                "TechnologyPlatform": {
-                    "type": "string",
-                    "description": "Technology platform for the application. One of the following values: .Net, Appian, ArcGIS, Business Objects, ColdFusion, Django, Documentum, Drupal, Foxpro, Google App Engine (GAE), J2EE, Microsoft Office, Oracle, PowerBuilder, Provided as Package, Red Hat, Ruby on Rails, Salesforce, Unisys Mainframe, WordPress, Other."
-                },
-                "Status": {
-                    "type": "string",
-                    "description": "Status of the application. One of the following values: Pre-Production, Production, or Retired."
-                },
-                "Alias": {
-                    "type": "string",
-                    "description": "Other names by which this application is known."
-                },
-                "RegionClassification": {
-                    "type": "string",
-                    "description": "PBS-centric classification. Values will be National or Regional"
-                },
-                "HostingProvider": {
-                    "type": "string",
-                    "description": "Service Provider for the application. One of the following values: Amazon, Appian, BSP, CGI, CTAC, ESRI, GSA, Google, HP Enterprise Services, IBM, Marathon Digital Services, Monster Govt Services, Noblis, OPM, Salesforce, SAP, ServiceNow, USDA Phase 1, USDA Phase 2, and Vanderweil (VFA)."
-                },
-                "FismaSystem": {
-                    "type": "string",
-                    "description": "The FISMA System that provides an ATO for this application"
-                },
-                "Investment": {
-                    "type": "string",
-                    "description": "The eCPIC Investment that provides funding for this application."
-                },
-                "IsRevenueGenerator": {
-                    "type": "string",
-                    "description": "Does this Business Application generate revenue? Values limited to Yes, No and TBD"
-                },
-                "DesktopComponent": {
-                    "type": "string",
-                    "description": "Does this Business Application have a component that can be installed on a laptop or desktop? Values limited to Yes, No and TBD."
-                },
-                "RetiredYear": {
-                    "type": "string",
-                    "description": "Year the application was retired. Will be NULL if “Status” is not Retired"
-                },
-                "Capabilities": {
-                    "type": "string",
-                    "description": "A comma separated list of the FEAF BRM capabilities that are supported by this application."
-                },
-                "Technologies": {
-                    "type": "string",
-                    "description": "A comma separated list of IT Standards that compose this application"
-                },
-                 "Link": {
-                    "type": "string",
-                    "description": "The URL that points to the applications web interface. If there are more than one, they will be separated by commas."
-                }
-       
-            }
+      "capabilities": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the Capabilities."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": "Name of the Business Capability."
+              },
+              "ReferenceNum": {
+                  "type": "integer",
+                  "description": "Description of Business Capability."
+              },
+              "Description": {
+                  "type": "string",
+                  "description": "Position in the GSA hierarchy of FEAF Business Capability."
+              },
+              "Level": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+              "Parent": {
+                  "type": "string",
+                  "description": "Name of the Parent Business Capability to this Business Capability."
+              }     
+          }
+      },
+      "capabilities-systems": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the Capabilities."
+            },
+            "RespOrg": {
+                "type": "string",
+                "description": "Name of the Business Capability."
+            },
+            "BusOrg": {
+                "type": "string",
+                "description": "Description of Business Capability."
+            },
+            "BusOrgSymbolAndName": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Name": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "DisplayName": {
+                "type": "string",
+                "description": "Name of the Parent Business Capability to this Business Capability."
+            },
+            "FedContractorLoc": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FIPS_Impact_Level": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "BusApp": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },  
+            "ATODate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "ATOType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "RenewalDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ComplFISMA": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "PII": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CloudYN": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CSP": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ServiceType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FISMASystemIdentifier": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Status": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "InactiveDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Description": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+           },
+           "SystemLevel": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ParentName": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SubSystem_Tag": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "Reportable": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SharedService": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "POC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+         },
+         "AO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
         },
-        
-        "capabilities": {
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "description": "The database key that identifies the Capabilities."
-                },
-                "Name": {
-                    "type": "string",
-                    "description": "Name of the Business Capability."
-                },
-                "Description": {
-                    "type": "string",
-                    "description": "Description of Business Capability."
-                },
-                "Ref": {
-                    "type": "string",
-                    "description": "Position in the GSA hierarchy of FEAF Business Capability."
-                },
-                "ParentCap": {
-                    "type": "string",
-                    "description": "Name of the Parent Business Capability to this Business Capability."
-                }     
-            }
+        "SO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
         },
-        "itstandards": {
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "description": "The database key that identifies the IT Standards."
-                },
-                "Name": {
-                    "type": "string",
-                    "description": "Name of the IT Standards."
-                },
-                "Description": {
-                    "type": "string",
-                    "description": "Description of IT Standards"
-                },
-                "Status": {
-                    "type": "string",
-                    "description": "Position in the GSA hierarchy of FEAF Business Capability."
-                },
-                "Expiration": {
-                    "type": "string",
-                    "description": "Year and month that the approval for this standard expires. Standards that are not in an approved or pilot state will have NULL for this field."
-                },
-                "Category": {
-                    "type": "string",
-                    "description": "Standards category that this IT Standard fits into."
-                }  
-            }
+        "ISSM": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
         },
-        
-        "fisma": {
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "description": "The database key that identifies the FISMA System."
-                },
-                "Name": {
-                    "type": "string",
-                    "description": " Name of the FISMA System."
-                },
-                "RelOrgDisplayName": {
-                    "type": "string",
-                    "description": "The short name of the organization that is related to this FISMA System."
-                },
-                "FedContractorLoc": {
-                    "type": "string",
-                    "description": "Is this FISMA System related to a Federal or Contractor location."
-                },
-                "FIPS199": {
-                    "type": "string",
-                    "description": "The FIPS 199 impact level of the FISMA System. One of the following values: High, Moderate, or Low."
-                },
-                "ATODate": {
-                    "type": "string",
-                    "description": "Date was the ATO isssued"
-                },
-                "ATOType": {
-                    "type": "string",
-                    "description": "Type of ATO that certifies this FISMA System."
-                },
-                "RenewalDate": {
-                    "type": "string",
-                    "description": "Date when the ATO needs to be renewed."
-                },
-                "RelatedArtifacts": {
-                    "type": "string",
-                    "description": "Letters and other artifacts related to this FISMA System. This will be returned as an array containing zero, one, or many Artifacts, containing the NAME of the Artifact and ReferenceDocuments, which will be the URL of the Artifact."
-                },
-                "FISMASystemIdentifier": {
-                    "type": "string",
-                    "description": "A shortened identifier for FISMA Systems for uses with Security's Continuous Monitoring System."
-                },
-                "ISSO": {
-                    "type": "string",
-                    "description": "ISSO for this FISMA System."
-                },
-                "ISSM": {
-                    "type": "string",
-                    "description": " ISSM for this FISMA System."
-                },
-                "AO": {
-                    "type": "string",
-                    "description": "Authorizing Official for this FISMA System."
-                },
-                "PM": {
-                    "type": "string",
-                    "description": "Program Manager for this FISMA System."
-                }                
-            }
+        "ISSO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
         },
-        "organizations": {
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "description": "The database key that identifies the Organization."
-                },
-                "Name": {
-                    "type": "string",
-                    "description": " Name of the Organization."
-                },
-                "DisplayName": {
-                    "type": "string",
-                    "description": "Short name of the Organization."
-                },
-                "Description": {
-                    "type": "string",
-                    "description": "Description of the Organization."
-                },
-                "Parent": {
-                    "type": "string",
-                    "description": "Verbose name of the Parent Organization."
-                }
-            }
+        "CO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
         },
-        "investments": {
-            "type": "object",
-            "properties": {
-                "Id": {
-                    "type": "integer",
-                    "description": "The database key that identifies the IT Investment."
-                },
-                "Name": {
-                    "type": "string",
-                    "description": "Name of the IT Investment."
-                },
-                "Description": {
-                    "type": "string",
-                    "description": "Description of the IT Investment."
-                },
-                "Type": {
-                    "type": "string",
-                    "description": "How this IT Investment is characterized. Values are Major IT Investment, Non-Major Investment, or Funding Transfer Investment"
-                },
-                "PSA": {
-                    "type": "string",
-                    "description": "The Primary Service Area of this IT Investment. This is the main Business Capability that this investment supports."
-                },
-                "SSA": {
-                    "type": "string",
-                    "description": "The Secondary Service Area of this IT Investment. This is a secondary Business Capability that this investment may support."
-                },
-                "InvManager": {
-                    "type": "string",
-                    "description": "The Point of Contact for this IT Investment."
-                },
-                "UII": {
-                    "type": "string",
-                    "description": "The Unique Investment ID for this IT Investment that is tracked in eCPIC."
-                }
-            }
+        "COR": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
         },
-        "poc": {
-            "type": "object",
-            "properties": {
-                "ParentId": {
-                    "type": "integer",
-                    "description": "The database key that identifies the definition to which this POC is related."
-                },
-                "Name": {
-                    "type": "string",
-                    "description": " Name of the Point of Contact."
-                },
-                "Phone": {
-                    "type": "string",
-                    "description": "Point of Contact's phone number."
-                },
-                "Email": {
-                    "type": "string",
-                    "description": "Point of Contact's email address."
-                },
-                "Owner": {
-                    "type": "string",
-                    "description": "Point of Contact's organization."
-                },
-                "Type": {
-                    "type": "string",
-                    "description": "Type of Point of Contact."
-                }
-            }
+        "BusPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
         },
-        "Error": {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string"
-                },
-                "required_fields": {
-                    "type": "string"
-                },
-                "example": {
-                    "type": "string"
-                }
+        "TechPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "RelatedArtifacts": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          }
+        }
+      },
+      "it_standards": {
+          "type": "object",
+          "properties": {
+              "ID": {
+                  "type": "integer",
+                  "description": "The database key that identifies the IT Standards."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": "Name of the IT Standards."
+              },
+              "Description": {
+                  "type": "string",
+                  "description": "Description of IT Standards"
+              },
+              "ApprovalExpirationDate": {
+                  "type": "string",
+                  "description": "Position in the GSA hierarchy of FEAF Business Capability."
+              },
+              "Vendor_Standard_Organization": {
+                  "type": "string",
+                  "description": "Year and month that the approval for this standard expires. Standards that are not in an approved or pilot state will have NULL for this field."
+              },
+              "Available_through_Myview": {
+                  "type": "string",
+                  "description": "Standards category that this IT Standard fits into."
+              },
+              "Gold_Image": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "Gold_Image_Comment": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "Comments": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "old_Id": {
+                "type": "integer",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "ReferenceDocument": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "CreateDTG": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "ChangeDTG": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "Status": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "DeploymentType": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "StandardType": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "ComplianceStatus": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "POC": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              },
+              "Category": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+              }
+          }
+      },
+      "it_standards-508_compliance": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database key that identifies the IT Standards."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the IT Standards."
             }
         }
+      },
+      "it_standards-categories": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database key that identifies the IT Standards."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the IT Standards."
+            }
+        }
+      },
+      "it_standards-deployment_types": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database key that identifies the IT Standards."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the IT Standards."
+            }
+        }
+      },
+      "it_standards-statuses": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database key that identifies the IT Standards."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the IT Standards."
+            }
+        }
+      },
+      "it_standards-types": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database key that identifies the IT Standards."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the IT Standards."
+            }
+        }
+      },
+      "fisma": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the FISMA System."
+              },
+              "RespOrg": {
+                  "type": "string",
+                  "description": " Name of the FISMA System."
+              },
+              "BusOrg": {
+                  "type": "string",
+                  "description": "The short name of the organization that is related to this FISMA System."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": "Is this FISMA System related to a Federal or Contractor location."
+              },
+              "DisplayName": {
+                  "type": "string",
+                  "description": "The FIPS 199 impact level of the FISMA System. One of the following values: High, Moderate, or Low."
+              },
+              "FedContractorLoc": {
+                  "type": "string",
+                  "description": "Date was the ATO isssued"
+              },
+              "FIPS_Impact_Level": {
+                  "type": "string",
+                  "description": "Type of ATO that certifies this FISMA System."
+              },
+              "ATODate": {
+                  "type": "string",
+                  "description": "Date when the ATO needs to be renewed."
+              },
+              "ATOType": {
+                  "type": "string",
+                  "description": "Letters and other artifacts related to this FISMA System. This will be returned as an array containing zero, one, or many Artifacts, containing the NAME of the Artifact and ReferenceDocuments, which will be the URL of the Artifact."
+              },
+              "RenewalDate": {
+                  "type": "string",
+                  "description": "A shortened identifier for FISMA Systems for uses with Security's Continuous Monitoring System."
+              },
+              "ComplFISMA": {
+                  "type": "string",
+                  "description": "ISSO for this FISMA System."
+              },
+              "PII": {
+                  "type": "string",
+                  "description": " ISSM for this FISMA System."
+              },
+              "CloudYN": {
+                  "type": "string",
+                  "description": "Authorizing Official for this FISMA System."
+              },
+              "CSP": {
+                  "type": "string",
+                  "description": "Program Manager for this FISMA System."
+              },
+              "ServiceType": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "FISMASystemIdentifier": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+              },
+              "Status": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+              },
+              "InactiveDate": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "Description": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "SystemLevel": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "ParentName": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "SubSystem_Tag": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "Reportable": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "SharedService": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "POC": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "AO": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "SO": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "ISSM": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "ISSO": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "CO": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "COR": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "BusPOC": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "TechPOC": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+              },
+              "RelatedArtifacts": {
+                "type": "string",
+                "description": "Program Manager for this FISMA System."
+            }                
+          }
+      },
+      "organizations": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the Organization."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": " Name of the Organization."
+              },
+              "DisplayName": {
+                  "type": "string",
+                  "description": "Short name of the Organization."
+              },
+              "OrgSymbol": {
+                  "type": "string",
+                  "description": "Description of the Organization."
+              },
+              "SSOName": {
+                  "type": "string",
+                  "description": "Verbose name of the Parent Organization."
+              },
+              "TwoLetterOrgSymbol": {
+                "type": "string",
+                "description": "Verbose name of the Parent Organization."
+              },
+              "TwoLetterOrgName": {
+                "type": "string",
+                "description": "Verbose name of the Parent Organization."
+              },
+              "Parent": {
+                "type": "string",
+                "description": "Verbose name of the Parent Organization."
+              }
+          }
+      },
+      "organizations-systems": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "description": "The database key that identifies the Capabilities."
+        },
+        "RespOrg": {
+            "type": "string",
+            "description": "Name of the Business Capability."
+        },
+        "BusOrg": {
+            "type": "string",
+            "description": "Description of Business Capability."
+        },
+        "BusOrgSymbolAndName": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "Name": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "DisplayName": {
+            "type": "string",
+            "description": "Name of the Parent Business Capability to this Business Capability."
+        },
+        "FedContractorLoc": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "FIPS_Impact_Level": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        }, 
+        "BusApp": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },  
+        "ATODate": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        }, 
+        "ATOType": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        }, 
+        "RenewalDate": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ComplFISMA": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "PII": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "CloudYN": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "CSP": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ServiceType": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "FISMASystemIdentifier": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "Status": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "InactiveDate": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "Description": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+       },
+       "SystemLevel": {
+        "type": "string",
+        "description": "Position in the GSA hierarchy of FEAF Business Capability."
+      },
+      "ParentName": {
+        "type": "string",
+        "description": "Position in the GSA hierarchy of FEAF Business Capability."
+      },
+      "SubSystem_Tag": {
+        "type": "string",
+        "description": "Position in the GSA hierarchy of FEAF Business Capability."
+      },
+      "Reportable": {
+        "type": "string",
+        "description": "Position in the GSA hierarchy of FEAF Business Capability."
+      },
+      "SharedService": {
+        "type": "string",
+        "description": "Position in the GSA hierarchy of FEAF Business Capability."
+      },
+      "POC": {
+        "type": "string",
+        "description": "Position in the GSA hierarchy of FEAF Business Capability."
+     },
+     "AO": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "SO": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "ISSM": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "ISSO": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "CO": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "COR": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "BusPOC": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "TechPOC": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+    },
+    "RelatedArtifacts": {
+      "type": "string",
+      "description": "Position in the GSA hierarchy of FEAF Business Capability."
+      }
+        }
+    },
+      "investments": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the IT Investment."
+              },
+              "UII": {
+                  "type": "integer",
+                  "description": "Name of the IT Investment."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": "Description of the IT Investment."
+              },
+              "Description": {
+                  "type": "string",
+                  "description": "How this IT Investment is characterized. Values are Major IT Investment, Non-Major Investment, or Funding Transfer Investment"
+              },
+              "Budget_Year": {
+                  "type": "integer",
+                  "description": "The Primary Service Area of this IT Investment. This is the main Business Capability that this investment supports."
+              },
+              "Cloud_Alt": {
+                  "type": "integer",
+                  "description": "The Secondary Service Area of this IT Investment. This is a secondary Business Capability that this investment may support."
+              },
+              "Comments": {
+                  "type": "string",
+                  "description": "The Point of Contact for this IT Investment."
+              },
+              "Start_Year": {
+                  "type": "integer",
+                  "description": "The Unique Investment ID for this IT Investment that is tracked in eCPIC."
+              },
+              "End_Year": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "InvManager": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "Status": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "Type": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "IT_Portfolio": {
+                  "type": "string",
+                  "description": "The Point of Contact for this IT Investment."
+              },
+              "PSA": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "Updated_Date": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "Total_Spend_PY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "Total_Spend_CY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "Total_Spend_BY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Agency_Fund_PY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Contributions_PY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Agency_Fund_CY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Contributions_CY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Agency_Fund_BY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Contributions_BY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "DME_Budget_Auth_BY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "OnM_Agency_Fund_PY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "OnM_Contributions_PY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "OnM_Agency_Fund_CY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "OnM_Contributions_CY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "OnM_Agency_Fund_BY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "OnM_Contributions_BY": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+              },
+              "OnM_Budget_Auth_BY": {
+                "type": "integer",
+                "description": "The Point of Contact for this IT Investment."
+              }
+          }
+      },
+      "investments-systems": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the Capabilities."
+            },
+            "RespOrg": {
+                "type": "string",
+                "description": "Name of the Business Capability."
+            },
+            "BusOrg": {
+                "type": "string",
+                "description": "Description of Business Capability."
+            },
+            "BusOrgSymbolAndName": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Name": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "DisplayName": {
+                "type": "string",
+                "description": "Name of the Parent Business Capability to this Business Capability."
+            },
+            "FedContractorLoc": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FIPS_Impact_Level": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "BusApp": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },  
+            "ATODate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "ATOType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "RenewalDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ComplFISMA": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "PII": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CloudYN": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CSP": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ServiceType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FISMASystemIdentifier": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Status": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "InactiveDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Description": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+           },
+           "SystemLevel": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ParentName": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SubSystem_Tag": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "Reportable": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SharedService": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "POC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+         },
+         "AO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "SO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ISSM": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ISSO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "CO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "COR": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "BusPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "TechPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "RelatedArtifacts": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          }
+        }
+      },
+      "pocs": {
+          "type": "object",
+          "properties": {
+              "SamAccountName": {
+                  "type": "integer",
+                  "description": "The database key that identifies the definition to which this POC is related."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": " Name of the Point of Contact."
+              },
+              "Email": {
+                  "type": "string",
+                  "description": "Point of Contact's phone number."
+              },
+              "Phone": {
+                  "type": "string",
+                  "description": "Point of Contact's email address."
+              },
+              "Organization": {
+                  "type": "string",
+                  "description": "Point of Contact's organization."
+              }
+          }
+      },
+      "records": {
+        "type": "object",
+        "properties": {
+            "Rec_ID": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "Record_Status": {
+                "type": "string",
+                "description": " Name of the Point of Contact."
+            },
+            "RG": {
+                "type": "string",
+                "description": "Point of Contact's phone number."
+            },
+            "GSA_Number": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            },
+            "Record_Item_Title": {
+                "type": "string",
+                "description": "Point of Contact's organization."
+            },
+            "Description": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Retention_Instructions": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Legal_Disposition_Authority": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Type_Disposition": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Date_DA_Approved": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "Disposition_Notes": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "FP_Category": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "PII": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "CUI": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "FY_Retention_Years": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            }
+        }
+      },
+      "records-systems": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the Capabilities."
+            },
+            "RespOrg": {
+                "type": "string",
+                "description": "Name of the Business Capability."
+            },
+            "BusOrg": {
+                "type": "string",
+                "description": "Description of Business Capability."
+            },
+            "BusOrgSymbolAndName": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Name": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "DisplayName": {
+                "type": "string",
+                "description": "Name of the Parent Business Capability to this Business Capability."
+            },
+            "FedContractorLoc": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FIPS_Impact_Level": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "BusApp": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },  
+            "ATODate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "ATOType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "RenewalDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ComplFISMA": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "PII": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CloudYN": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CSP": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ServiceType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FISMASystemIdentifier": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Status": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "InactiveDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Description": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+           },
+           "SystemLevel": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ParentName": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SubSystem_Tag": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "Reportable": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SharedService": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "POC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+         },
+         "AO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "SO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ISSM": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ISSO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "CO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "COR": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "BusPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "TechPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "RelatedArtifacts": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          }
+        }
+      },
+      "search": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "Name": {
+                "type": "string",
+                "description": " Name of the Point of Contact."
+            },
+            "Description": {
+                "type": "string",
+                "description": "Point of Contact's phone number."
+            },
+            "GEAR_Type": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            },
+            "Other": {
+                "type": "string",
+                "description": "Point of Contact's organization."
+            }
+        }
+      },
+      "systems": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the Capabilities."
+            },
+            "RespOrg": {
+                "type": "string",
+                "description": "Name of the Business Capability."
+            },
+            "BusOrg": {
+                "type": "string",
+                "description": "Description of Business Capability."
+            },
+            "BusOrgSymbolAndName": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Name": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "DisplayName": {
+                "type": "string",
+                "description": "Name of the Parent Business Capability to this Business Capability."
+            },
+            "FedContractorLoc": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FIPS_Impact_Level": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "BusApp": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },  
+            "ATODate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "ATOType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "RenewalDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ComplFISMA": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "PII": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CloudYN": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CSP": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ServiceType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FISMASystemIdentifier": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Status": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "InactiveDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Description": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+           },
+           "SystemLevel": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ParentName": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SubSystem_Tag": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "Reportable": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SharedService": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "POC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+         },
+         "AO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SO": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ISSM": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ISSO": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "CO": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "COR": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "BusPOC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "TechPOC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "RelatedArtifacts": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }
+        }
+      },
+      "systems-capabilities": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "Name": {
+                "type": "string",
+                "description": " Name of the Point of Contact."
+            },
+            "ReferenceNum": {
+                "type": "integer",
+                "description": "Point of Contact's phone number."
+            },
+            "Description": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            },
+            "Level": {
+                "type": "string",
+                "description": "Point of Contact's organization."
+            },
+            "Parent": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            }
+        }
+      },
+      "systems-investments": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the IT Investment."
+            },
+            "UII": {
+                "type": "integer",
+                "description": "Name of the IT Investment."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Description of the IT Investment."
+            },
+            "Description": {
+                "type": "string",
+                "description": "How this IT Investment is characterized. Values are Major IT Investment, Non-Major Investment, or Funding Transfer Investment"
+            },
+            "Budget_Year": {
+                "type": "integer",
+                "description": "The Primary Service Area of this IT Investment. This is the main Business Capability that this investment supports."
+            },
+            "Cloud_Alt": {
+                "type": "integer",
+                "description": "The Secondary Service Area of this IT Investment. This is a secondary Business Capability that this investment may support."
+            },
+            "Comments": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+            },
+            "Start_Year": {
+                "type": "integer",
+                "description": "The Unique Investment ID for this IT Investment that is tracked in eCPIC."
+            },
+            "End_Year": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "InvManager": {
+              "type": "string",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "Status": {
+              "type": "string",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "Type": {
+              "type": "string",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "IT_Portfolio": {
+                "type": "string",
+                "description": "The Point of Contact for this IT Investment."
+            },
+            "PSA": {
+              "type": "string",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "Updated_Date": {
+              "type": "string",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "Total_Spend_PY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "Total_Spend_CY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "Total_Spend_BY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "DME_Agency_Fund_PY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "DME_Contributions_PY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "DME_Agency_Fund_CY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "DME_Contributions_CY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "DME_Agency_Fund_BY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "DME_Contributions_BY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "DME_Budget_Auth_BY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "OnM_Agency_Fund_PY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "OnM_Contributions_PY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "OnM_Agency_Fund_CY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "OnM_Contributions_CY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "OnM_Agency_Fund_BY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "OnM_Contributions_BY": {
+              "type": "string",
+              "description": "The Point of Contact for this IT Investment."
+            },
+            "OnM_Budget_Auth_BY": {
+              "type": "integer",
+              "description": "The Point of Contact for this IT Investment."
+            }
+        }
+      },
+      "systems-technologies": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database key that identifies the IT Standards."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the IT Standards."
+            },
+            "Description": {
+                "type": "string",
+                "description": "Description of IT Standards"
+            },
+            "ApprovalExpirationDate": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Vendor_Standard_Organization": {
+                "type": "string",
+                "description": "Year and month that the approval for this standard expires. Standards that are not in an approved or pilot state will have NULL for this field."
+            },
+            "Available_through_Myview": {
+                "type": "string",
+                "description": "Standards category that this IT Standard fits into."
+            },
+            "Gold_Image": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "Gold_Image_Comment": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "Comments": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "old_Id": {
+              "type": "integer",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "ReferenceDocument": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "CreateDTG": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "ChangeDTG": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "Status": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "DeploymentType": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "StandardType": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "ComplianceStatus": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "POC": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            },
+            "Category": {
+              "type": "string",
+              "description": "Standards category that this IT Standard fits into."
+            }
+        }
+      },
+      "systems-time": {
+        "type": "object",
+        "properties": {
+            "System Id": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "System Name": {
+                "type": "string",
+                "description": " Name of the Point of Contact."
+            },
+            "FY": {
+                "type": "integer",
+                "description": "Point of Contact's phone number."
+            },
+            "TIME Designation": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            },
+            "Business Score": {
+                "type": "integer",
+                "description": "Point of Contact's organization."
+            },
+            "Technical Score": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "O&M Cost": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "DM&E Cost": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Software/Hardware License Costs": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Date Script Run": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Questionnaire Last Updated": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "POC Last Updated": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "File Link": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            }
+        }
+      },
+      "system_time": {
+        "type": "object",
+        "properties": {
+            "System Id": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "System Name": {
+                "type": "string",
+                "description": " Name of the Point of Contact."
+            },
+            "FY": {
+                "type": "integer",
+                "description": "Point of Contact's phone number."
+            },
+            "TIME Designation": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            },
+            "Business Score": {
+                "type": "integer",
+                "description": "Point of Contact's organization."
+            },
+            "Technical Score": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "O&M Cost": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "DM&E Cost": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Software/Hardware License Costs": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Date Script Run": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "Questionnaire Last Updated": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "POC Last Updated": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "File Link": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            }
+        }
+      },
+      "websites": {
+        "type": "object",
+        "properties": {
+            "Website_ID": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "domain": {
+                "type": "string",
+                "description": " Name of the Point of Contact."
+            },
+            "office": {
+                "type": "string",
+                "description": "Point of Contact's phone number."
+            },
+            "sub_office": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            },
+            "contact_email": {
+                "type": "string",
+                "description": "Point of Contact's organization."
+            },
+            "site_owner_email": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "production_status": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "type_of_site": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "redirects_to": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "cms_platform": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "required_by_law_or_policy": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "has_dap": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "mobile_friendly": {
+              "type": "boolean",
+              "description": "Point of Contact's organization."
+            },
+            "has_search": {
+              "type": "boolean",
+              "description": "Point of Contact's organization."
+            },
+            "repository_url": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "hosting_platform": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            },
+            "https": {
+              "type": "boolean",
+              "description": "Point of Contact's organization."
+            },
+            "customer_centricity": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "mobile_performance": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "google_analytics": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "accessibility": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "uswds": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            },
+            "required_links": {
+              "type": "integer",
+              "description": "Point of Contact's organization."
+            }
+        }
+      },
+      "websites-scans": {
+        "type": "object",
+        "properties": {
+            "Scan_ID": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "Website_ID": {
+                "type": "integer",
+                "description": " Name of the Point of Contact."
+            },
+            "desktop_img_file_name": {
+                "type": "string",
+                "description": "Point of Contact's phone number."
+            },
+            "mobile_img_file_name": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            },
+            "scan_date": {
+                "type": "string",
+                "description": "Point of Contact's organization."
+            },
+            "scan_version": {
+              "type": "string",
+              "description": "Point of Contact's organization."
+            }
+        }
+      },
+      "websites-systems": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the Capabilities."
+            },
+            "RespOrg": {
+                "type": "string",
+                "description": "Name of the Business Capability."
+            },
+            "BusOrg": {
+                "type": "string",
+                "description": "Description of Business Capability."
+            },
+            "BusOrgSymbolAndName": {
+                "type": "string",
+                "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Name": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "DisplayName": {
+                "type": "string",
+                "description": "Name of the Parent Business Capability to this Business Capability."
+            },
+            "FedContractorLoc": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FIPS_Impact_Level": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "BusApp": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },  
+            "ATODate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "ATOType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            }, 
+            "RenewalDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ComplFISMA": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "PII": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CloudYN": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "CSP": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "ServiceType": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "FISMASystemIdentifier": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Status": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "InactiveDate": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+            "Description": {
+              "type": "string",
+              "description": "Position in the GSA hierarchy of FEAF Business Capability."
+           },
+           "SystemLevel": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "ParentName": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SubSystem_Tag": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "Reportable": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "SharedService": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+          "POC": {
+            "type": "string",
+            "description": "Position in the GSA hierarchy of FEAF Business Capability."
+         },
+         "AO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "SO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ISSM": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "ISSO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "CO": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "COR": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "BusPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "TechPOC": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+        },
+        "RelatedArtifacts": {
+          "type": "string",
+          "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          }
+        }
+      },
+      "websites-service_categories": {
+        "type": "object",
+        "properties": {
+            "website_id": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "website_service_category_id": {
+                "type": "integer",
+                "description": " Name of the Point of Contact."
+            },
+            "name": {
+                "type": "string",
+                "description": "Point of Contact's phone number."
+            },
+            "description": {
+                "type": "string",
+                "description": "Point of Contact's email address."
+            }
+        }
+      },
+      "website_service_category": {
+        "type": "object",
+        "properties": {
+            "website_service_category_id": {
+                "type": "integer",
+                "description": "The database key that identifies the definition to which this POC is related."
+            },
+            "name": {
+                "type": "string",
+                "description": " Name of the Point of Contact."
+            },
+            "description": {
+                "type": "string",
+                "description": "Point of Contact's phone number."
+            }
+        }
+      },
+      "website_service_category-websites": { 
+        "type": "object",
+        "properties": {
+          "website_id": {
+            "type": "integer",
+            "description": "The database key that identifies the definition to which this POC is related."
+          },
+          "website_service_category_id": {
+              "type": "integer",
+              "description": "The database key that identifies the definition to which this POC is related."
+          },
+          "domain": {
+              "type": "string",
+              "description": " Name of the Point of Contact."
+          },
+          "contact_email": {
+              "type": "string",
+              "description": "Point of Contact's phone number."
+          },
+          "site_owner_email": {
+            "type": "string",
+            "description": " Name of the Point of Contact."
+          },
+          "office": {
+            "type": "string",
+            "description": " Name of the Point of Contact."
+          },
+          "sub_office": {
+            "type": "string",
+            "description": " Name of the Point of Contact."
+          },
+          "type_of_site": {
+            "type": "string",
+            "description": " Name of the Point of Contact."
+          },
+          "digital_brand_category": {
+            "type": "string",
+            "description": " Name of the Point of Contact."
+          }
+      }
+  },
+      "Error": {
+          "type": "object",
+          "properties": {
+              "message": {
+                  "type": "string"
+              },
+              "required_fields": {
+                  "type": "string"
+              },
+              "example": {
+                  "type": "string"
+              }
+          }
+      }
     }
-}
-
-
+  }

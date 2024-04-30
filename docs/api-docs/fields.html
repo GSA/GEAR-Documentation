@@ -10,7 +10,7 @@ nav: fields
 <!-- <p>Add additional information about fields.</p>  -->
 
 
-<h5>Business Application API Fields</h5>
+<h5>Systems API Fields</h5>
 
 <table id="city-pairs-fields" class="field-table">
 	<colgroup>
@@ -33,239 +33,289 @@ nav: fields
 	<td>
 		<code>Id</code>
 		</td>
-	<td>The database key that identifies the Business Application.</td>
-	<td>string</td>
-	</tr>
+	<td>The database key that identifies the System.</td>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
 		<code>Name</code>
 		</td>
-	<td>Name of the Business Application.</td>
+	<td>Name of the System.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>RespOrg</code>
+		</td>
+	<td>Responsible Organization of the System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>BusOrg</code>
+		</td>
+	<td>Full name and 1 or 2-letter symbol of the organization that uses/owns the business capabilities application provides.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>BusOrgSymbolAndName</code>
+		</td>
+	<td>The high-level GSA organization (1-letter symbol) that uses/owns the business capabilities the application provides.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DisplayName</code>
+		</td>
+	<td>Display name of the organization.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FedContractorLoc</code>
+		</td>
+	<td>Federal or Contractor system.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FIPS_Impact_Level</code>
+		</td>
+	<td>FIPS impact level.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>BusApp</code>
+		</td>
+	<td>This yes/no field denotes whether a system is a business system or not.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ATODate</code>
+		</td>
+	<td>ATO Date.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ATOType</code>
+		</td>
+	<td>ATO Type.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>RenewalDate</code>
+		</td>
+	<td>Renewal (Expiration) date.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ComplFISMA</code>
+		</td>
+	<td>Current assessment for the current fiscal year.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>PII</code>
+		</td>
+	<td>PII indicator.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CloudYN</code>
+		</td>
+	<td>Cloud indicator.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CSP</code>
+		</td>
+	<td>Hosting Provider.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ServiceType</code>
+		</td>
+	<td>Type of service.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FISMASystemIdentifier</code>
+		</td>
+	<td>FISMA System identifier.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Status</code>
+		</td>
+	<td>System status.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>InactiveDate</code>
+		</td>
+	<td>Date System went inactive.</td>
+	<td>string</td>
+</tr>
 
 <tr>
 	<td>
 		<code>Description</code>
 		</td>
-	<td>Description of Business Application.</td>
+	<td>Description of System.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>SSO</code>
+		<code>SystemLevel</code>
 		</td>
-	<td>Verbose name of the SSO that manages the application. USUALLY the parent SSO is the “Owner,” but not always.</td>
+	<td>Level of System.</td>
 	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>SSOShort</code>
-		</td>
-	<td>Short name of the SSO that manages the application. USUALLY the parent SSO is the “Owner,” but not always.</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>Owner</code>
-		</td>
-	<td>Verbose name of the 2-letter office(s) that manages (co-manage) this application.</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>OwnerShort</code>
-		</td>
-	<td>Short name of the 2-letter office(s) that manages (co-manage) this application.</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>System</code>
-		</td>
-	<td>The Parent System name that includes this application. If not part of a System, then the value will be NULL.</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>BusinessPOC</code>
-		</td>
-	<td>List of business POCs, separated by commas</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>TechnicalPOC</code>
-		</td>
-	<td>List of technical POCs, separated by commas</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>Cloud</code>
-		</td>
-	<td>Is this Business Application hosted in the Cloud (as opposed to in a GSA Data Center)? Yes or No only.</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>TechnologyPlatform</code>
-		</td>
-	<td>Technology platform for the application. One of the following values: 
-      <ul>
-        <li>.Net</li>
-        <li>Appian</li>
-        <li>ArcGIS</li>
-        <li>Business Objects</li>
-        <li>ColdFusion</li>
-        <li>Django</li>
-        <li>Documentum</li>
-        <li>Drupal</li>
-        <li>Foxpro</li>
-        <li>Google App Engine (GAE)</li>
-        <li>J2EE</li>
-        <li>Microsoft Office</li>
-        <li>Oracle</li>
-        <li>PowerBuilder</li>
-        <li>Provided as Package</li>
-        <li>Red Hat</li>
-        <li>Ruby on Rails</li>
-        <li>Salesforce</li>
-        <li>Unisys Mainframe</li>
-        <li>WordPress</li>
-        <li>Other</li>
-      </ul>
-    </td>    
-  <td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>Status</code>
-		</td>
-	<td>Status of the application. One of the following values: 
-    <ul>
-      <li>Pre-Production</li>
-      <li>Production</li>
-      <li>Retired</li>
-    </ul> 
-  </td>
-  <td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>Alias</code>
+		<code>ParentName</code>
 		</td>
-	<td>Other names by which this application is known.</td>
+	<td>Name of parent System.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>RegionClassification</code>
+		<code>SubSystem_Tag</code>
 		</td>
-	<td>PBS-centric classification. Values will be “National” or “Regional”.</td>
+	<td>Tag of subsystem id.</td>
 	<td>string</td>
-	</tr>
-
-
-<tr>
-	<td>
-		<code>HostingProvider</code>
-		</td>
-	<td>Service Provider for the application. One of the following values: 
-      <ul>
-      <li>Amazon</li>
-      <li>Appian</li>
-      <li>BSP</li>
-      <li>CGI</li>
-      <li>CTAC</li>
-      <li>ESRI</li>
-      <li>GSA</li>
-      <li>Google</li>
-      <li>HP Enterprise Services</li>
-      <li>IBM</li>
-      <li>Marathon Digital Services</li>
-      <li>Monster Govt Services</li>
-      <li>Noblis</li>
-      <li>OPM</li>
-      <li>Salesforce</li>
-      <li>SAP</li>
-      <li>ServiceNow</li>
-      <li>USDA Phase 1</li>
-      <li>USDA Phase 2</li>
-      <li>Vanderweil (VFA)</li>
-      </ul>
-    </td>
-	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>FismaSystem</code>
+		<code>Reportable</code>
 		</td>
-	<td>The FISMA System that provides an ATO for this application.</td>
+	<td>Returns if the System should be reportable(displayed).</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>Investment</code>
+		<code>SharedService</code>
 		</td>
-	<td>The eCPIC Investment that provides funding for this application.</td>
+	<td>Government Wide Shared Service.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>IsRevenueGenerator</code>
+		<code>POC</code>
 		</td>
-	<td>Does this Business Application generate revenue? Values limited to Yes, No and TBD</td>
+	<td>Point of Contact.</td>
 	<td>string</td>
-	</tr>
-
-
-<tr>
-	<td>
-		<code>DesktopComponent</code>
-		</td>
-	<td>Does this Business Application have a component that can be installed on a laptop or desktop? Values limited to Yes, No and TBD.</td>
-	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>RetiredYear</code>
+		<code>AO</code>
 		</td>
-	<td>Year the application was retired. Will be NULL if “Status” is not “Retired”</td>
+	<td>Authorizing Official.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>Capabilites</code>
+		<code>SO</code>
 		</td>
-	<td>A comma separated list of the FEAF BRM capabilities that are supported by this application.</td>
+	<td>System Owner.</td>
 	<td>string</td>
-	</tr>
+</tr>
+		
+<tr>
+	<td>
+		<code>ISSM</code>
+		</td>
+	<td>Information System Security Manager (ISSM).</td>
+	<td>string</td>
+</tr>
 
-  <tr>
+<tr>
 	<td>
-		<code>Technologies</code>
+		<code>ISSO</code>
 		</td>
-	<td>A comma separated list of IT Standards that compose this application.</td>
+	<td>Information System Security Officer (ISSO).</td>
 	<td>string</td>
-	</tr>
-  
-  <tr>
+</tr>
+
+<tr>
 	<td>
-		<code>Link</code>
+		<code>CO</code>
 		</td>
-	<td>The URL that points to the applications web interface. If there are more than one, they will be separated by commas.</td>
+	<td>Contracting Officer.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>COR</code>
+		</td>
+	<td>Contracting Officer Representative.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>BusPOC</code>
+		</td>
+	<td>Business Point of Contact.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>TechPOC</code>
+		</td>
+	<td>Technical Point of Contact.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>RelatedArtifacts</code>
+		</td>
+	<td>Artifacts related to the System.</td>
+	<td>string</td>
+</tr>
 
 </tbody>
 </table>
@@ -294,8 +344,8 @@ nav: fields
 		<code>Id</code>
 		</td>
 	<td>The database key that identifies the IT Standard.</td>
-	<td>string</td>
-	</tr>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
@@ -303,7 +353,7 @@ nav: fields
 		</td>
 	<td>Name of the IT Standard.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
@@ -311,22 +361,88 @@ nav: fields
 		</td>
 	<td>Description of IT Standard.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>Type</code>
+		<code>ApprovalExpirationDate</code>
 		</td>
-	<td> The type of IT Standard. This value will only be Software.</td>
+	<td> Date that the current approval status exires.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
-		<code>Category</code>
+		<code>Vendor_Standard_Organization</code>
 		</td>
-	<td>The category(ies) that apply to this standard. Multiple categories may apply, and will be separated by commas.</td>
+	<td>Technology Vendor/Manufacturer Name.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>Available_through_Myview</code>
+		</td>
+	<td>Returns availability through Myview.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Gold_Image</code>
+		</td>
+	<td>Image of GSA standard desktop.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Gold_Image_Comment</code>
+		</td>
+	<td>Additional details pertaining to the GSA standard desktop image.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Comments</code>
+		</td>
+	<td>Additional comments to add context to the IT Standard entry.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Old_Id</code>
+		</td>
+	<td>Id that is old.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ReferenceDocument</code>
+		</td>
+	<td>Identifies the URL for the SalesForce record that stores the current status (historical record) of the technology approval process.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CreateDTG</code>
+		</td>
+	<td>The date/time that this object was initially created.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ChangeDTG</code>
+		</td>
+	<td>The date/time that this object was last updated/changed.</td>
+	<td>string</td>
+</tr>
+
 <tr>
 	<td>
 		<code>Status</code>
@@ -344,7 +460,8 @@ nav: fields
     </ul>
   </td>
   <td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>DeploymentType</code>
@@ -358,36 +475,189 @@ nav: fields
     </ul>
   </td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
-		<code>Comments</code>
+		<code>StandardType</code>
 		</td>
-	<td>Additional comments to add context to the IT Standard entry.</td>
+	<td>Type of IT Standard.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>ComplianceStatus</code>
+		</td>
+	<td>Status of IT Standard compliance.</td>
+	<td>string</td>
+</tr>
+
 <tr>
 	<td>
 		<code>POC</code>
 		</td>
 	<td>The point of contact for this IT Standard</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
-		<code>ReferenceDocuments</code>
+		<code>Category</code>
 		</td>
-	<td>This is a hyperlink to the Request Tracker entry relating to the IT Standard request.</td>
+	<td>Category of IT Standard.</td>
 	<td>string</td>
 	</tr>
+	<tr>
+		<td>
+			<code>Manufacturer</code>
+			</td>
+		<td>The unique identifier for manufacturer</td>
+		<td>string</td>
+		</tr>
 <tr>
 	<td>
-		<code>ApprovalExpirationDate</code>
+		<code>SoftwareVersion</code>
 		</td>
-	<td>Year and month that the approval for this standard expires. Standards that are not in an "approved" or "pilot" state will have NULL for this field.</td>
+	<td>The unique identifier for software version</td>
 	<td>string</td>
 	</tr>
 
+<tr>
+	<td>
+		<code>SoftwareProductName</code>
+		</td>
+	<td>The complete name of the product as presented by the vendor in the software license as well as other official documentations and/or website</td>
+	<td>string</td>
+	</tr>
+	
+<tr>
+	<td>
+		<code>ManufacturerName</code>
+		</td>
+	<td>The name of entity which builds, manufactures and/or supports or provides maintenance of the hardware; or develops, publishes and/or supports the software. Captured as the well-known name of the entity in the market (which may or may not the same as the legal name)</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareVersionName</code>
+		</td>
+	<td>The software version name or number</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareRelease</code>
+		</td>
+	<td>The unique identifier for software releases</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareReleaseName</code>
+		</td>
+	<td>Concatenation of manufacturerName + softwareProductName + softwareVersionName</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareReleaseIsToBeDeleted</code>
+		</td>
+	<td>This indicates whether or not a Software Release record is marked for deletion (i.e. Y or N)</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>SoftwareReleaseToBeDeletedOn</code>
+		</td>
+	<td>The date when the Software Release record will be deleted</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>EndOfLifeDate</code>
+		</td>
+	<td>The last date when full support for a product is provided by the vendor, and standardized to follow BDNA’s date format. Partial support may still be still available
+</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code></code>
+		</td>
+	<td></td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>attestation_required</code>
+		</td>
+	<td>This field denotes whether an attestation letter is required by the software producer. Federal agencies must only use software provided by software producers who can attest to complying with the Government-specified secure. Software development practices, as described in the NIST Special Publication 800-218. A software producer’s self-attestation serves as a conformance statement described by the NIST Guidance. The agency must obtain a self-attestation for all third-party software subject to the requirements of this memorandum used by the agency, including software renewals and major version changes.</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>attestation_link</code>
+		</td>
+	<td>This field provides a URL link to the attestation letter of the software producer. Federal agencies must only use software provided by software producers who can attest to complying with the Government-specified secure software development practices, as described in the NIST Special Publication 800-218. A software producer’s self-attestation serves as a conformance statement described by the NIST Guidance. The agency must obtain a self-attestation for all third-party software subject to the requirements of this memorandum used by the agency, including software renewals and major version changes.</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>fedramp</code>
+		</td>
+	<td>Denotes whether or not a cloud software has been FedRAMP certified. The FedRAMP Authorization Act codifies the FedRAMP program as the authoritative standardized approach to security assessment and authorization for cloud computing products and services that process unclassified federal information.</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>open_source</code>
+		</td>
+	<td>Denotes whether or not the software is an open source software. Open source refers to software that can be accessed, used, modified, and shared by anyone. OSS is often distributed under licenses that comply with the definition of 'Open Source' provided by the Open Source Initiative (https://opensource.org/osd) and/or that meet the definition of 'Free Software' provided by the Free Software Foundation.</td>
+	<td>string</td>
+</tr>	
+<tr>
+	<td>
+		<code>Request Item (RITM)</code>
+		</td>
+	<td>Request Items (RITMs) contain the actual form the customer submitted and links to one or more tasks required for fulfillment. RITMs can be assigned to a fulfillment group, not an individual.</td>
+	<td>string</td>
+</tr>
+<tr>
+	<td>
+		<code>OldName</code>
+		</td>
+	<td></td>
+	<td>string</td>
+	</tr>	
+<tr>
+	<td>
+		<code></code>
+		</td>
+	<td>The name of the software as it was originally entered into the system using an open-text data field. The IT standards team has transitioned to using standardized naming conventions for software. If no standard naming convention can be found, the title of the software on the front-end of GEAR will revert to using this name, the original name of the software as it was entered into GEAR.</td>
+	<td>string</td>
+	</tr>	
+<tr>
+	<td>
+		<code>StandardType</code>
+		</td>
+	<td>Denotes whether the IT standard is a type of hardware, software, or an industry standard.</td>
+	<td>string</td>
+	</tr>	
+<tr>
+	<td>
+		<code>ComplianceStatus</code>
+		</td>
+	<td>This field denotes the compliance level of an IT standard entry in meeting the tenets of Section 508. Section 508 of the Rehabilitation Act of 1973 requires that, when developing, procuring, maintaining, or using electronic and information technology, each Federal department or agency should ensure that individuals with disabilities have access to and use of information and data that is comparable to the access to and use of the information and data by those who are not individuals with disabilities</td>
+	<td>string</td>
+	</tr>	
+<tr>
+	<td>
+		<code>POCorg</code>
+		</td>
+	<td>Organization of the Point of Contact who requested the IT Standard</td>
+	<td>string</td>
+	</tr>			
 </tbody>
 </table>
 
@@ -415,8 +685,24 @@ nav: fields
 		<code>Id</code>
 		</td>
 	<td>The database key that identifies the FISMA System</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>RespOrg</code>
+		</td>
+	<td>Organization responsible for FISMA System</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>BusOrg</code>
+		</td>
+	<td>Full name and 1 or 2-letter symbol of the organization that uses/owns the business capabilities application provides.</td>
+	<td>string</td>
+</tr>
 
 <tr>
 	<td>
@@ -424,15 +710,15 @@ nav: fields
 		</td>
 	<td>Name of the FISMA System.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>RelOrgDisplayName</code>
+		<code>DisplayName</code>
 		</td>
 	<td>The short name of the organization that is related to this FISMA System.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
@@ -440,42 +726,224 @@ nav: fields
 		</td>
 	<td>Is this FISMA System related to a Federal or Contractor location.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
-		<code>FIPS199</code>
+		<code>FIPS_Impact_Level</code>
 		</td>
 	<td>The FIPS 199 impact level of the FISMA System. One of the following values: High, Moderate, or Low.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>ATODate</code>
 		</td>
 	<td>Date was the ATO isssued</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>ATOType</code>
 		</td>
 	<td>Type of ATO that certifies this FISMA System.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>RenewalDate</code>
 		</td>
 	<td>Date when the ATO needs to be renewed.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>ComplFISMA</code>
 		</td>
 	<td>Has the annual FISMA review for this FISMA System been completed for this Fiscal Year.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>PII</code>
+		</td>
+	<td>PII indicator.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CloudYN</code>
+		</td>
+	<td>Cloud indicator.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CSP</code>
+		</td>
+	<td>Hosting provider.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ServiceType</code>
+		</td>
+	<td>Type of service.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FISMASystemIdentifier</code>
+		</td>
+	<td>FIMSA System identification.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Status</code>
+		</td>
+	<td>FISMA System status.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>InactiveDate</code>
+		</td>
+	<td>Date the FISMA System went inactive.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Description</code>
+		</td>
+	<td>Additional details pertaining to FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>SystemLevel</code>
+		</td>
+	<td>Level of FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ParentName</code>
+		</td>
+	<td>Name of parent System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>SubSystem_Tag</code>
+		</td>
+	<td>Tag of sub System ID.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Reportable</code>
+		</td>
+	<td>Returns if FISMA System is reportable (displayed).</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>SharedService</code>
+		</td>
+	<td>Returns if FISMA System is shared Government wide.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>POC</code>
+		</td>
+	<td>Point of Contact for FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>AO</code>
+		</td>
+	<td>Authorizing Official for this FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>SO</code>
+		</td>
+	<td>System Owner for this FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ISSM</code>
+		</td>
+	<td>ISSM for this FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ISSO</code>
+		</td>
+	<td>ISSO for this FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CO</code>
+		</td>
+	<td>Contracting Officer for this FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>COR</code>
+		</td>
+	<td>Contracting Officer Representative for this FISMA System.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>BusPOC</code>
+		</td>
+	<td>Business Point of Contact.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>TechPOC</code>
+		</td>
+	<td>Technical Point of Contact.</td>
+	<td>string</td>
+</tr>
+
 <tr>
 	<td>
 		<code>RelatedArtifacts</code>
@@ -483,98 +951,51 @@ nav: fields
 	<td> Letters and other artifacts related to this FISMA System. This will be returned as an array containing zero, one, or many Artifacts, containing the NAME of the Artifact and ReferenceDocuments, which will be the URL of the Artifact.</td>
 	<td>string</td>
 	</tr>
-<tr>
-	<td>
-		<code>FISMASystemIdentifier</code>
-		</td>
-	<td>A shortened identifier for FISMA Systems for uses with Security's Continuous Monitoring System.</td>
-	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code>ISSO</code>
-		</td>
-	<td> ISSO for this FISMA System.</td>
-	<td>string</td>
-	</tr>
-  <tr>
-	<td>
-		<code>ISSM</code>
-		</td>
-	<td> ISSM for this FISMA System.</td>
-	<td>string</td>
-	</tr>
-  <tr>
-	<td>
-		<code>AO</code>
-		</td>
-	<td>Authorizing Official for this FISMA System.</td>
-	<td>string</td>
-	</tr>
-  <tr>
-	<td>
-		<code>PM</code>
-		</td>
-	<td>Program Manager for this FISMA System.</td>
-	<td>string</td>
-	</tr>
-  
+	<tr>
+		<td>
+			<code>SystemLevel</code>
+			</td>
+		<td>This field denotes whether an entry is considered a system or a subsystem. A 'System' within GSA's Agency System Inventory, is tracked as 'FISMA Information System'. A 'Subsystem' is a system/application that may be coalesced together as subsystems of a single larger, more comprehensive system (FISMA System) for the purposes of security authorization. Minor applications/subsystems must be under the same management authority, have the same function or mission objective, the same operating characteristics, and information security needs, and reside in the same general operating environment(s).</td>
+		<td>string</td>
+		</tr>	
+	<tr>
+		<td>
+			<code>FIPS_Impact_Level</code>
+			</td>
+		<td>The FIPS Impact Level is a security category of an information system established in FIPS 199 which classifies the intensity of a potential impact that may occur if the information system is jeopardized.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>Reportable</code>
+			</td>
+		<td>Definition: This field denotes whether the FISMA system is reported to the Office of Management and Budget on a quarterly basis. Only those at the system level (i.e. not subsystems) are reported. Title III of the E-Government Act requiring each federal agency to develop, document, and implement an agency-wide program to provide information security for the information and information systems that support the operations and assets of the agency, including those provided or managed by another agency, contractor, or other source.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>PII</code>
+			</td>
+		<td>This field denotes whether the system/subsystem contains any Personally Identifiable Information. PII is any representation of information that permits the identity of an individual to whom the information applies to be reasonably inferred by either direct or indirect means.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>CUI</code>
+			</td>
+		<td>A yes/no designation for whether the system contains controlled unclassified information (CUI). CUI is information that does not meet the standards for National Security Classification under Executive Order 12958, as amended, but is (i) pertinent to the national interests of the United States or to the important interests of entities outside the federal government, and (ii) under law or policy requires protection from unauthorized disclosure, special handling safeguards, or prescribed limits on exchange or dissemination.</td>
+		<td>string</td>
+		</tr>
+	<tr>
+		<td>
+			<code>RespOrg</code>
+			</td>
+		<td>Identifies the GSA IT organization that is responsible for supporting the IT assets supporting the FISMA system or subsystem.</td>
+		<td>string</td>
+		</tr>
 </tbody>
 </table>
 
-<h5>System API Fields</h5>
-
-<table id="city-pairs-fields" class="field-table">
-	<colgroup>
-		<col span="1" style="width: 36%;">
-		<col span="1" style="width: 36%;">
-		<col span="1" style="width: 18%;">
-		
-	</colgroup>
-<thead>
-<tr>
-<th>Field name</th>
-<th>Description</th>
-<th>Data type</th>
-
-</tr>
-</thead>
-<tbody>
-
-<tr>
-	<td>
-		<code>Id</code>
-		</td>
-	<td>The database key that identifies the System</td>
-	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>Name</code>
-		</td>
-	<td>Name of the System.</td>
-	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>Description</code>
-		</td>
-	<td>Description of the System.</td>
-	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>SSO</code>
-		</td>
-	<td>Verbose name of the SSO that manages the System.</td>
-	<td>string</td>
-	</tr>
-  
-</tbody>
-</table>
 
 <h5>Organization API Fields</h5>
 
@@ -600,8 +1021,8 @@ nav: fields
 		<code>Id</code>
 		</td>
 	<td>The database key that identifies the Organization</td>
-	<td>string</td>
-	</tr>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
@@ -609,28 +1030,60 @@ nav: fields
 		</td>
 	<td>Name of the Organization.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>Description</code>
+		<code>DisplayName</code>
 		</td>
-	<td>Description of the Organization.</td>
+	<td>Display name of the Organization.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>OrgSymbol</code>
+		</td>
+	<td>Organization symbol.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>SSOName</code>
+		</td>
+	<td>One letter Organization name.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>TwoLetterOrgSymbol</code>
+		</td>
+	<td>Two letter Organization symbol.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>TwoLetterOrgName</code>
+		</td>
+	<td>Two letter Organization name.</td>
+	<td>string</td>
+</tr>
 
 <tr>
 	<td>
 		<code>Parent</code>
 		</td>
-	<td>Verbose name of the Parent Organization.</td>
+	<td>Name of the Parent Organization.</td>
 	<td>string</td>
-	</tr>
+</tr>
   
 </tbody>
 </table>
 
-<h5>Business Capability API Fields</h5>
+<h5>Capability API Fields</h5>
 
 <table id="city-pairs-fields" class="field-table">
 	<colgroup>
@@ -653,17 +1106,25 @@ nav: fields
 	<td>
 		<code>Id</code>
 		</td>
-	<td>The database key that identifies the Business Capability</td>
-	<td>string</td>
-	</tr>
+	<td>The database key that identifies the Capability</td>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
 		<code>Name</code>
 		</td>
-	<td>Name of the Business Capability.</td>
+	<td>Name of the Capability.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>ReferenceNum</code>
+		</td>
+	<td>The hierarchical reference number for this Capability.</td>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
@@ -671,23 +1132,23 @@ nav: fields
 		</td>
 	<td>Description of the Business Capability.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>Level</code>
+		</td>
+	<td>Level of the Capability.</td>
+	<td>string</td>
+</tr>
 
 <tr>
 	<td>
 		<code>Parent</code>
 		</td>
-	<td>The parent capability to this Business Capability.</td>
+	<td>The parent capability to this Capability.</td>
 	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>ReferenceNum</code>
-		</td>
-	<td>The hierarchical reference number for this Business Capability.</td>
-	<td>string</td>
-	</tr>
+</tr>
   
 </tbody>
 </table>
@@ -716,8 +1177,16 @@ nav: fields
 		<code>Id</code>
 		</td>
 	<td>The database key that identifies the IT Investment.</td>
-	<td>string</td>
-	</tr>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>UII</code>
+		</td>
+	<td>The Unique Investment ID for this IT Investment that is tracked in eCPIC.</td>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
@@ -725,39 +1194,55 @@ nav: fields
 		</td>
 	<td>Name of the IT Investment.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
 		<code>Description</code>
 		</td>
-	<td>Description of the IT Investment</td>
+	<td>Description of the IT Investment.</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>Type</code>
+		<code>Budget_Year</code>
 		</td>
-	<td>How this IT Investment is characterized. Values are "Major IT Investment," "Non-Major Investment," or "Funding Transfer Investment"</td>
-	<td>string</td>
-	</tr>
+	<td>Budget year for which the IT Investment information relates to.</td>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
-		<code>PSA</code>
+		<code>Cloud_Alt</code>
 		</td>
-	<td>The Primary Service Area of this IT Investment. This is the main Business Capability that this investment supports.</td>
-	<td>string</td>
-	</tr>
+	<td>Cloud status identified as part of CPIC</td>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
-		<code>SSA</code>
+		<code>Comments</code>
 		</td>
-	<td>The Secondary Service Area of this IT Investment. This is a secondary Business Capability that this investment may support.</td>
+	<td>Additional details pertaining to this IT Investment</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>Start_Year</code>
+		</td>
+	<td>The year this IT Investment started/will start.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>End_Year</code>
+		</td>
+	<td>The year this IT Investment will end.</td>
+	<td>integer</td>
+</tr>
 
 <tr>
 	<td>
@@ -765,15 +1250,826 @@ nav: fields
 		</td>
 	<td>The Point of Contact for this IT Investment</td>
 	<td>string</td>
-	</tr>
+</tr>
 
 <tr>
 	<td>
-		<code>UII</code>
+		<code>Status</code>
 		</td>
-	<td>The Unique Investment ID for this IT Investment that is tracked in eCPIC.</td>
+	<td>The status of this IT Investment.</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<td>
+		<code>Type</code>
+		</td>
+	<td>How this IT Investment is characterized. Values are "Major IT Investment," "Non-Major Investment," or "Funding Transfer Investment"</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>IT_Portfolio</code>
+		</td>
+	<td>Investment portfolios for this IT Investment.</td>
+	<td>string</td>
+</tr>
+			
+<tr>
+	<td>
+		<code>PSA</code>
+		</td>
+	<td>The Primary Service Area of this IT Investment. This is the main Business Capability that this investment supports.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Updated_Date</code>
+		</td>
+	<td>Date information the last official submitted in Folio/IT dashboard for CPIC.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Total_Spend_PY</code>
+		</td>
+	<td>An investment’s total spend in the previous year (PY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Total_Spend_CY</code>
+		</td>
+	<td>An investment’s total spend in the current year (CY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Total_Spend_BY</code>
+		</td>
+	<td>An investment’s total spend in the budget year (BY). A budget year is typically the current year (CY) plus 1.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DME_Agency_Fund_PY</code>
+		</td>
+	<td>An investment's total development, modernization, and enhancement (DME) dollars in the previous year (PY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DME_Contributions_CY</code>
+		</td>
+	<td>An investment's total development, modernization, and enhancement (DME) dollars contributed in the current year (CY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DME_Agency_Fund_BY</code>
+		</td>
+	<td>An investment's total development, modernization, and enhancement (DME) dollars in the budget year (BY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DME_Agency_Fund_CY</code>
+		</td>
+	<td>An investment's total development, modernization, and enhancement (DME) dollars in the current year (CY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DME_Contributions_BY</code>
+		</td>
+	<td>An investment's total development, modernization, and enhancement (DME) dollars contributed in the budget year (BY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DME_Contributions_PY</code>
+		</td>
+	<td>DME agency contributions (PY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DME_Budget_Auth_BY</code>
+		</td>
+	<td>An investment's total operation and maintenance (O&M) dollars authorized in the budget year (BY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>OnM_Agency_Fund_PY</code>
+		</td>
+	<td>An investment’s total operation and maintenance (O&M) dollars in the previous year (PY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>OnM_Contributions_PY</code>
+		</td>
+	<td>An investment's total operation and maintenance (O&M) dollars contributed in the previous year (PY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>OnM_Agency_Fund_CY</code>
+		</td>
+	<td>An investment’s total operation and maintenance (O&M) dollars in the current year (CY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>OnM_Contributions_CY</code>
+		</td>
+	<td>An investment's total operation and maintenance (O&M) dollars contributed in the current year (CY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>OnM_Agency_Fund_BY</code>
+		</td>
+	<td>An investment’s total operation and maintenance (O&M) dollars in the budget year (BY).</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>OnM_Contributions_BY</code>
+		</td>
+	<td>An investment's total operation and maintenance (O&M) dollars contributed in the budget year (BY).</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>OnM_Budget_Auth_BY</code>
+		</td>
+	<td>An investment's total operation and maintenance (O&M) dollars authorized in the budget year (BY).</td>
+	<td>integer</td>
+</tr>
+  
+</tbody>
+</table>
+
+<h5>POC API Fields</h5>
+
+<table id="city-pairs-fields" class="field-table">
+	<colgroup>
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 18%;">
+		
+	</colgroup>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+<th>Data type</th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+	<td>
+		<code>SamAccountName</code>
+		</td>
+	<td>The database key that identifies the POC</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Name</code>
+		</td>
+	<td>Name of the POC.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Email</code>
+		</td>
+	<td>Email of the POC.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Phone</code>
+		</td>
+	<td>Phone number of the POC.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Organization</code>
+		</td>
+	<td>Organization the POC is with.</td>
+	<td>string</td>
+</tr>
+  
+</tbody>
+</table>
+
+<h5>Records API Fields</h5>
+
+<table id="city-pairs-fields" class="field-table">
+	<colgroup>
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 18%;">
+		
+	</colgroup>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+<th>Data type</th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+	<td>
+		<code>Rec_ID</code>
+		</td>
+	<td>The database key that identifies the Record</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Record_status</code>
+		</td>
+	<td>Status of the Record.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>RG</code>
+		</td>
+	<td>Each RG (Record Group) has a number. For example, records series created by the National Park Service are located within Record Group 79.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>GSA_Number</code>
+		</td>
+	<td>GSA ID number.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Record_Item_Title</code>
+		</td>
+	<td>OAS Record name.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Description</code>
+		</td>
+	<td>Description of the Record.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Retention_Instructions</code>
+		</td>
+	<td>Retention instructions for this Record.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Legal_Disposition_Authority</code>
+		</td>
+	<td>Disposition authority for this Record.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Type_Disposition</code>
+		</td>
+	<td>Type of disposition.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Date_DA_Approved</code>
+		</td>
+	<td>Approval date.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Disposition_Notes</code>
+		</td>
+	<td>Notes about the disposition for this Record.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FP_Category</code>
+		</td>
+	<td>The File Plan (FP) Category is the records retention schedule that determines how long to retain records.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>PII</code>
+		</td>
+	<td>PII Indicator.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CUI</code>
+		</td>
+	<td>Cloud Indicator.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FY_Retention_Years</code>
+		</td>
+	<td>The number of fiscal years that a record is required to be retained.</td>
+	<td>string</td>
+</tr>
+  
+</tbody>
+</table>
+
+<h5>Search API Fields</h5>
+
+<table id="city-pairs-fields" class="field-table">
+	<colgroup>
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 18%;">
+		
+	</colgroup>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+<th>Data type</th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+	<td>
+		<code>Id</code>
+		</td>
+	<td>The database key that identifies the Search</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Name</code>
+		</td>
+	<td>Name of the Search.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Description</code>
+		</td>
+	<td>Description of the Search.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>GEAR_Type</code>
+		</td>
+	<td>Type of search within GEAR.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Other</code>
+		</td>
+	<td>Other information related to the Search.</td>
+	<td>string</td>
+</tr>
+  
+</tbody>
+</table>
+
+<h5>System TIME API Fields</h5>
+
+<table id="city-pairs-fields" class="field-table">
+	<colgroup>
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 18%;">
+		
+	</colgroup>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+<th>Data type</th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+	<td>
+		<code>System_Id</code>
+		</td>
+	<td>The database key that identifies the System TIME</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>System_Name</code>
+		</td>
+	<td>Name of the System TIME.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FY</code>
+		</td>
+	<td>The fiscal year that the TIME designation represents.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>TIME Designation</code>
+		</td>
+	<td>TIME (Tolerate, Invest, Migrate, or Eliminate) is a tool that is used to determine where a business system is in its lifecycle.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Business Score</code>
+		</td>
+	<td>The score that a system receives after a business POC for a system answers a TIME questionnaire about the business impact of the system.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Technical Score</code>
+		</td>
+	<td>The score that a system receives after a technical POC for a system answers a TIME questionnaire about the technical impact of the system.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>O&M Cost</code>
+		</td>
+	<td>Operations and Maintenance cost for the fiscal year.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>DM&E Cost</code>
+		</td>
+	<td>cost for the fiscal year.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Software/Hardware License Cost</code>
+		</td>
+	<td>cost for the fiscal year.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Data Script Run</code>
+		</td>
+	<td>The date/time that a Google script was executed to consolidate all of the completed TIME questionnaires in order to be imported into GEAR’s database.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Questionnaire Last Updated</code>
+		</td>
+	<td>Date questionnaire was last updated.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>POC Last Updated</code>
+		</td>
+	<td>Date the point of contact was last updated.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>File Link</code>
+		</td>
+	<td>A link to the completed TIME questionnaire.</td>
+	<td>string</td>
+</tr>
+  
+</tbody>
+</table>
+
+<h5>Websites API Fields</h5>
+
+<table id="city-pairs-fields" class="field-table">
+	<colgroup>
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 18%;">
+		
+	</colgroup>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+<th>Data type</th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+	<td>
+		<code>Website_ID</code>
+		</td>
+	<td>The database key that identifies the Website</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>domain</code>
+		</td>
+	<td>Website URL.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>office</code>
+		</td>
+	<td>Primary office that manages the site, typically the service or staff office (SSO) (one-letter office).</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>sub_office</code>
+		</td>
+	<td>Sub-office that owns the site, typically a two-letter office or deeper.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>contact_email</code>
+		</td>
+	<td>Email for point of contact.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>site_owner_email</code>
+		</td>
+	<td>Email for site owner.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>production_status</code>
+		</td>
+	<td>Production status of Website.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>type_of_site</code>
+		</td>
+	<td>Type of Website.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>redirects_to</code>
+		</td>
+	<td>URL the Website redirects to.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>cms_platform</code>
+		</td>
+	<td>The content management system (CMS) or platform the site uses to manage its content.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>required_by_law_or_policy</code>
+		</td>
+	<td>Explanation of statutory requirements supporting creation of the site.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>has_dap</code>
+		</td>
+	<td>Boolean field that states whether the website has the Digital Analytics Program (DAP) script embedded.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>mobile_friendly</code>
+		</td>
+	<td>Indicator of whether a mobile version of the Website has been developed.</td>
+	<td>boolean</td>
+</tr>
+
+<tr>
+	<td>
+		<code>has_search</code>
+		</td>
+	<td>Returns if there is a search for Website.</td>
+	<td>boolean</td>
+</tr>
+
+<tr>
+	<td>
+		<code>repository_url</code>
+		</td>
+	<td>Repository URL for the Website.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>hosting_platform</code>
+		</td>
+	<td>The platform or service provider the site uses for its web hosting.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>https</code>
+		</td>
+	<td>https: States whether the site uses https encryption.</td>
+	<td>boolean</td>
+</tr>
+
+<tr>
+	<td>
+		<code>customer_centricity</code>
+		</td>
+	<td>A score between 0 and 1 that denotes how well the site adheres to human centered design principles.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>mobile_performance</code>
+		</td>
+	<td>A score between 0 and 1 from Lighthouse which determines how well the website is displayed and interacted with on a mobile device.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>google_analytics</code>
+		</td>
+	<td>A score between 0 and 1 that denotes whether the website uses web analytics.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>accessibility</code>
+		</td>
+	<td>A score between 0 and 1 that determines how well the website adheres to accessibility principles and regulations.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>uswds</code>
+		</td>
+	<td>A  score between 0 and 1 that determines whether the website uses components from the US Web Design System.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>required_links</code>
+		</td>
+	<td>a score between 0 and 1 that determines whether a site has the required links (e.g. policy links related to FOIA, privacy, accessibility, etc.).</td>
+	<td>integer</td>
+</tr>
+  
+</tbody>
+</table>
+
+<h5>Website Service Category API Fields</h5>
+
+<table id="city-pairs-fields" class="field-table">
+	<colgroup>
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 18%;">
+		
+	</colgroup>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+<th>Data type</th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+	<td>
+		<code>website_service_category_id</code>
+		</td>
+	<td>The database key that identifies the Website Service Category</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>name</code>
+		</td>
+	<td>The name of the Website Service Category.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>description</code>
+		</td>
+	<td>Description of the Website Service Category.</td>
+	<td>string</td>
+</tr>
   
 </tbody>
 </table>
