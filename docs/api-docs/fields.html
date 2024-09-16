@@ -311,6 +311,14 @@ nav: fields
 
 <tr>
 	<td>
+		<code>DataSteward</code>
+		</td>
+	<td>The Data Steward ensures data integrity throughout the lifecycle of a system.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
 		<code>RelatedArtifacts</code>
 		</td>
 	<td>Artifacts related to the System.</td>
@@ -600,6 +608,13 @@ nav: fields
 		<code>attestation_link</code>
 		</td>
 	<td>This field provides a URL link to the attestation letter of the software producer. Federal agencies must only use software provided by software producers who can attest to complying with the Government-specified secure software development practices, as described in the NIST Special Publication 800-218. A software producer’s self-attestation serves as a conformance statement described by the NIST Guidance. The agency must obtain a self-attestation for all third-party software subject to the requirements of this memorandum used by the agency, including software renewals and major version changes.</td>
+	<td>string</td>
+	</tr>
+<tr>
+	<td>
+		<code>ApprovedVersions</code>
+		</td>
+	<td>Unless otherwise stated, all minor versions share the same approval status as the version listed. For example, if version “1.0” is listed and has a status of “Approved”, then version 1.1, 1.2, 1.3, etc. are also approved.</td>
 	<td>string</td>
 	</tr>
 <tr>
