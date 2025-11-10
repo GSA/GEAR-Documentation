@@ -97,10 +97,7 @@
               "in": "path",
               "description": "Data Flow ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -129,10 +126,7 @@
               "in": "path",
               "description": "Capability ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -161,10 +155,7 @@
               "in": "path",
               "description": "Organizations ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -191,10 +182,7 @@
               "in": "path",
               "description": "POCs ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -246,10 +234,7 @@
               "in": "path",
               "description": "Capability ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -278,10 +263,7 @@
               "in": "path",
               "description": "Capability ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -310,10 +292,7 @@
               "in": "path",
               "description": "Capability Name",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             }
           ],
           "responses": {
@@ -382,10 +361,7 @@
               "in": "path",
               "description": "FISMA ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -432,10 +408,7 @@
               "in": "path",
               "description": "Investments ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -462,10 +435,7 @@
               "in": "path",
               "description": "Investments ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -532,10 +502,7 @@
               "in": "path",
               "description": "IT Standards ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -562,10 +529,7 @@
               "in": "path",
               "description": "IT Standards ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -732,10 +696,7 @@
               "in": "path",
               "description": "Organizations ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -762,10 +723,7 @@
               "in": "path",
               "description": "Organizations Name",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             }
           ],
           "responses": {
@@ -830,10 +788,7 @@
               "in": "path",
               "description": "Records ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -860,10 +815,7 @@
               "in": "path",
               "description": "Records ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -910,10 +862,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -940,10 +889,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -970,10 +916,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1000,10 +943,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1030,10 +970,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1060,10 +997,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1130,10 +1064,7 @@
               "in": "path",
               "description": "Website Service Category ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1162,10 +1093,7 @@
               "in": "path",
               "description": "Website Service Category ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1214,10 +1142,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1244,10 +1169,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1274,20 +1196,14 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             },
             {
               "name": "scanId",
               "in": "path",
               "description": "Websites ScanID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1314,10 +1230,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1344,10 +1257,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
