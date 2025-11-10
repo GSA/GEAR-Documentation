@@ -112,6 +112,35 @@
             }
           }
         }
+      },
+      "/pocs/get/{id}": {
+        "get": {
+          "tags": [
+            "POCs"
+          ],
+          "summary": "Find POC by ID",
+          "description": "Returns one POC identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "POCs ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/pocs"
+                }
+              }
+            }
+          }
+        }
       }
     },
 
@@ -715,35 +744,6 @@
           ],
           "summary": "List of all POCs",
           "description": "Returns the list of all POCs tracked in GEAR",
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/definitions/pocs"
-                }
-              }
-            }
-          }
-        }
-      },
-      "/pocs/get/{id}": {
-        "get": {
-          "tags": [
-            "POCs"
-          ],
-          "summary": "Find POC by ID",
-          "description": "Returns one POC identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "POCs ID",
-              "required": true,
-              "type": "integer"
-            }
-          ],
           "responses": {
             "200": {
               "description": "",
