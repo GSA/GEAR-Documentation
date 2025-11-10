@@ -694,7 +694,7 @@
               "in": "path",
               "description": "Organizations ID",
               "required": true,
-              "type": "integer"
+              "type": "string"
             }
           ],
           "responses": {
