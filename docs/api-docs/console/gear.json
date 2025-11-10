@@ -822,7 +822,7 @@
             "200": {
               "description": "This will display the array of systems associated with a record",
                   "schema": {
-                    "type": "string",
+                    "type": "array",
                     "$ref":"#/definitions/records-systems"
                   }
             }
@@ -856,6 +856,33 @@
           ],
           "summary": "Find System by ID",
           "description": "Returns one Business System by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/systems"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/subsystems": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find Subsystems of a Parent System by ID",
+          "description": "Returns one or more subsystems by the {id} of the parent system",
           "parameters": [
             {
               "name": "id",
