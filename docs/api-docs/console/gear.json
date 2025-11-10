@@ -141,7 +141,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/definitions/capabilities"
+                      "$ref": "#/definitions/organizations"
                     }
                   }
             }
@@ -758,7 +758,7 @@
           "description": "Returns the Business Systems that are related to the Organization identified by {name}",
           "parameters": [
             {
-              "name": "id",
+              "name": "name",
               "in": "path",
               "description": "Organizations Name",
               "required": true,
@@ -1280,7 +1280,7 @@
               }
             },
             {
-              "name": "id",
+              "name": "scanId",
               "in": "path",
               "description": "Websites ScanID",
               "required": true,
@@ -1875,6 +1875,10 @@
               "Parent": {
                 "type": "string",
                 "description": "Verbose name of the Parent Organization."
+              },
+              "Parent_ID": {
+                "type": "string",
+                "description": "The database key that identifies the Parent Organization of the Organization."
               }
           }
       },
