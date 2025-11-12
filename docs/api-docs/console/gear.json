@@ -689,11 +689,11 @@
           "description": "Returns one Organization identified by {id}",
           "parameters": [
             {
-              "name": "id",
+              "name": "ID",
               "in": "path",
               "description": "Organizations ID",
               "required": true,
-              "type": "integer"
+              "type": "string"
             }
           ],
           "responses": {
@@ -1361,6 +1361,33 @@
               "description": "",
                   "schema": {
                     "type": "array",
+                    "$ref":"#/definitions/data_dictionary"
+                  }
+            }
+          }
+        }
+      },
+      "/data_dictionary/get/{reportName}": {
+        "get": {
+          "tags": [
+            "Data Dictionary"
+          ],
+          "summary": "Find data field definitions by report name",
+          "description": "Returns the list of data dictionary data fields and their definitions based on the report name specified",
+          "parameters": [
+            {
+              "name": "reportName",
+              "in": "path",
+              "description": "ReportName",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "string",
                     "$ref":"#/definitions/data_dictionary"
                   }
             }
