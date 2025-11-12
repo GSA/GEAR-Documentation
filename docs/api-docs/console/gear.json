@@ -1356,15 +1356,6 @@
           ],
           "summary": "List of data field names and definitions",
           "description": "Returns a list of data field names being used in GEAR's reports, their definition, and the sources of their definition and underlying data.",
-          "parameters": [
-            {
-              "name": "Id",
-              "in": "path",
-              "description": "The database key that identifies the database definition object.",
-              "required": true,
-              "type": "integer"
-            }
-          ],
           "responses": {
             "200": {
               "description": "",
