@@ -616,6 +616,26 @@
           }
         }
       },
+      "/it_standards/recent": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of IT standards updated in the last 7 days",
+          "description": "Returns a list of IT Standards that have been added or updated in the last 7 days",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards"
+                }
+              }
+            }
+          }
+        }
+      },
       "/it_standards/deployment_types": {
         "get": {
           "tags": [
