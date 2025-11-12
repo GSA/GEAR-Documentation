@@ -1354,7 +1354,7 @@
           "tags": [
             "Data Dictionary"
           ],
-          "summary": "A list of data field names being used in GEAR, their definition, and the sources of their definition and underlying data",
+          "summary": "List of data field names and definitions",
           "description": "Returns a list of data field names being used in GEAR's reports, their definition, and the sources of their definition and underlying data.",
           "parameters": [
             {
