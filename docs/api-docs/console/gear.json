@@ -660,6 +660,73 @@
           }
         }
       },
+      "/it_standards/attestation_status_types": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards attestation status types",
+          "description": "The status of an IT standard's vendor-supplied attestation. Agencies are required to obtain a self-attestation from the software producer before using the software.",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-attestation_status_types"
+                }
+              }
+           }
+          }
+        }
+      },
+      "/it_standards/operating_systems": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all operating systems for IT standards",
+          "description": "Returns the list of possible IT standards operating systems. An operating system is the master control application that runs a computer.",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-operating_systems"
+                }
+              }
+           }
+          }
+        }
+      },
+      "/it_standards/app_bundles/{id}": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "Provides a list of App Bundles for a specific IT standard",
+          "description": "Returns a list of the unique identifier for Android or iOS based mobile software apps associated to the indicated IT Standard {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "IT Standards App Bundle ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/it_standards-app_bundles"
+                  }
+            }
+          }
+        }
+      },
       "/organizations": {
         "get": {
           "tags": [
@@ -1730,6 +1797,49 @@
             "Name": {
                 "type": "string",
                 "description": "Name of the IT Standards."
+            }
+        }
+      },
+      "it_standards-attestation_status_types": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the attestation status."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the attestation status."
+            },
+            "Description": {
+                "type": "string",
+                "description": "A description of the attestation status name."
+            }
+        }
+      },
+      "it_standards-operating_systems": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the operating system."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the operating system."
+            }
+        }
+      },
+      "it_standards-app_bundles": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database unique identifier for the app bundle."
+            },
+            "Keyname": {
+                "type": "string",
+                "description": "A unique identifier for Android or iOS based mobile software apps."
             }
         }
       },
