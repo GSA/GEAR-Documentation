@@ -431,7 +431,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "List of all IT Standards (that have been submitted to the Software Review Request process)",
+          "summary": "List of all IT Standards that have been submitted via the SRR process",
           "description": "Returns the entire list of GSA's Software IT Standards (except software that was not yet submitted to the Software Review Request process)",
           "responses": {
             "200": {
@@ -451,7 +451,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "List of all IT Standards (including software titles that have not yet been submitted for review)",
+          "summary": "List of all IT Standards (including those not yet submitted for review)",
           "description": "Returns the entire list of GSA's Software IT Standards (including software that was not yet submitted to the Software Review Request process)",
           "responses": {
             "200": {
