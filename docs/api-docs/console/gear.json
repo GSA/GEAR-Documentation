@@ -1058,6 +1058,33 @@
           }
         }
       },
+      "/systems/get/{id}/websites": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID and list related websites",
+          "description": "Returns the public facing websites and metadata associated to the indicated Business System {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "string",
+                    "$ref":"#/definitions/systems-capabilities"
+                  }
+            }
+          }
+        }
+      },
       "/system_time": {
         "get": {
           "tags": [
