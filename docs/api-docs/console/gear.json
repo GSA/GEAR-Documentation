@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "title": "<b>GEAR API Documentation</b>",
-      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Flow\n    FISMA\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Flow\n    FISMA\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n   Data Dictionary\n\nExpand each category and click on \"Try it out!\"",
       "version": "2.0",
       "termsOfService": "http://swagger.io/terms/"
     },
@@ -61,6 +61,10 @@
       },
       {
         "name": "Websites",
+        "description": ""
+      },
+      {
+        "name": "Data Dictionary",
         "description": ""
       }
     ],
@@ -1340,6 +1344,33 @@
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/websites-systems"
+                  }
+            }
+          }
+        }
+      },
+      "/data_dictionary": {
+        "get": {
+          "tags": [
+            "Data Dictionary"
+          ],
+          "summary": "A list of data field names being used in GEAR, their definition, and the sources of their definition and underlying data",
+          "description": "Returns a list of data field names being used in GEAR's reports, their definition, and the sources of their definition and underlying data.",
+          "parameters": [
+            {
+              "name": "Id",
+              "in": "path",
+              "description": "The database key that identifies the database definition object.",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/data_dictionary"
                   }
             }
           }
@@ -3421,6 +3452,43 @@
           }
       }
   },
+      "data_dictionary": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the database definition object."
+              },
+              "ReportName": {
+                  "type": "string",
+                  "description": "The name of the report on GEAR to which the TermDefinition belongs."
+              },
+              "Term": {
+                  "type": "string",
+                  "description": "The name of the term that is being defined by the Data Dictionary entry."
+              },
+              "TermDefinition": {
+                  "type": "string",
+                  "description": "The description of what the term means in the context of the report."
+              },
+              "DefinitionSource": {
+                  "type": "string",
+                  "description": "The originating source of the description of the term."
+              },
+              "DefinitionSourceLink": {
+                "type": "string",
+                "description": "The URL to the proof of the term's originating source definition."
+              },
+              "DataSource": {
+                "type": "string",
+                "description": "The source of the actual data report for the associated term (i.e. the source system for the data)."
+              },
+              "DataSourceLink": {
+                "type": "string",
+                "description": "The URL of the source of the data for an associated term."
+              }
+          }
+        },
       "Error": {
           "type": "object",
           "properties": {
