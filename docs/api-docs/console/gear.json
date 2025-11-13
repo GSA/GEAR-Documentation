@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": {
       "title": "<b>GEAR API Documentation</b>",
-      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Flow\n    FISMA\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
-      "version": "2.0",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
+      "version": "3.0",
       "termsOfService": "http://swagger.io/terms/"
     },
     "host": "dev.ea.gsa.gov",
@@ -20,11 +20,19 @@
         "description": ""
       },
       {
+        "name": "Data Dictionary",
+        "description": ""
+      },
+      {
         "name": "Data Flow",
         "description": ""
       },
       {
         "name": "FISMA",
+        "description": ""
+      },
+      {
+        "name": "Global Search",
         "description": ""
       },
       {
@@ -71,7 +79,7 @@
           "tags": [
             "Data Flow"
           ],
-          "description": "Returns the complete lit of data flow entries for all GSA Business Systems",
+          "description": "Returns the complete list of data flow entries for all GSA Business Systems",
           "responses": {
             "200": {
               "description": "",
@@ -97,10 +105,7 @@
               "in": "path",
               "description": "Data Flow ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -111,68 +116,6 @@
                     "items": {
                       "$ref": "#/definitions/"
                     }
-                  }
-            }
-          }
-        }
-      },
-      "/capabilities/get/{id}/orgs": {
-        "get": {
-          "tags": [
-            "Capabilities"
-          ],
-          "summary": "Find Capability by ID and list related Organizations",
-          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Capability ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/definitions/capabilities"
-                    }
-                  }
-            }
-          }
-        }
-      },
-      "/organizations/get/{id}/capabilities": {
-        "get": {
-          "tags": [
-            "Organizations"
-          ],
-          "summary": "Find organization record by ID and list related Capabilities",
-          "description": "Returns the Capabilities that are related to the Organization identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Organizations ID",
-              "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-                  "schema": {
-                    "type": "array",
-                    "$ref":"#/definitions/organizations"
                   }
             }
           }
@@ -191,10 +134,7 @@
               "in": "path",
               "description": "POCs ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -246,10 +186,7 @@
               "in": "path",
               "description": "Capability ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -278,10 +215,7 @@
               "in": "path",
               "description": "Capability ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -310,10 +244,7 @@
               "in": "path",
               "description": "Capability Name",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             }
           ],
           "responses": {
@@ -326,6 +257,35 @@
                     }
                   }
               }
+          }
+        }
+      },
+      "/capabilities/get/{id}/orgs": {
+        "get": {
+          "tags": [
+            "Capabilities"
+          ],
+          "summary": "Find Capability by ID and list related Organizations",
+          "description": "Returns the Organizations that are related to the Business Capability identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Capability ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/organizations"
+                    }
+                  }
+            }
           }
         }
       },
@@ -382,10 +342,7 @@
               "in": "path",
               "description": "FISMA ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -394,6 +351,35 @@
                   "schema": {
                     "type": "string",
                     "$ref": "#/definitions/fisma"
+                  }
+            }
+          }
+        }
+      },
+      "/search/{kw}": {
+        "get": {
+          "tags": [
+            "Global Search"
+          ],
+          "summary": "Keyword search on GEAR's datasets",
+          "description": "Returns an array of objects based on keyword matches on GEAR's datasets",
+          "parameters": [
+            {
+              "name": "kw",
+              "in": "path",
+              "description": "Keyword Search",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/global_search"
+                    }
                   }
             }
           }
@@ -432,10 +418,7 @@
               "in": "path",
               "description": "Investments ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -462,10 +445,7 @@
               "in": "path",
               "description": "Investments ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -484,7 +464,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "List of all IT Standards (that have been submitted to the Software Review Request process)",
+          "summary": "List of all IT Standards that have been submitted via the SRR process",
           "description": "Returns the entire list of GSA's Software IT Standards (except software that was not yet submitted to the Software Review Request process)",
           "responses": {
             "200": {
@@ -504,7 +484,7 @@
           "tags": [
             "IT Standards"
           ],
-          "summary": "List of all IT Standards (including software titles that have not yet been submitted for review)",
+          "summary": "List of all IT Standards (including those not yet submitted for review)",
           "description": "Returns the entire list of GSA's Software IT Standards (including software that was not yet submitted to the Software Review Request process)",
           "responses": {
             "200": {
@@ -532,10 +512,7 @@
               "in": "path",
               "description": "IT Standards ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -562,10 +539,7 @@
               "in": "path",
               "description": "IT Standards ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -679,6 +653,26 @@
           }
         }
       },
+      "/it_standards/recent": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of IT standards updated in the last 7 days",
+          "description": "Returns a list of IT Standards that have been added or updated in the last 7 days",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards"
+                }
+              }
+            }
+          }
+        }
+      },
       "/it_standards/deployment_types": {
         "get": {
           "tags": [
@@ -696,6 +690,73 @@
                 }
               }
            }
+          }
+        }
+      },
+      "/it_standards/attestation_status_types": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all IT Standards attestation status types",
+          "description": "The status of an IT standard's vendor-supplied attestation. Agencies are required to obtain a self-attestation from the software producer before using the software.",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-attestation_status_types"
+                }
+              }
+           }
+          }
+        }
+      },
+      "/it_standards/operating_systems": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "List of all operating systems for IT standards",
+          "description": "Returns the list of possible IT standards operating systems. An operating system is the master control application that runs a computer.",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards-operating_systems"
+                }
+              }
+           }
+          }
+        }
+      },
+      "/it_standards/app_bundles/{id}": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "Provides a list of App Bundles for a specific IT standard",
+          "description": "Returns a list of the unique identifier for Android or iOS based mobile software apps associated to the indicated IT Standard {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "IT Standards App Bundle ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/it_standards-app_bundles"
+                  }
+            }
           }
         }
       },
@@ -728,14 +789,11 @@
           "description": "Returns one Organization identified by {id}",
           "parameters": [
             {
-              "name": "id",
+              "name": "ID",
               "in": "path",
               "description": "Organizations ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "string"
             }
           ],
           "responses": {
@@ -758,14 +816,11 @@
           "description": "Returns the Business Systems that are related to the Organization identified by {name}",
           "parameters": [
             {
-              "name": "id",
+              "name": "name",
               "in": "path",
               "description": "Organizations Name",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "string"
-              }
+              "type": "string"
             }
           ],
           "responses": {
@@ -774,6 +829,33 @@
                   "schema": {
                     "type": "string",
                     "$ref":"#/definitions/organizations-systems"
+                  }
+            }
+          }
+        }
+      },
+      "/organizations/get/{id}/capabilities": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "Find organization record by ID and list related Capabilities",
+          "description": "Returns the Capabilities that are related to the Organization identified by {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Organizations ID",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/organizations"
                   }
             }
           }
@@ -830,10 +912,7 @@
               "in": "path",
               "description": "Records ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -860,17 +939,14 @@
               "in": "path",
               "description": "Records ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
             "200": {
               "description": "This will display the array of systems associated with a record",
                   "schema": {
-                    "type": "string",
+                    "type": "array",
                     "$ref":"#/definitions/records-systems"
                   }
             }
@@ -910,10 +986,34 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/systems"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/subsystems": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find Subsystems of a Parent System by ID",
+          "description": "Returns one or more subsystems by the {id} of the parent system",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "type": "integer"
             }
           ],
           "responses": {
@@ -940,10 +1040,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -970,10 +1067,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1000,10 +1094,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1030,10 +1121,7 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1060,10 +1148,34 @@
               "in": "path",
               "description": "Systems ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "string",
+                    "$ref":"#/definitions/systems-capabilities"
+                  }
+            }
+          }
+        }
+      },
+      "/systems/get/{id}/websites": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "summary": "Find System by ID and list related websites",
+          "description": "Returns the public facing websites and metadata associated to the indicated Business System {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Systems ID",
+              "required": true,
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1130,10 +1242,7 @@
               "in": "path",
               "description": "Website Service Category ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1162,10 +1271,7 @@
               "in": "path",
               "description": "Website Service Category ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1214,10 +1320,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1244,10 +1347,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1274,20 +1374,14 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             },
             {
-              "name": "id",
+              "name": "scanId",
               "in": "path",
               "description": "Websites ScanID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1314,10 +1408,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1344,10 +1435,7 @@
               "in": "path",
               "description": "Websites ID",
               "required": true,
-              "style": "simple",
-              "schema": {
-                "type": "integer"
-              }
+              "type": "integer"
             }
           ],
           "responses": {
@@ -1356,6 +1444,51 @@
                   "schema": {
                     "type": "array",
                     "$ref":"#/definitions/websites-systems"
+                  }
+            }
+          }
+        }
+      },
+      "/data_dictionary": {
+        "get": {
+          "tags": [
+            "Data Dictionary"
+          ],
+          "summary": "List of data field names and definitions",
+          "description": "Returns a list of data field names being used in GEAR's reports, their definition, and the sources of their definition and underlying data.",
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/data_dictionary"
+                  }
+            }
+          }
+        }
+      },
+      "/data_dictionary/get/{reportName}": {
+        "get": {
+          "tags": [
+            "Data Dictionary"
+          ],
+          "summary": "Find data field definitions by report name",
+          "description": "Returns the list of data dictionary data fields and their definitions based on the report name specified",
+          "parameters": [
+            {
+              "name": "reportName",
+              "in": "path",
+              "description": "ReportName",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "string",
+                    "$ref":"#/definitions/data_dictionary"
                   }
             }
           }
@@ -1700,6 +1833,49 @@
             }
         }
       },
+      "it_standards-attestation_status_types": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the attestation status."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the attestation status."
+            },
+            "Description": {
+                "type": "string",
+                "description": "A description of the attestation status name."
+            }
+        }
+      },
+      "it_standards-operating_systems": {
+        "type": "object",
+        "properties": {
+            "ID": {
+                "type": "integer",
+                "description": "The database key that identifies the operating system."
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the operating system."
+            }
+        }
+      },
+      "it_standards-app_bundles": {
+        "type": "object",
+        "properties": {
+            "Id": {
+                "type": "integer",
+                "description": "The database unique identifier for the app bundle."
+            },
+            "Keyname": {
+                "type": "string",
+                "description": "A unique identifier for Android or iOS based mobile software apps."
+            }
+        }
+      },
       "fisma": {
           "type": "object",
           "properties": {
@@ -1841,6 +2017,35 @@
             }                
           }
       },
+      "global_search": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the global search result. This may not be a unique value in this dataset due to this global search API endpoint searching on multiple database tables. To get a unique value, one would have to combine this field with the GEAR_Type field."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": "The keyname of the global search result based on the report from which it was derived."
+              },
+              "Status": {
+                  "type": "string",
+                  "description": "The current status of the gloabl search result. This has different implications based on the report from which it originated. For example, a FISMA system may have a status of 'Active', but an IT Standard may have a status of 'Approved'."
+              },
+              "GEAR_Type": {
+                  "type": "string",
+                  "description": "Short name of the data report from which the search result derives."
+              },
+              "GEAR_Type_Display": {
+                  "type": "string",
+                  "description": "Verbose name of the data report from which the search result derives."
+              },
+              "Other": {
+                "type": "string",
+                "description": "Provides additional data fields to globally search on that are unique to a specific report and not universal across all data sets."
+              }
+          }
+      },
       "organizations": {
           "type": "object",
           "properties": {
@@ -1875,6 +2080,10 @@
               "Parent": {
                 "type": "string",
                 "description": "Verbose name of the Parent Organization."
+              },
+              "Parent_ID": {
+                "type": "string",
+                "description": "The database key that identifies the Parent Organization of the Organization."
               }
           }
       },
@@ -3433,6 +3642,43 @@
           }
       }
   },
+      "data_dictionary": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the database definition object."
+              },
+              "ReportName": {
+                  "type": "string",
+                  "description": "The name of the report on GEAR to which the TermDefinition belongs."
+              },
+              "Term": {
+                  "type": "string",
+                  "description": "The name of the term that is being defined by the Data Dictionary entry."
+              },
+              "TermDefinition": {
+                  "type": "string",
+                  "description": "The description of what the term means in the context of the report."
+              },
+              "DefinitionSource": {
+                  "type": "string",
+                  "description": "The originating source of the description of the term."
+              },
+              "DefinitionSourceLink": {
+                "type": "string",
+                "description": "The URL to the proof of the term's originating source definition."
+              },
+              "DataSource": {
+                "type": "string",
+                "description": "The source of the actual data report for the associated term (i.e. the source system for the data)."
+              },
+              "DataSourceLink": {
+                "type": "string",
+                "description": "The URL of the source of the data for an associated term."
+              }
+          }
+        },
       "Error": {
           "type": "object",
           "properties": {
