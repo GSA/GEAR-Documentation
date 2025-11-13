@@ -16,6 +16,7 @@ The current version of the API lives at ```https://ea.gsa.gov/api/...```
 
 | Version | Date | Changes | 
 | ------------- | ------------- | ------------- |
+| ```version 3``` | 11/13/2025 | Updates and additions based on missing endpoints
 | ```version 2``` | 08/01/2023 | Updates and rewrite of entire GEAR platform
 | ```version 1``` | 09/25/2020 | Updates and rewrite of entire GEAR platform
 | ```version 0``` | 03/31/2017 | Initial deployment using node.js and Express
