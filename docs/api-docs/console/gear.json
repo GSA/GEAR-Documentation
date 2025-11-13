@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "title": "<b>GEAR API Documentation</b>",
-      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Flow\n    FISMA\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n    Data Dictionary\n\nExpand each category and click on \"Try it out!\"",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Dictionary\n    Data Flow\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
       "version": "2.0",
       "termsOfService": "http://swagger.io/terms/"
     },
@@ -20,11 +20,19 @@
         "description": ""
       },
       {
+        "name": "Data Dictionary",
+        "description": ""
+      },
+      {
         "name": "Data Flow",
         "description": ""
       },
       {
         "name": "FISMA",
+        "description": ""
+      },
+      {
+        "name": "Global Search",
         "description": ""
       },
       {
@@ -61,10 +69,6 @@
       },
       {
         "name": "Websites",
-        "description": ""
-      },
-      {
-        "name": "Data Dictionary",
         "description": ""
       }
     ],
@@ -347,6 +351,35 @@
                   "schema": {
                     "type": "string",
                     "$ref": "#/definitions/fisma"
+                  }
+            }
+          }
+        }
+      },
+      "/search/{kw}": {
+        "get": {
+          "tags": [
+            "Global Search"
+          ],
+          "summary": "Keyword search on GEAR's datasets",
+          "description": "Returns an array of objects based on keyword matches on GEAR's datasets",
+          "parameters": [
+            {
+              "name": "kw",
+              "in": "path",
+              "description": "Keyword Search",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/global_search"
+                    }
                   }
             }
           }
@@ -1982,6 +2015,35 @@
                 "type": "string",
                 "description": "Program Manager for this FISMA System."
             }                
+          }
+      },
+      "global_search": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the global search result. This may not be a unique value in this dataset due to this global search API endpoint searching on multiple database tables. To get a unique value, one would have to combine this field with the GEAR_Type field."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": "The keyname of the global search result based on the report from which it was derived."
+              },
+              "Status": {
+                  "type": "string",
+                  "description": "The current status of the gloabl search result. This has different implications based on the report from which it originated. For example, a FISMA system may have a status of 'Active', but an IT Standard may have a status of 'Approved'."
+              },
+              "GEAR_Type": {
+                  "type": "string",
+                  "description": "Short name of the data report from which the search result derives."
+              },
+              "GEAR_Type_Display": {
+                  "type": "string",
+                  "description": "Verbose name of the data report from which the search result derives."
+              },
+              "Other": {
+                "type": "string",
+                "description": "Provides additional data fields to globally search on that are unique to a specific report and not universal across all data sets."
+              }
           }
       },
       "organizations": {
