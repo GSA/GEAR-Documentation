@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "title": "<b>GEAR API Documentation</b>",
-      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Dictionary\n    Data Flow\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
       "version": "2.0",
       "termsOfService": "http://swagger.io/terms/"
     },
