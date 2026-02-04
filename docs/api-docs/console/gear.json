@@ -1702,69 +1702,149 @@
                   "type": "string",
                   "description": "Description of IT Standards"
               },
+              "AlsoKnownAs": {
+                  "type": "string",
+                  "description": "The name the IT standard was referenced by before being converted into an industry-standard naming convention."
+              },
               "ApprovalExpirationDate": {
                   "type": "string",
-                  "description": "Position in the GSA hierarchy of FEAF Business Capability."
+                  "description": "Date that the current software's approval status expires."
               },
               "Vendor_Standard_Organization": {
                   "type": "string",
-                  "description": "Year and month that the approval for this standard expires. Standards that are not in an approved or pilot state will have NULL for this field."
+                  "description": "Technology Vendor/Manufacturer Name."
               },
               "Available_through_Myview": {
                   "type": "string",
-                  "description": "Standards category that this IT Standard fits into."
+                  "description": "Returns availability through Myview."
               },
               "Gold_Image": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "Image of GSA standard desktop."
+              },
+              "attestation_required": {
+                "type": "string",
+                "description": "Denotes whether a software attestation letter is required for the software's development supply chain."
+              },
+              "fedramp": {
+                "type": "string",
+                "description": "This field denotes whether the software has a FedRAMP authorization."
+              },
+              "open_source": {
+                "type": "string",
+                "description": "Open source refers to software that can be accessed, used, modified, and shared by anyone."
+              },
+              "RITM": {
+                "type": "string",
+                "description": "The service desk ticket number of the initial software review request that was initiated by a user requesting that a software gain approval."
               },
               "Gold_Image_Comment": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "Additional details pertaining to the GSA standard desktop image."
+              },
+              "attestation_link": {
+                "type": "string",
+                "description": "This field provides a URL to the attestation letter for the software."
               },
               "Comments": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "Additional information about the results of the software reveiw for the software."
               },
               "old_Id": {
                 "type": "integer",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "If applicable, this is the Unique ID the IT Standard record used previously."
               },
               "ReferenceDocument": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "Identifies the URL for the record that stores the current status (historical record) of the technology approval process."
               },
               "CreateDTG": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "The date/time that this object was initially created."
               },
               "ChangeDTG": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "The date/time that this object was last updated/changed."
+              },
+              "ConditionsRestrictions": {
+                "type": "string",
+                "description": "This field indicates whether specific conditions or restrictions apply to the use of the software, even if it has been approved for GSA. For example, it may specify that the software is approved only for a particular team or purpose, rather than for use across the entire agency."
+              },
+              "Manufacturer": {
+                "type": "string",
+                "description": "The unique identifier for manufacturer"
+              },
+              "SoftwareProduct": {
+                "type": "string",
+                "description": "The unique identifier for software product"
+              },
+              "SoftwareVersion": {
+                "type": "string",
+                "description": "The unique identifier for software version"
+              },
+              "SoftwareRelease": {
+                "type": "string",
+                "description": "The unique identifier for software releases"
+              },
+              "ManufacturerName": {
+                "type": "string",
+                "description": "The name of entity which builds, manufactures and/or supports or provides maintenance of the hardware; or develops, publishes and/or supports the software. Captured as the well-known name of the entity in the market (which may or may not the same as the legal name)"
+              },
+              "SoftwareProductName": {
+                "type": "string",
+                "description": "The complete name of the product as presented by the vendor in the software license as well as other official documentations and/or website"
+              },
+              "SoftwareVersionName": {
+                "type": "string",
+                "description": "The software version name or number"
+              },
+              "SoftwareReleaseName": {
+                "type": "string",
+                "description": "Concatenation of ManufacturerName + SoftwareProductName + SoftwareVersionName"
+              },
+              "ManufacturerSoftwareProductName": {
+                "type": "string",
+                "description": "Concatenation of ManufacturerName + SoftwareProductName"
               },
               "Status": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "The status of the IT Standard."
               },
               "DeploymentType": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "The typical deployment of an IT Standard."
               },
               "StandardType": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "Type of IT Standard (hardware, software, industry standard)."
               },
               "ComplianceStatus": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "Status of the software's Section 508 accessibility compliance."
               },
               "POC": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "The point of contact for this IT Standard. This is typically the POC who submitted the original software request."
               },
               "Category": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into."
+                "description": "Standards category that this IT Standard fits into. This is also referred to as the Technology Reference Model (TRM)"
+              },
+              "OldName": {
+                "type": "string",
+                "description": "The name of the software as it was originally entered into the system using an open-text data field. The IT standards team has transitioned to using standardized naming conventions for software. If no standard naming convention can be found, the title of the software on the front-end of GEAR will revert to using this name, the original name of the software as it was entered into GEAR."
+              },
+              "EndOfLifeDate": {
+                "type": "string",
+                "description": "The last date when full support for a product is provided by the vendor. Partial support may still be still available"
+              },
+              "ApprovedVersions": {
+                "type": "string",
+                "description": "Unless otherwise stated, all minor versions share the same approval status as the version listed. For example, if version '1.0' is listed and has a status of 'Approved', then version 1.1, 1.2, 1.3, etc. are also approved."
+              },
+              "AppBundleIds": {
+                "type": "string",
+                "description": "A unique identifier for Android or iOS based mobile software apps."
               }
           }
       },
