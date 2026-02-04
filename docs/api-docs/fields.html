@@ -373,6 +373,14 @@ nav: fields
 
 <tr>
 	<td>
+		<code>AlsoKnownAs</code>
+		</td>
+	<td>The name the IT standard was referenced by before being converted into an industry-standard naming convention.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
 		<code>ApprovalExpirationDate</code>
 		</td>
 	<td> Date that the current approval status exires.</td>
@@ -415,15 +423,15 @@ nav: fields
 	<td>
 		<code>Comments</code>
 		</td>
-	<td>Additional comments to add context to the IT Standard entry.</td>
+	<td>Additional information about the results of the software reveiw for the software.</td>
 	<td>string</td>
 </tr>
 
 <tr>
 	<td>
-		<code>Old_Id</code>
+		<code>old_Id</code>
 		</td>
-	<td>Id that is old.</td>
+	<td>If applicable, this is the Unique ID the IT Standard record used previously.</td>
 	<td>integer</td>
 </tr>
 
@@ -431,7 +439,7 @@ nav: fields
 	<td>
 		<code>ReferenceDocument</code>
 		</td>
-	<td>Identifies the URL for the SalesForce record that stores the current status (historical record) of the technology approval process.</td>
+	<td>Identifies the URL for the record that stores the current status (historical record) of the technology approval process.</td>
 	<td>string</td>
 </tr>
 
@@ -457,14 +465,14 @@ nav: fields
 		</td>
 	<td>The status of the IT Standard. One of the following values: 
     <ul>
-      <li>Approved - Preferred</li>
-      <li>Approved - Maintain</li>
+      <li>Approved</li>
+	  <li>Denied</li>
+      <li>Not Yet Submitted</li>
+	  <li>Retired</li>
       <li>Pilot</li>
       <li>Proposed</li>
       <li>Exception</li>
       <li>Sunsetting</li>
-      <li>Denied</li>
-      <li>Not Yet Submitted</li>
     </ul>
   </td>
   <td>string</td>
@@ -489,7 +497,7 @@ nav: fields
 	<td>
 		<code>StandardType</code>
 		</td>
-	<td>Type of IT Standard.</td>
+	<td>Type of IT Standard (hardware, software, industry standard).</td>
 	<td>string</td>
 </tr>
 
@@ -497,7 +505,7 @@ nav: fields
 	<td>
 		<code>ComplianceStatus</code>
 		</td>
-	<td>Status of IT Standard compliance.</td>
+	<td>Status of the software's Section 508 accessibility compliance.</td>
 	<td>string</td>
 </tr>
 
@@ -505,7 +513,7 @@ nav: fields
 	<td>
 		<code>POC</code>
 		</td>
-	<td>The point of contact for this IT Standard</td>
+	<td>The point of contact for this IT Standard. This is typically the POC who submitted the original software request.</td>
 	<td>string</td>
 </tr>
 
@@ -513,31 +521,41 @@ nav: fields
 	<td>
 		<code>Category</code>
 		</td>
-	<td>Category of IT Standard.</td>
+	<td>Standards category that this IT Standard fits into. This is also referred to as the Technology Reference Model (TRM)</td>
 	<td>string</td>
-	</tr>
-	<tr>
-		<td>
-			<code>Manufacturer</code>
-			</td>
-		<td>The unique identifier for manufacturer</td>
-		<td>string</td>
-		</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>ConditionsRestrictions</code>
+		</td>
+	<td>This field indicates whether specific conditions or restrictions apply to the use of the software, even if it has been approved for GSA. For example, it may specify that the software is approved only for a particular team or purpose, rather than for use across the entire agency.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Manufacturer</code>
+		</td>
+	<td>The unique identifier for manufacturer</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Software Product</code>
+		</td>
+	<td>The unique identifier for software product</td>
+	<td>string</td>
+</tr>
+
 <tr>
 	<td>
 		<code>SoftwareVersion</code>
 		</td>
 	<td>The unique identifier for software version</td>
 	<td>string</td>
-	</tr>
-
-<tr>
-	<td>
-		<code>SoftwareProductName</code>
-		</td>
-	<td>The complete name of the product as presented by the vendor in the software license as well as other official documentations and/or website</td>
-	<td>string</td>
-	</tr>
+</tr>
 	
 <tr>
 	<td>
@@ -545,57 +563,65 @@ nav: fields
 		</td>
 	<td>The name of entity which builds, manufactures and/or supports or provides maintenance of the hardware; or develops, publishes and/or supports the software. Captured as the well-known name of the entity in the market (which may or may not the same as the legal name)</td>
 	<td>string</td>
-	</tr>
+</tr>
+
+<tr>
+	<td>
+		<code>SoftwareProductName</code>
+		</td>
+	<td>The complete name of the product as presented by the vendor in the software license as well as other official documentations and/or website</td>
+	<td>string</td>
+</tr>
+
 <tr>
 	<td>
 		<code>SoftwareVersionName</code>
 		</td>
 	<td>The software version name or number</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>SoftwareRelease</code>
 		</td>
 	<td>The unique identifier for software releases</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>SoftwareReleaseName</code>
 		</td>
 	<td>Concatenation of manufacturerName + softwareProductName + softwareVersionName</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>SoftwareReleaseIsToBeDeleted</code>
 		</td>
 	<td>This indicates whether or not a Software Release record is marked for deletion (i.e. Y or N)</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>SoftwareReleaseToBeDeletedOn</code>
 		</td>
 	<td>The date when the Software Release record will be deleted</td>
 	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>EndOfLifeDate</code>
 		</td>
 	<td>The last date when full support for a product is provided by the vendor, and standardized to follow BDNA’s date format. Partial support may still be still available
-</td>
+	</td>
 	<td>string</td>
-	</tr>
-<tr>
-	<td>
-		<code></code>
-		</td>
-	<td></td>
-	<td>string</td>
-	</tr>
+</tr>
+
 <tr>
 	<td>
 		<code>attestation_required</code>
@@ -633,46 +659,51 @@ nav: fields
 </tr>	
 <tr>
 	<td>
-		<code>Request Item (RITM)</code>
+		<code>RITM</code>
 		</td>
 	<td>Request Items (RITMs) contain the actual form the customer submitted and links to one or more tasks required for fulfillment. RITMs can be assigned to a fulfillment group, not an individual.</td>
 	<td>string</td>
 </tr>
+
 <tr>
 	<td>
 		<code>OldName</code>
 		</td>
-	<td></td>
-	<td>string</td>
-	</tr>	
-<tr>
-	<td>
-		<code></code>
-		</td>
 	<td>The name of the software as it was originally entered into the system using an open-text data field. The IT standards team has transitioned to using standardized naming conventions for software. If no standard naming convention can be found, the title of the software on the front-end of GEAR will revert to using this name, the original name of the software as it was entered into GEAR.</td>
 	<td>string</td>
-	</tr>	
+</tr>
+
 <tr>
 	<td>
 		<code>StandardType</code>
 		</td>
 	<td>Denotes whether the IT standard is a type of hardware, software, or an industry standard.</td>
 	<td>string</td>
-	</tr>	
+</tr>
+
 <tr>
 	<td>
 		<code>ComplianceStatus</code>
 		</td>
 	<td>This field denotes the compliance level of an IT standard entry in meeting the tenets of Section 508. Section 508 of the Rehabilitation Act of 1973 requires that, when developing, procuring, maintaining, or using electronic and information technology, each Federal department or agency should ensure that individuals with disabilities have access to and use of information and data that is comparable to the access to and use of the information and data by those who are not individuals with disabilities</td>
 	<td>string</td>
-	</tr>	
+</tr>	
+
+<tr>
+	<td>
+		<code>AppBundleIds</code>
+		</td>
+	<td>A unique identifier for Android or iOS based mobile software apps.</td>
+	<td>string</td>
+</tr>
+
 <tr>
 	<td>
 		<code>POCorg</code>
 		</td>
 	<td>Organization of the Point of Contact who requested the IT Standard</td>
 	<td>string</td>
-	</tr>			
+</tr>			
 </tbody>
 </table>
 
