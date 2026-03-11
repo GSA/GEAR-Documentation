@@ -1868,6 +1868,146 @@ nav: fields
 </tbody>
 </table>
 
+
+
+<h5>Technology Reference Model (TRM) Fields</h5>
+
+<table id="city-pairs-fields" class="field-table">
+	<colgroup>
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 36%;">
+		<col span="1" style="width: 18%;">
+		
+	</colgroup>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+<th>Data type</th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+	<td>
+		<code>Id</code>
+		</td>
+	<td>The database key that identifies the technology reference model (TMR) domain, area, or category. The TRM is a taxonomy to define what an IT standard does (i.e. its capabilities) which enables better category and portfolio management. The hierarchy of this model, from top to bottom, is: domain, area, category.</td>
+	<td>integer</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Name</code>
+		</td>
+	<td>Name of the TRM domain, area, or category.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Area</code>
+		</td>
+	<td>The name of the Area, or the top level (1 of 3) of the TRM taxonomy.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Domain</code>
+		</td>
+	<td>The name of the Domain, or the middle level (2 of 3) of the TRM taxonomy.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Description</code>
+		</td>
+	<td>The description of the technical capabilities of the specific TRM area, domain, or category..</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Level</code>
+		</td>
+	<td>The level (0, 1, or 2) of the specific TRM entry in the TRM taxonomy. Domain is level 0, Area is level 1, and Category is level 2.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>Type</code>
+		</td>
+	<td>The name of the level of the TRM taxonomy (Domain, Area, or Category)</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>FEACode</code>
+		</td>
+	<td>How GSA's TRM translates to the Federal Enterprise Architecture Application Reference Model, if available.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ParentId</code>
+		</td>
+	<td>Denotes the TRM entry's direct parent in the TRM hierarchy.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CreateDTG</code>
+		</td>
+	<td>The date/time of when the TRM entry was created.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ChangeDTG</code>
+		</td>
+	<td>The date/time of when the TRM entry was last edited.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>CreateAudit</code>
+		</td>
+	<td>The username of the POC who created the TRM entry.</td>
+	<td>string</td>
+</tr>
+
+<tr>
+	<td>
+		<code>ChangeAudit</code>
+		</td>
+	<td>The username of the POC who most recently edited the specific TRM entry.</td>
+	<td>string</td>
+</tr>
+  
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h5>Websites API Fields</h5>
 
 <table id="city-pairs-fields" class="field-table">

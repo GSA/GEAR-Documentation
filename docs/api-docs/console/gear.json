@@ -1976,7 +1976,7 @@
               },
               "ParentId": {
                 "type": "string",
-                "description": "Denotes the TRM entry's direct parent in the TRM hieararchy."
+                "description": "Denotes the TRM entry's direct parent in the TRM hierarchy."
               },
               "CreateDTG": {
                 "type": "string",
