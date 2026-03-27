@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "title": "<b>GEAR API Documentation</b>",
-      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Technical Reference Model (TRM)\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
       "version": "3.0",
       "termsOfService": "http://swagger.io/terms/"
     },
@@ -61,6 +61,10 @@
       },
       {
         "name": "System Time",
+        "description": ""
+      },
+      {
+        "name": "Technical Reference Model (TRM)",
         "description": ""
       },
       {
@@ -533,6 +537,33 @@
           ],
           "summary": "Find IT standard by ID and list related Systems",
           "description": "Returns the Business Systems and Business System metadata associated to the indicated IT Standard {id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "IT Standards ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+                  "schema": {
+                    "type": "array",
+                    "$ref":"#/definitions/it_standards"
+                  }
+            }
+          }
+        }
+      },
+      "/it_standards/get/related_trms/{id}": {
+        "get": {
+          "tags": [
+            "IT Standards"
+          ],
+          "summary": "Find the technical reference model (TRM) categories associated with a specific IT standard by Id",
+          "description": "Returns the technical reference model (TRM) categories associated to the indicated IT Standard {id}",
           "parameters": [
             {
               "name": "id",
@@ -1209,6 +1240,66 @@
           }
         }
       },
+      "/trm": {
+        "get": {
+          "tags": [
+            "Technical Reference Model (TRM)"
+          ],
+          "summary": "Returns one  GSA's Technical Reference Model (TRM).",
+          "description": "A list of GSA's Technical Reference Model (TRM). The TRM is a taxonomy for describing IT standards and what their capabilities are. It provides a way of classifying what software does, which software areas we are lacking in, and which software areas can potentially be rationalized.",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/trm"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/trm/get/{id}": {
+        "get": {
+          "tags": [
+            "Technical Reference Model (TRM)"
+          ],
+          "summary": "Returns one object (user defined) from GSA's Technical Reference Model (TRM).",
+          "description": "Returns one object from GSA's Technical Reference Model (TRM).",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/trm"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/trm/get/relatedITStandards/{id}": {
+        "get": {
+          "tags": [
+            "Technical Reference Model (TRM)"
+          ],
+          "summary": "Returns the IT standard records that are linked to the user-defined Technical Reference Model (TRM) object.",
+          "description": "Returns IT standards associated with a specific TRM category.",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/it_standards"
+                }
+              }
+            }
+          }
+        }
+      },
       "/websites_service_category": {
         "get": {
           "tags": [
@@ -1832,7 +1923,7 @@
               },
               "Category": {
                 "type": "string",
-                "description": "Standards category that this IT Standard fits into. This is also referred to as the Technology Reference Model (TRM)"
+                "description": "Standards category that this IT Standard fits into. This is also referred to as the Technical Reference Model (TRM)"
               },
               "OldName": {
                 "type": "string",
@@ -1849,6 +1940,63 @@
               "AppBundleIds": {
                 "type": "string",
                 "description": "A unique identifier for Android or iOS based mobile software apps."
+              }
+          }
+      },
+      "trm": {
+          "type": "object",
+          "properties": {
+              "Id": {
+                  "type": "integer",
+                  "description": "The database key that identifies the technical reference model (TMR) domain, area, or category. The TRM is a taxonomy to define what an IT standard does (i.e. its capabilities) which enables better category and portfolio management. The hierarchy of this model, from top to bottom, is: domain, area, category."
+              },
+              "Name": {
+                  "type": "string",
+                  "description": "Name of the TRM domain, area, or category."
+              },
+              "Area": {
+                  "type": "string",
+                  "description": "The name of the Area, or the top level (1 of 3) of the TRM taxonomy."
+              },
+              "Domain": {
+                  "type": "string",
+                  "description": "The name of the Domain, or the middle level (2 of 3) of the TRM taxonomy."
+              },
+              "Description": {
+                  "type": "string",
+                  "description": "The description of the technical capabilities of the specific TRM area, domain, or category."
+              },
+              "Level": {
+                  "type": "string",
+                  "description": "The level (0, 1, or 2) of the specific TRM entry in the TRM taxonomy. Domain is level 0, Area is level 1, and Category is level 2."
+              },
+              "Type": {
+                  "type": "string",
+                  "description": "The name of the level of the TRM taxonomy (Domain, Area, or Category)"
+              },
+              "FEACode": {
+                "type": "string",
+                "description": "How GSA's TRM translates to the Federal Enterprise Architecture Application Reference Model, if available."
+              },
+              "ParentId": {
+                "type": "string",
+                "description": "Denotes the TRM entry's direct parent in the TRM hierarchy."
+              },
+              "CreateDTG": {
+                "type": "string",
+                "description": "The date/time of when the TRM entry was created."
+              },
+              "ChangeDTG": {
+                "type": "string",
+                "description": "The date/time of when the TRM entry was last edited."
+              },
+              "CreateAudit": {
+                "type": "string",
+                "description": "The username of the POC who created the TRM entry."
+              },
+              "ChangeAudit": {
+                "type": "string",
+                "description": "The username of the POC who most recently edited the specific TRM entry."
               }
           }
       },
