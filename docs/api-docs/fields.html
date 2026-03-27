@@ -325,6 +325,14 @@ nav: fields
 	<td>string</td>
 </tr>
 
+<tr>
+	<td>
+		<code>BudgetAlias</code>
+		</td>
+	<td>The CFO has pairs budget line items with business systems/subsystems, and in doing so, require an alias field to track against the budget.</td>
+	<td>string</td>
+</tr>
+
 </tbody>
 </table>
 
@@ -993,17 +1001,26 @@ nav: fields
 <tr>
 	<td>
 		<code>RelatedArtifacts</code>
-		</td>
+	</td>
 	<td> Letters and other artifacts related to this FISMA System. This will be returned as an array containing zero, one, or many Artifacts, containing the NAME of the Artifact and ReferenceDocuments, which will be the URL of the Artifact.</td>
 	<td>string</td>
-	</tr>
-	<tr>
-		<td>
-			<code>SystemLevel</code>
-			</td>
+</tr>
+
+<tr>
+	<td>
+		<code>BudgetAlias</code>
+	</td>
+		<td>The CFO has pairs budget line items with business systems/subsystems, and in doing so, require an alias field to track against the budget.</td>
+		<td>string</td>
+</tr>
+	
+<tr>
+	<td>
+		<code>SystemLevel</code>
+	</td>
 		<td>This field denotes whether an entry is considered a system or a subsystem. A 'System' within GSA's Agency System Inventory, is tracked as 'FISMA Information System'. A 'Subsystem' is a system/application that may be coalesced together as subsystems of a single larger, more comprehensive system (FISMA System) for the purposes of security authorization. Minor applications/subsystems must be under the same management authority, have the same function or mission objective, the same operating characteristics, and information security needs, and reside in the same general operating environment(s).</td>
 		<td>string</td>
-		</tr>	
+</tr>	
 	<tr>
 		<td>
 			<code>FIPS_Impact_Level</code>
