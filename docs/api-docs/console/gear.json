@@ -1684,6 +1684,10 @@
         "RelatedArtifacts": {
           "type": "string",
           "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+        "BudgetAlias": {
+          "type": "string",
+          "description": "The CFO organization's alias for the system/subsystem in their work to attribute budget line items to systems/subsystems."
           }
         }
       },
@@ -2094,7 +2098,11 @@
               "RelatedArtifacts": {
                 "type": "string",
                 "description": "Program Manager for this FISMA System."
-            }                
+              },
+              "BudgetAlias": {
+                "type": "string",
+                "description": "The CFO organization's alias for the system/subsystem in their work to attribute budget line items to systems/subsystems."
+              }
           }
       },
       "global_search": {
@@ -2313,7 +2321,11 @@
     "RelatedArtifacts": {
       "type": "string",
       "description": "Position in the GSA hierarchy of FEAF Business Capability."
-      }
+      },
+    "BudgetAlias": {
+      "type": "string",
+      "description": "The CFO organization's alias for the system/subsystem in their work to attribute budget line items to systems/subsystems."
+           }
         }
     },
       "investments": {
@@ -2595,6 +2607,10 @@
         "RelatedArtifacts": {
           "type": "string",
           "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+        "BudgetAlias": {
+          "type": "string",
+          "description": "The CFO organization's alias for the system/subsystem in their work to attribute budget line items to systems/subsystems."
           }
         }
       },
@@ -2834,6 +2850,10 @@
         "RelatedArtifacts": {
           "type": "string",
           "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+        "BudgetAlias": {
+          "type": "string",
+          "description": "The CFO organization's alias for the system/subsystem in their work to attribute budget line items to systems/subsystems."
           }
         }
       },
@@ -3008,6 +3028,10 @@
           "RelatedArtifacts": {
             "type": "string",
             "description": "Position in the GSA hierarchy of FEAF Business Capability."
+            },
+          "BudgetAlias": {
+            "type": "string",
+            "description": "The CFO organization's alias for the system/subsystem in their work to attribute budget line items to systems/subsystems."
             }
         }
       },
@@ -3640,6 +3664,10 @@
         "RelatedArtifacts": {
           "type": "string",
           "description": "Position in the GSA hierarchy of FEAF Business Capability."
+          },
+        "BudgetAlias": {
+          "type": "string",
+          "description": "The CFO organization's alias for the system/subsystem in their work to attribute budget line items to systems/subsystems."
           }
         }
       },
