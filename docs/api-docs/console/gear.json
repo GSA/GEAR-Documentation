@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "title": "<b>GEAR API Documentation</b>",
-      "description": "A definition is one of the following:\n  \n    Capabilities\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Technical Reference Model (TRM)\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Cloud Adoption Rate\n    Dashboard\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Tech Catalog\n    Technical Reference Model (TRM)\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
       "version": "3.0",
       "termsOfService": "http://swagger.io/terms/"
     },
@@ -74,6 +74,18 @@
       {
         "name": "Websites",
         "description": ""
+      },
+      {
+        "name": "Tech Catalog",
+        "description": "Read-only Technopedia and locally managed software catalog operations."
+      },
+      {
+        "name": "Dashboard",
+        "description": "Dashboard summary metrics."
+      },
+      {
+        "name": "Cloud Adoption Rate",
+        "description": "Historical cloud adoption snapshots."
       }
     ],
 
@@ -121,35 +133,6 @@
                       "$ref": "#/definitions/"
                     }
                   }
-            }
-          }
-        }
-      },
-      "/pocs/get/{id}": {
-        "get": {
-          "tags": [
-            "POCs"
-          ],
-          "summary": "Find POC by ID",
-          "description": "Returns one POC identified by {id}",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "POCs ID",
-              "required": true,
-              "type": "integer"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/definitions/pocs"
-                }
-              }
             }
           }
         }
@@ -1583,6 +1566,630 @@
                   }
             }
           }
+        }
+      },
+      "/organizations/paginated": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "List organizations with pagination",
+          "description": "Returns a paginated, sortable, searchable list of organizations.",
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "description": "Page number (1-based).",
+              "required": false,
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "description": "Records per page (maximum 200).",
+              "required": false,
+              "type": "integer",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 200
+            },
+            {
+              "name": "sortField",
+              "in": "query",
+              "description": "Sort field.",
+              "required": false,
+              "type": "string",
+              "enum": [
+                "OrgSymbol",
+                "Name",
+                "SSOName",
+                "TwoLetterOrgSymbol",
+                "TwoLetterOrgName"
+              ],
+              "default": "Name"
+            },
+            {
+              "name": "sortOrder",
+              "in": "query",
+              "description": "Sort order: 1 for ascending or -1 for descending.",
+              "required": false,
+              "type": "string",
+              "enum": [
+                "ASC",
+                "DESC",
+                "1",
+                "-1"
+              ],
+              "default": "ASC"
+            },
+            {
+              "name": "search",
+              "in": "query",
+              "description": "Partial-match search across Organization_Name, Org_Symbol, SSO_Name, Org_Symbol_Two_Letter, and Org_Symbol_Two_Letter_Name.",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Paginated organizations",
+              "schema": {
+                "$ref": "#/definitions/paginated_organizations"
+              }
+            },
+            "501": {
+              "description": "Database query error.",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          }
+        }
+      },
+      "/organizations/get/{id}/business_systems": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "List business systems for an organization",
+          "description": "Returns active business-application systems whose Business_Org field includes the organization symbol of this organization or its descendants. Results are filtered to Status = 'Active' and BusinessApplication = 'Yes'.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Organization ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Business systems",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/systems"
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/responses/RecordNotFound"
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/organizations/get/{id}/child_orgs": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "List child organizations",
+          "description": "Returns direct child organizations for the given parent Organization_Id, ordered by organization name.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Organization ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Child organizations",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/paginated_organization"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/fisma/expiring_quarter": {
+        "get": {
+          "tags": [
+            "FISMA"
+          ],
+          "summary": "List FISMA systems expiring this quarter",
+          "description": "Returns FISMA systems whose ATO expires within the next three months, with Active or Pending status at the System level.",
+          "responses": {
+            "200": {
+              "description": "FISMA systems expiring this quarter",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/fisma_archer_system"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/fisma/expiring_week": {
+        "get": {
+          "tags": [
+            "FISMA"
+          ],
+          "summary": "List FISMA systems expiring this week",
+          "description": "Returns FISMA systems whose ATO expires within the next seven days, with Active or Pending status at the System level.",
+          "responses": {
+            "200": {
+              "description": "FISMA systems expiring this week",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/fisma_archer_system"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/fisma/past_due": {
+        "get": {
+          "tags": [
+            "FISMA"
+          ],
+          "summary": "List past-due FISMA systems",
+          "description": "Returns FISMA systems whose ATO expiration date is in the past, with Active or Pending status at the System level.",
+          "responses": {
+            "200": {
+              "description": "Past-due FISMA systems",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/fisma_archer_system"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/fisma/filter_totals": {
+        "get": {
+          "tags": [
+            "FISMA"
+          ],
+          "summary": "Get FISMA filter totals",
+          "description": "Returns aggregate counts used by FISMA filter controls (for example, counts by status, FIPS level, and cloud hosting). The count fields are defined by get_fisma_filter_totals.sql.",
+          "responses": {
+            "200": {
+              "description": "FISMA filter totals",
+              "schema": {
+                "$ref": "#/definitions/filter_totals"
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/pocs/get/{id}": {
+        "get": {
+          "tags": [
+            "POCs"
+          ],
+          "summary": "Find a point of contact by ID",
+          "description": "Returns a point of contact by SamAccountName. The id path parameter is an Active Directory username, not a numeric ID. If no record is found, the endpoint may return an empty array.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "SamAccountName (Active Directory username) of the point of contact.",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Point of contact",
+              "schema": {
+                "$ref": "#/definitions/poc_detail"
+              }
+            },
+            "501": {
+              "description": "Database query error or point of contact not found.",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          }
+        }
+      },
+      "/investments/filter_totals": {
+        "get": {
+          "tags": [
+            "Investments"
+          ],
+          "summary": "Get investment filter totals",
+          "description": "Returns aggregate counts used by investment filter controls, grouped by investment type, status, service area, and related filters. The count fields are defined by get_it-investments_filter_totals.sql.",
+          "responses": {
+            "200": {
+              "description": "Investment filter totals",
+              "schema": {
+                "$ref": "#/definitions/filter_totals"
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/websites/filter_totals": {
+        "get": {
+          "tags": [
+            "Websites"
+          ],
+          "summary": "Get website filter totals",
+          "description": "Returns aggregate counts used by website filter controls, including counts by domain type, scan status, and service category. The count fields are defined by get_websites_filter_totals.sql.",
+          "responses": {
+            "200": {
+              "description": "Website filter totals",
+              "schema": {
+                "$ref": "#/definitions/filter_totals"
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/tech_catalog/get/manufacturers": {
+        "get": {
+          "tags": [
+            "Tech Catalog"
+          ],
+          "summary": "List Technopedia manufacturers",
+          "description": "Lists all Technopedia manufacturers, ordered by name ascending. No authentication is required.",
+          "responses": {
+            "200": {
+              "description": "Manufacturers",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/tech_catalog_item"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/tech_catalog/get/software_products/{id}": {
+        "get": {
+          "tags": [
+            "Tech Catalog"
+          ],
+          "summary": "List Technopedia software products",
+          "description": "Lists Technopedia software products for a manufacturer. No authentication is required.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Technopedia manufacturer ID",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Software products",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/tech_catalog_item"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/tech_catalog/get/software_versions/{id}": {
+        "get": {
+          "tags": [
+            "Tech Catalog"
+          ],
+          "summary": "List Technopedia software versions",
+          "description": "Lists software versions for a Technopedia software product, ordered by order_ descending (newest first). No authentication is required.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Technopedia software product ID",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Software versions, ordered by order_ descending",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/technopedia_software_version"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/tech_catalog/get/custom_manufacturers": {
+        "get": {
+          "tags": [
+            "Tech Catalog"
+          ],
+          "summary": "List custom manufacturers",
+          "description": "Lists locally managed manufacturers from obj_manufacturer. No authentication is required.",
+          "responses": {
+            "200": {
+              "description": "Custom manufacturers",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/tech_catalog_item"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/tech_catalog/get/custom_software_products/{id}": {
+        "get": {
+          "tags": [
+            "Tech Catalog"
+          ],
+          "summary": "List custom software products",
+          "description": "Lists custom software products for a locally managed manufacturer. Pass the string 'undefined' as the id to receive an empty result. No authentication is required.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "obj_manufacturer.id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Custom software products",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/tech_catalog_item"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/tech_catalog/get/custom_software_versions/{id}": {
+        "get": {
+          "tags": [
+            "Tech Catalog"
+          ],
+          "summary": "List custom software versions",
+          "description": "Lists custom software versions for a locally managed software product. No authentication is required.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "obj_software_product.id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Custom software versions",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/tech_catalog_item"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/tech_catalog/get/software_releases/{id}": {
+        "get": {
+          "tags": [
+            "Tech Catalog"
+          ],
+          "summary": "List Technopedia software releases",
+          "description": "Lists Technopedia software releases for a software version, ordered by release date descending. No authentication is required.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Technopedia software version ID",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Software releases",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/tech_catalog_item"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      },
+      "/dashboard_summary": {
+        "get": {
+          "tags": [
+            "Dashboard"
+          ],
+          "summary": "Get dashboard summary",
+          "description": "Runs nine queries in parallel and returns the combined dashboard metrics in one API call, replacing nine separate calls. Results are cached for five minutes (Cache-Control: public, max-age=300, stale-while-revalidate=60).",
+          "responses": {
+            "200": {
+              "description": "Dashboard metrics",
+              "headers": {
+                "Cache-Control": {
+                  "type": "string",
+                  "description": "public, max-age=300, stale-while-revalidate=60"
+                }
+              },
+              "schema": {
+                "$ref": "#/definitions/dashboard_summary"
+              }
+            },
+            "500": {
+              "$ref": "#/responses/DashboardQueryError"
+            }
+          }
+        }
+      },
+      "/dashboard_summary/hosting_platforms": {
+        "get": {
+          "tags": [
+            "Dashboard"
+          ],
+          "summary": "Get active systems by hosting platform",
+          "description": "Returns counts of active business systems grouped by Hosting_Provider (CSP), ordered by count descending. Only non-empty providers for active business applications are included. Results are cached for five minutes.",
+          "responses": {
+            "200": {
+              "description": "Hosting platform counts, ordered descending by count",
+              "headers": {
+                "Cache-Control": {
+                  "type": "string",
+                  "description": "public, max-age=300"
+                }
+              },
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/hosting_platform_count"
+                }
+              }
+            },
+            "500": {
+              "$ref": "#/responses/DashboardQueryError"
+            }
+          }
+        }
+      },
+      "/cloud_adoption_rate": {
+        "get": {
+          "tags": [
+            "Cloud Adoption Rate"
+          ],
+          "summary": "List cloud adoption snapshots",
+          "description": "Returns the full historical time series of cloud adoption rate snapshots, ordered newest first. Results are cached for five minutes.",
+          "responses": {
+            "200": {
+              "description": "Cloud adoption snapshots, ordered newest first",
+              "headers": {
+                "Cache-Control": {
+                  "type": "string",
+                  "description": "Cached for five minutes"
+                }
+              },
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/cloud_adoption_snapshot"
+                }
+              }
+            },
+            "501": {
+              "$ref": "#/responses/DatabaseError"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "RecordNotFound": {
+        "description": "Record not found",
+        "schema": {
+          "$ref": "#/definitions/Error"
+        }
+      },
+      "DatabaseError": {
+        "description": "Database error (HTTP 501)",
+        "schema": {
+          "$ref": "#/definitions/Error"
+        }
+      },
+      "AuthorizationError": {
+        "description": "Authorization failure or invalid API token (HTTP 502)",
+        "schema": {
+          "$ref": "#/definitions/Error"
+        }
+      },
+      "DashboardQueryError": {
+        "description": "Dashboard query failure (HTTP 500)",
+        "schema": {
+          "$ref": "#/definitions/Error"
         }
       }
     },
@@ -3935,6 +4542,336 @@
               }
           }
         },
+      "paginated_organizations": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "example": 142
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/paginated_organization"
+            }
+          }
+        }
+      },
+      "paginated_organization": {
+        "type": "object",
+        "properties": {
+          "Organization_Id": {
+            "type": "integer"
+          },
+          "Organization_Name": {
+            "type": "string"
+          },
+          "Org_Symbol": {
+            "type": "string"
+          },
+          "SSO_Name": {
+            "type": "string"
+          },
+          "Org_Symbol_Two_Letter": {
+            "type": "string"
+          },
+          "Org_Symbol_Two_Letter_Name": {
+            "type": "string"
+          },
+          "Parent_Id": {
+            "type": "integer"
+          }
+        }
+      },
+      "fisma_archer_system": {
+        "type": "object",
+        "description": "FISMA system record from obj_fisma_archer.",
+        "properties": {
+          "ex:GEAR_ID": {
+            "type": "integer",
+            "description": "Unique GEAR system ID."
+          },
+          "ex:System_Name": {
+            "type": "string"
+          },
+          "ex:Responsible_Org": {
+            "type": "string"
+          },
+          "ex:Status": {
+            "type": "string",
+            "enum": [
+              "Active",
+              "Inactive",
+              "Pending"
+            ]
+          },
+          "ex:SystemLevel": {
+            "type": "string",
+            "enum": [
+              "System",
+              "Subsystem"
+            ]
+          },
+          "ex:FIPS_Impact_Level": {
+            "type": "string",
+            "enum": [
+              "Low",
+              "Moderate",
+              "High"
+            ]
+          },
+          "ex:ATO_Type": {
+            "type": "string"
+          },
+          "ex:ATOIATO_Date": {
+            "type": "string",
+            "format": "date"
+          },
+          "ex:Renewal_Date": {
+            "type": "string",
+            "format": "date"
+          },
+          "ex:ATO_Expiration_Date": {
+            "type": "string",
+            "format": "date"
+          },
+          "ex:Cloud_Hosted": {
+            "type": "string",
+            "enum": [
+              "Yes",
+              "No"
+            ]
+          },
+          "ex:Hosting_Provider": {
+            "type": "string"
+          },
+          "ex:Type_of_Service": {
+            "type": "string"
+          },
+          "ex:PII": {
+            "type": "string"
+          },
+          "ex:FISMA_Reportable": {
+            "type": "string"
+          },
+          "ex:FederalContractor": {
+            "type": "string"
+          },
+          "ex:ISSM_Full_Name": {
+            "type": "string"
+          },
+          "ex:ISSM_Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "ex:ISSM_Phone": {
+            "type": "string"
+          },
+          "ex:ISSO_1_Full_Name": {
+            "type": "string"
+          },
+          "ex:ISSO_1_Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "ex:ISSO_1_Phone": {
+            "type": "string"
+          },
+          "ex:ISSO_2_Full_Name": {
+            "type": "string"
+          },
+          "ex:ISSO_2_Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "ex:ISSO_2_Phone": {
+            "type": "string"
+          },
+          "ex:ISSO_3_Full_Name": {
+            "type": "string"
+          },
+          "ex:ISSO_3_Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "ex:ISSO_3_Phone": {
+            "type": "string"
+          },
+          "ex:ISSO_4_Full_Name": {
+            "type": "string"
+          },
+          "ex:ISSO_4_Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "ex:ISSO_4_Phone": {
+            "type": "string"
+          },
+          "ex:Authorizing_Official_Full_Name": {
+            "type": "string"
+          },
+          "ex:Authorizing_Official_Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "ex:Authorizing_Official_Phone": {
+            "type": "string"
+          },
+          "ex:Description": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "poc_detail": {
+        "type": "object",
+        "properties": {
+          "SamAccountName": {
+            "type": "string"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "Phone": {
+            "type": "string"
+          }
+        }
+      },
+      "filter_totals": {
+        "type": "object",
+        "description": "Aggregate filter counts. The concrete property names are defined by the endpoint's SQL query.",
+        "additionalProperties": {
+          "type": "integer"
+        }
+      },
+      "tech_catalog_item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "technopedia_software_version": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "order_": {
+            "type": "integer"
+          }
+        }
+      },
+      "dashboard_summary": {
+        "type": "object",
+        "properties": {
+          "fismaExpiringThisQuarter": {
+            "type": "integer"
+          },
+          "fismaExpiringThisWeek": {
+            "type": "integer"
+          },
+          "fismaPastDue": {
+            "type": "integer"
+          },
+          "standardsExpiringThisQuarter": {
+            "type": "integer"
+          },
+          "standardsExpiringThisWeek": {
+            "type": "integer"
+          },
+          "standardsPastDue": {
+            "type": "integer"
+          },
+          "decommissionedSystemsLastMonth": {
+            "type": "integer"
+          },
+          "decommissionedSystemsLast6Months": {
+            "type": "integer"
+          },
+          "retiredStandardsLastWeek": {
+            "type": "integer"
+          },
+          "retiredStandardsLast6Months": {
+            "type": "integer"
+          },
+          "cloudAdoptionRate": {
+            "$ref": "#/definitions/dashboard_cloud_adoption_rate",
+            "x-nullable": true
+          }
+        }
+      },
+      "dashboard_cloud_adoption_rate": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer"
+          },
+          "CloudAdoptionRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "BusSystemsCount": {
+            "type": "integer"
+          },
+          "CloudBusSystemsCount": {
+            "type": "integer"
+          },
+          "DTG": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "hosting_platform_count": {
+        "type": "object",
+        "properties": {
+          "CSP": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "cloud_adoption_snapshot": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer"
+          },
+          "BusSysCloudAdoptionRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "ActiveBusSystemsCount": {
+            "type": "integer"
+          },
+          "CloudActiveBusSystemsCount": {
+            "type": "integer"
+          },
+          "DTG": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "Error": {
           "type": "object",
           "properties": {
