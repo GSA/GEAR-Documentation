@@ -20,7 +20,7 @@ The actual contents of the Swagger UI container are generated from the Swagger 2
 
 ## Adding an API operation
 
-Add each operation to the `paths` object in `gear.json`. The specification already sets `basePath` to `/api`, so path keys should omit that prefix. For example, document `GET /api/tech_catalog/get/manufacturers` under `/tech_catalog/get/manufacturers`.
+Add each operation to the `paths` object in `gear.json`. The specification already sets `basePath` to `/api`, so path keys should omit that prefix. For example, document `GET /api/organizations/paginated` under `/organizations/paginated`.
 
 For each operation, include its HTTP method, tag, summary, description, parameters, and success response schema. Add or reuse a definition under `definitions` for request bodies and response data. Document authentication only when it is specified by the route contract; never write a real API token into this repository.
 

@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "title": "<b>GEAR API Documentation</b>",
-      "description": "A definition is one of the following:\n  \n    Capabilities\n    Cloud Adoption Rate\n    Dashboard\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Tech Catalog\n    Technical Reference Model (TRM)\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
+      "description": "A definition is one of the following:\n  \n    Capabilities\n    Cloud Adoption Rate\n    Dashboard\n    Data Dictionary\n    FISMA\n    Global Search\n    Investments\n    IT Standards\n    Organizations\n    Point of Contacts\n    Records\n    Systems\n    System Time\n    Technical Reference Model (TRM)\n    Website Service Categories\n    Websites\n\nExpand each category and click on \"Try it out!\"",
       "version": "3.0",
       "termsOfService": "http://swagger.io/terms/"
     },
@@ -74,10 +74,6 @@
       {
         "name": "Websites",
         "description": ""
-      },
-      {
-        "name": "Tech Catalog",
-        "description": "Read-only Technopedia and locally managed software catalog operations."
       },
       {
         "name": "Dashboard",
@@ -1868,212 +1864,6 @@
               "description": "Website filter totals",
               "schema": {
                 "$ref": "#/definitions/filter_totals"
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/manufacturers": {
-        "get": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List Technopedia manufacturers",
-          "description": "Lists all Technopedia manufacturers, ordered by name ascending. No authentication is required.",
-          "responses": {
-            "200": {
-              "description": "Manufacturers",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/tech_catalog_item"
-                }
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/software_products/{id}": {
-        "get": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List Technopedia software products",
-          "description": "Lists Technopedia software products for a manufacturer. No authentication is required.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Technopedia manufacturer ID",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Software products",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/tech_catalog_item"
-                }
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/software_versions/{id}": {
-        "get": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List Technopedia software versions",
-          "description": "Lists software versions for a Technopedia software product, ordered by order_ descending (newest first). No authentication is required.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Technopedia software product ID",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Software versions, ordered by order_ descending",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/technopedia_software_version"
-                }
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/custom_manufacturers": {
-        "get": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List custom manufacturers",
-          "description": "Lists locally managed manufacturers from obj_manufacturer. No authentication is required.",
-          "responses": {
-            "200": {
-              "description": "Custom manufacturers",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/tech_catalog_item"
-                }
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/custom_software_products/{id}": {
-        "get": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List custom software products",
-          "description": "Lists custom software products for a locally managed manufacturer. Pass the string 'undefined' as the id to receive an empty result. No authentication is required.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "obj_manufacturer.id",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Custom software products",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/tech_catalog_item"
-                }
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/custom_software_versions/{id}": {
-        "get": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List custom software versions",
-          "description": "Lists custom software versions for a locally managed software product. No authentication is required.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "obj_software_product.id",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Custom software versions",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/tech_catalog_item"
-                }
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/software_releases/{id}": {
-        "get": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List Technopedia software releases",
-          "description": "Lists Technopedia software releases for a software version, ordered by release date descending. No authentication is required.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Technopedia software version ID",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Software releases",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/tech_catalog_item"
-                }
               }
             },
             "501": {
@@ -4749,33 +4539,6 @@
         "description": "Aggregate filter counts. The concrete property names are defined by the endpoint's SQL query.",
         "additionalProperties": {
           "type": "integer"
-        }
-      },
-      "tech_catalog_item": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      },
-      "technopedia_software_version": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "order_": {
-            "type": "integer"
-          }
         }
       },
       "dashboard_summary": {
