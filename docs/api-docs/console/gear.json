@@ -14,14 +14,6 @@
     "produces": [
         "application/json"
     ],
-    "securityDefinitions": {
-      "GEARApiToken": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header",
-        "description": "GEAR API token. Enter the token value; never include a real token in this specification."
-      }
-    },
     "tags": [
       {
         "name": "Capabilities",
@@ -85,7 +77,7 @@
       },
       {
         "name": "Tech Catalog",
-        "description": "Technopedia and locally managed software catalog operations. Reads and custom catalog writes do not require the GEAR API token."
+        "description": "Read-only Technopedia and locally managed software catalog operations."
       },
       {
         "name": "Dashboard",
@@ -1576,61 +1568,6 @@
           }
         }
       },
-      "/it_standards/create_advanced/{id}": {
-        "post": {
-          "tags": [
-            "IT Standards"
-          ],
-          "summary": "Attach advanced metadata to an IT standard",
-          "description": "Attaches or updates Technopedia catalog linkage, POCs, mobile app bundles, operating systems, and categories on an existing IT Standard. Existing POC, app bundle, OS, and category associations are replaced. The operation is written to gear_log.event.",
-          "security": [
-            {
-              "GEARApiToken": []
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "GEAR ID of the existing IT Standard record (obj_technology.Id)",
-              "required": true,
-              "type": "integer"
-            },
-            {
-              "name": "requester",
-              "in": "header",
-              "description": "Requester username or identity, written to the audit log.",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/advanced_it_standard_request"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Advanced IT standard metadata attached",
-              "schema": {
-                "$ref": "#/definitions/create_advanced_result"
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            },
-            "502": {
-                "$ref": "#/responses/AuthorizationError"
-              }
-          }
-        }
-      },
       "/organizations/paginated": {
         "get": {
           "tags": [
@@ -1919,124 +1856,6 @@
           }
         }
       },
-      "/records/updateSystems/{id}": {
-        "put": {
-          "tags": [
-            "Records"
-          ],
-          "summary": "Update systems linked to a record",
-          "description": "Replaces all system associations for a record by deleting existing mappings and inserting the supplied system IDs. Requires a valid GEAR API token.",
-          "security": [
-            {
-              "GEARApiToken": []
-            }
-          ],
-          "consumes": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Records_Id",
-              "required": true,
-              "type": "integer"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/update_record_systems_request"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Record systems updated",
-              "schema": {
-                "$ref": "#/definitions/database_result"
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            },
-            "502": {
-              "$ref": "#/responses/AuthorizationError"
-            }
-          }
-        }
-      },
-      "/records/updateAllSystems": {
-        "put": {
-          "tags": [
-            "Records"
-          ],
-          "summary": "Refresh systems for all records",
-          "description": "Refreshes all record-to-system mappings from the master Google Sheet (range 'Master Junction with Business Systems!A2:B'). Requires a valid GEAR API token.",
-          "security": [
-            {
-              "GEARApiToken": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "requester",
-              "in": "header",
-              "description": "Username of the requesting user, recorded for audit.",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Record-to-system mappings refreshed from Google Sheets",
-              "schema": {
-                "$ref": "#/definitions/operation_result"
-              }
-            },
-            "502": {
-              "description": "Authorization failure or Google Sheets API error.",
-              "schema": {
-                "$ref": "#/definitions/Error"
-              }
-            }
-          }
-        }
-      },
-      "/records/logEvent": {
-        "post": {
-          "tags": [
-            "Records"
-          ],
-          "summary": "Log a record event",
-          "description": "Writes a plain-text event message to the GEAR audit/event log. No API token is required for application-level use.",
-          "consumes": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/log_event_request"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Event logged",
-              "schema": {
-                "$ref": "#/definitions/database_result"
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
       "/websites/filter_totals": {
         "get": {
           "tags": [
@@ -2250,137 +2069,6 @@
           "responses": {
             "200": {
               "description": "Software releases",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/tech_catalog_item"
-                }
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/post/custom_manufacturer": {
-        "post": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "Create a custom manufacturer",
-          "description": "Creates a locally managed manufacturer. This endpoint does not require the GEAR API token (application-level use).",
-          "consumes": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/custom_manufacturer_request"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Manufacturer created",
-              "schema": {
-                "$ref": "#/definitions/insert_result"
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/post/custom_software_product": {
-        "put": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "Create a custom software product",
-          "description": "Creates a custom software product. The route contains 'post', but the HTTP method is PUT. This endpoint does not require the GEAR API token (application-level use).",
-          "consumes": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/custom_software_product_request"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Software product created",
-              "schema": {
-                "$ref": "#/definitions/insert_result"
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/post/custom_software_version": {
-        "post": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "Create a custom software version",
-          "description": "Creates a custom software version. This endpoint does not require the GEAR API token (application-level use).",
-          "consumes": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/custom_software_version_request"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Software version created",
-              "schema": {
-                "$ref": "#/definitions/insert_result"
-              }
-            },
-            "501": {
-              "$ref": "#/responses/DatabaseError"
-            }
-          }
-        }
-      },
-      "/tech_catalog/get/custom_software_releases/{id}": {
-        "post": {
-          "tags": [
-            "Tech Catalog"
-          ],
-          "summary": "List custom software releases",
-          "description": "Lists custom software releases for a custom software version. The route is registered as POST despite being a read operation. No API token is required.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "obj_software_version.id",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Custom software releases",
               "schema": {
                 "type": "array",
                 "items": {
@@ -4854,85 +4542,6 @@
               }
           }
         },
-      "advanced_it_standard_request": {
-        "type": "object",
-        "description": "Advanced catalog metadata and associations for an existing IT Standard.",
-        "properties": {
-          "tcManufacturer": {
-            "$ref": "#/definitions/tech_catalog_association"
-          },
-          "tcSoftwareProduct": {
-            "$ref": "#/definitions/tech_catalog_association"
-          },
-          "tcSoftwareVersion": {
-            "type": "object",
-            "x-nullable": true,
-            "description": "If falsy, the software release is linked directly to the standard.",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "name": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true
-          },
-          "tcSoftwareRelease": {
-            "$ref": "#/definitions/tech_catalog_association"
-          },
-          "itStandPOC": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/associated_record"
-            }
-          },
-          "itStandMobileAppBundles": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/associated_record"
-            }
-          },
-          "itStandOperatingSystems": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/associated_record"
-            }
-          },
-          "itStandCategory": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/associated_record"
-            }
-          }
-        }
-      },
-      "tech_catalog_association": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": true
-      },
-      "associated_record": {
-        "type": "object",
-        "description": "Associated POC, mobile app bundle, operating system, or category object. Fields depend on the association type.",
-        "additionalProperties": true
-      },
-      "create_advanced_result": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "example": "create IT Standard"
-          }
-        }
-      },
       "paginated_organizations": {
         "type": "object",
         "properties": {
@@ -5142,53 +4751,6 @@
           "type": "integer"
         }
       },
-      "database_result": {
-        "type": "object",
-        "description": "Database operation result. Exact fields depend on the result returned by the database driver.",
-        "additionalProperties": true
-      },
-      "update_record_systems_request": {
-        "type": "object",
-        "required": [
-          "relatedSystems"
-        ],
-        "properties": {
-          "relatedSystems": {
-            "type": "array",
-            "description": "GEAR IDs of the systems to associate with the record. Replaces all existing associations.",
-            "items": {
-              "type": "integer"
-            }
-          }
-        }
-      },
-      "log_event_request": {
-        "type": "object",
-        "required": [
-          "message",
-          "user"
-        ],
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "Plain-text event description."
-          },
-          "user": {
-            "type": "string",
-            "description": "Identity of the user performing the action."
-          }
-        }
-      },
-      "operation_result": {
-        "type": "object",
-        "description": "Operation completion result returned by the service.",
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": true
-      },
       "tech_catalog_item": {
         "type": "object",
         "properties": {
@@ -5213,51 +4775,6 @@
           },
           "order_": {
             "type": "integer"
-          }
-        }
-      },
-      "custom_manufacturer_request": {
-        "type": "object",
-        "required": [
-          "manufacturerName"
-        ],
-        "properties": {
-          "manufacturerName": {
-            "type": "string",
-            "description": "Manufacturer name"
-          }
-        }
-      },
-      "custom_software_product_request": {
-        "type": "object",
-        "required": [
-          "productName"
-        ],
-        "properties": {
-          "productName": {
-            "type": "string",
-            "description": "Name of the product"
-          }
-        }
-      },
-      "custom_software_version_request": {
-        "type": "object",
-        "required": [
-          "versionName"
-        ],
-        "properties": {
-          "versionName": {
-            "type": "string",
-            "description": "Version number or name"
-          }
-        }
-      },
-      "insert_result": {
-        "type": "object",
-        "properties": {
-          "insertId": {
-            "type": "integer",
-            "format": "int64"
           }
         }
       },

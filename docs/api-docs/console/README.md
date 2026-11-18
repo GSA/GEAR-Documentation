@@ -22,8 +22,8 @@ The actual contents of the Swagger UI container are generated from the Swagger 2
 
 Add each operation to the `paths` object in `gear.json`. The specification already sets `basePath` to `/api`, so path keys should omit that prefix. For example, document `GET /api/tech_catalog/get/manufacturers` under `/tech_catalog/get/manufacturers`.
 
-For each operation, include its HTTP method, tag, summary, description, parameters, and success response schema. Add or reuse a definition under `definitions` for request bodies and response data. Protected operations use the `GEARApiToken` security definition (`Authorization` header); the actual token must never be written into this repository. Add the `requester` header where the route contract requires it.
+For each operation, include its HTTP method, tag, summary, description, parameters, and success response schema. Add or reuse a definition under `definitions` for request bodies and response data. Document authentication only when it is specified by the route contract; never write a real API token into this repository.
 
-The supplied API contract identifies `/dashboard_summary` and `/dashboard_summary/hosting_platforms` as the dashboard routes, and POST as the method for custom software releases. Earlier route lists included `/dashboard` aliases and a GET variant for custom releases; those variants are not included because the supplied route-level contract says otherwise. The detailed contract also says custom Tech Catalog writes do not require the GEAR API token, despite its broader authentication summary. Follow the individual route declarations when documenting auth.
+The current GEAR specification is read-only and intentionally omits POST and PUT operations. The supplied API contract identifies `/dashboard_summary` and `/dashboard_summary/hosting_platforms` as the dashboard routes; follow the individual route declarations when documenting paths and methods.
 
 The Swagger specification can be edited or checked with [Swagger Editor](https://editor.swagger.io/). Confirm that the updated `gear.json` parses and that the operation appears in the console.
